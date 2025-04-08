@@ -1,0 +1,29 @@
+# Common
+*.log
+*.DS_Store
+.env
+.idea/
+.vscode/
+
+# Backend (Java)
+backend/target/
+backend/*.iml
+backend/.mvn/
+backend/.gradle/
+backend/*.jar
+
+# AI (Python)
+ai/__pycache__/
+ai/venv/
+ai/.ipynb_checkpoints/
+ai/*.h5
+ai/*.pkl
+
+# Flutter
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.packages
+frontend/build/
+frontend/.idea/
+frontend/.vscode/
