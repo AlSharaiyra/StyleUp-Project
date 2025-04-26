@@ -14,3 +14,4 @@ This is the full-stack repository for the StyleUp project.
 - Backend: Walid Sharaiyra
 - AI/ML: All of us
 
+ant thing related to the dataset is not pushed in to git or github 
