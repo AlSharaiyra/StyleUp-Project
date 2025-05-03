@@ -11,11 +11,15 @@ class GenderImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final double imageWidth = MediaQuery.of(context).size.width * 0.65; 
     final double imageHeight = MediaQuery.of(context).size.height * 0.35; 
-    return Image.asset(
-      image,
-      width: imageWidth,
-      height: imageHeight,
-      fit: BoxFit.cover,
+    return CircleAvatar(
+      minRadius: 40,
+      backgroundColor: Colors.transparent,
+      child: Image.asset(
+        image,
+        width: imageWidth,
+        height: imageHeight,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

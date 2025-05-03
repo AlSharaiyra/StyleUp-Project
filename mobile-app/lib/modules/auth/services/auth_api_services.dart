@@ -1,6 +1,6 @@
 import 'package:style_up/core/constant/api_url.dart';
 import 'package:style_up/core/services/api_interface.dart';
-import 'package:style_up/core/services/auth/auth_api_interface.dart';
+import 'package:style_up/modules/auth/services/auth_api_interface.dart';
 import 'package:style_up/core/services/dio_api_service.dart';
 
 class AuthApiServices extends IAuthApi {

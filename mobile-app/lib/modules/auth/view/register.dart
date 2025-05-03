@@ -1,5 +1,7 @@
 // ignore_for_file: always_specify_types, use_build_context_synchronously
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +21,7 @@ import 'package:style_up/modules/auth/widget/socialmedia/social_media.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/confirm_password.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/email.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/password.dart';
+import 'package:style_up/modules/outfit_recommendation/controller/recommendation_outfit.dart';
 
 import '../widget/register/desc.dart';
 import '../widget/register/register_title.dart';
@@ -34,8 +37,8 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double paddingHorizontal = MediaQuery.of(context).size.width * .08;
-    final double paddingVertical = MediaQuery.of(context).size.height * .084;
+    final double paddingHorizontal = MediaQuery.of(context).size.width * .07;
+    final double paddingVertical = MediaQuery.of(context).size.height * .074;
     final double spacing = MediaQuery.of(context).size.height * .01;
     return PopScope(
       onPopInvokedWithResult: (bool didPop, d) {
@@ -70,7 +73,7 @@ class RegisterView extends StatelessWidget {
                     controller: confirmPasswordController,
                   ),
                   SizedBox(
-                    height: spacing *0.1,
+                    height: spacing * 0.1,
                   ),
                   const RegisterPolicy(),
                   SizedBox(
@@ -113,14 +116,19 @@ class RegisterView extends StatelessWidget {
                       }
 
                       return CraeteAccountButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             context.read<RegisterFieldsFormBloc>().add(
                                 RegisterFormSubmitted(
                                     emailController.text,
                                     passwordController.text,
                                     usernameController.text,
-                                    confirmPasswordController.text,context));
+                                    confirmPasswordController.text,
+                                    context));
+                            RecommendationOutfitController controller =
+                                RecommendationOutfitController();
+                            final re = await controller.getWeatherData();
+                            log("$re re");
                           }
                         },
                         isRegisterPage: true,

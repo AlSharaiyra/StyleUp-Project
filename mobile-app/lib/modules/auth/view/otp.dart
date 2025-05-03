@@ -31,12 +31,11 @@ class OtpView extends StatelessWidget {
       child: Scaffold(
         appBar: const RegisterAppBar(),
         body: GestureDetector(
-                    onTap: () {
+          onTap: () {
             // Hide the keyboard when tapping outside
             FocusScope.of(context).unfocus();
           },
           behavior: HitTestBehavior.opaque,
-
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: paddingHorizontal),
             child: SingleChildScrollView(
@@ -101,9 +100,8 @@ class OtpView extends StatelessWidget {
                             const SnackBar(content: Text('Otp successful!')),
                           );
                           FocusScope.of(context).unfocus();
-                                            FocusManager.instance.primaryFocus?.unfocus();
-          
-          
+                          FocusManager.instance.primaryFocus?.unfocus();
+
                           context.push(Routes
                               .ageSelection); // This will trigger the custom transition
                         } else if (state is OnFailed) {

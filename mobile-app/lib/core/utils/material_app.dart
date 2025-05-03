@@ -38,7 +38,6 @@ class MaterialAppUtils extends StatelessWidget {
       debugShowCheckedModeBanner: false, // Hides the debug banner in the app
       supportedLocales: L10n.all,
       theme: Themeedata.light,
-      darkTheme: Themeedata.dark,
       //themeMode: ThemeMode.dark,
       localizationsDelegates: [
         AppLocalizations.delegate,

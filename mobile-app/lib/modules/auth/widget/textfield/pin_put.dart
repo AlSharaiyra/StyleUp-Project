@@ -5,7 +5,8 @@ import 'package:style_up/core/theme/colors.dart';
 import 'package:style_up/modules/auth/bloc/otp/pin_code_controller.dart';
 import 'package:style_up/modules/auth/bloc/otp/pin_code_event.dart';
 import 'package:style_up/modules/auth/bloc/otp/pin_code_state.dart';
-import 'dart:developer'as developer;
+import 'dart:developer' as developer;
+
 class PinCodeTextField extends StatelessWidget {
   PinCodeTextField({super.key});
 
@@ -17,12 +18,11 @@ class PinCodeTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width * 0.17;
-developer.log( Localizations.localeOf(context).languageCode);
-    return  Directionality(
-                textDirection:
-                    Localizations.localeOf(context).languageCode == 'en'
-                        ? TextDirection.ltr
-                        : TextDirection.ltr,
+    developer.log(Localizations.localeOf(context).languageCode);
+    return Directionality(
+      textDirection: Localizations.localeOf(context).languageCode == 'en'
+          ? TextDirection.ltr
+          : TextDirection.ltr,
       child: BlocBuilder<PinCodeController, PinCodeState>(
         builder: (BuildContext context, PinCodeState pinCodes) {
           return Row(
@@ -59,16 +59,17 @@ developer.log( Localizations.localeOf(context).languageCode);
                   onChanged: (String value) {
                     developer.log(index.toString());
                     if (value.isNotEmpty) {
-                    _controllers[index].selection = TextSelection.fromPosition(
-                        TextPosition(offset: _controllers[index].text.length));
-      
-                    if (index < 3) {
-                      Future.delayed(Duration(milliseconds: 100), () {
-                        FocusScope.of(context)
-                            .requestFocus(_focusNodes[index + 1]);
-                      });
+                      _controllers[index].selection =
+                          TextSelection.fromPosition(TextPosition(
+                              offset: _controllers[index].text.length));
+
+                      if (index < 3) {
+                        Future.delayed(Duration(milliseconds: 100), () {
+                          FocusScope.of(context)
+                              .requestFocus(_focusNodes[index + 1]);
+                        });
+                      }
                     }
-                  }
                     if (_controllers[0].text != '' &&
                         _controllers[1].text != '' &&
                         _controllers[2].text != '' &&
@@ -77,8 +78,8 @@ developer.log( Localizations.localeOf(context).languageCode);
                           _controllers[1].text +
                           _controllers[2].text +
                           _controllers[3].text;
-                                                  FocusScope.of(context).unfocus();
-                  FocusManager.instance.primaryFocus?.unfocus();
+                      FocusScope.of(context).unfocus();
+                      FocusManager.instance.primaryFocus?.unfocus();
 
                       context
                           .read<PinCodeController>()
