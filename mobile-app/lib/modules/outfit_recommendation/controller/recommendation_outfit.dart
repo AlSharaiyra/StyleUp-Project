@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:geolocator/geolocator.dart';
+import 'package:style_up/core/enum/semester.dart';
 import 'package:style_up/modules/outfit_recommendation/service/recommendation_outfit_services.dart';
 
 class RecommendationOutfitController {
@@ -51,19 +52,33 @@ class RecommendationOutfitController {
 
     if (permission == LocationPermission.deniedForever) {
       // Permissions are denied forever, handle appropriately.
-      return  Position(
-            longitude: 35.9,
-            latitude: 31.9,
-            timestamp: DateTime.now(),
-            accuracy: 0.0,
-            altitudeAccuracy: 1,
-            headingAccuracy: 1,
-            altitude: 0.0,
-            heading: 0.0,
-            speed: 0.0,
-            speedAccuracy: 0.0);
+      return Position(
+          longitude: 35.9,
+          latitude: 31.9,
+          timestamp: DateTime.now(),
+          accuracy: 0.0,
+          altitudeAccuracy: 1,
+          headingAccuracy: 1,
+          altitude: 0.0,
+          heading: 0.0,
+          speed: 0.0,
+          speedAccuracy: 0.0);
     }
     return await Geolocator.getCurrentPosition();
+  }
+
+  Future<Semester> getCurrentSemester(
+      double temperature, double windSpeed) async {
+    double si = temperature - 0.5 * windSpeed;
+    if (si < 5) {
+      return Semester.winter;
+    } else if (si >= 5 && si < 10) {
+      return Semester.autumn;
+    } else if (si >= 10 && si < 15) {
+      return Semester.spring;
+    } else {
+      return Semester.summer;
+    }
   }
 
   Future<bool> getWeatherData() async {
