@@ -35,36 +35,54 @@ class RecommendationOutfitController {
         // Android's shouldShowRequestPermissionRationale
         // returned true. According to Android guidelines
         // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
+        return Position(
+            longitude: 35.9,
+            latitude: 31.9,
+            timestamp: DateTime.now(),
+            accuracy: 0.0,
+            altitudeAccuracy: 1,
+            headingAccuracy: 1,
+            altitude: 0.0,
+            heading: 0.0,
+            speed: 0.0,
+            speedAccuracy: 0.0);
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
       // Permissions are denied forever, handle appropriately.
-      return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
+      return  Position(
+            longitude: 35.9,
+            latitude: 31.9,
+            timestamp: DateTime.now(),
+            accuracy: 0.0,
+            altitudeAccuracy: 1,
+            headingAccuracy: 1,
+            altitude: 0.0,
+            heading: 0.0,
+            speed: 0.0,
+            speedAccuracy: 0.0);
     }
     return await Geolocator.getCurrentPosition();
   }
 
   Future<bool> getWeatherData() async {
-    try{
-    Position position = await _determinePosition();
-    log('Position: $position');
-    double latitude = position.latitude;
-    double longitude = position.longitude;
-    // Use the latitude and longitude to fetch weather data
-    await _recommendationOutfitServices.getWeatherData(
-        longitude: longitude, latitude: latitude);
-    return true;
+    try {
+      Position position = await _determinePosition();
+      log('Position: $position');
+      double latitude = position.latitude;
+      double longitude = position.longitude;
+      // Use the latitude and longitude to fetch weather data
+      await _recommendationOutfitServices.getWeatherData(
+          longitude: longitude, latitude: latitude);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
-  catch (e) {
-    return false;
-  }
-  }
-  Future<Map<String, dynamic>> getOutfitRecommendation(
-      String userId, String weatherCondition, String occasion,
-      String stylePreference) async {
+
+  Future<Map<String, dynamic>> getOutfitRecommendation(String userId,
+      String weatherCondition, String occasion, String stylePreference) async {
     return await _recommendationOutfitServices.getOutfitRecommendation(
         userId, weatherCondition, occasion, stylePreference);
   }
