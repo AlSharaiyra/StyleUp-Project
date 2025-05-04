@@ -52,9 +52,7 @@ class WidgetTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const double borderRadius = 25;
-    double width = MediaQuery.of(context).size.width * .8;
-    double height = MediaQuery.of(context).size.height * .09;
-
+ 
     return TextFormField(
       // General
       controller: controller,
@@ -100,7 +98,7 @@ class WidgetTextField extends StatelessWidget {
         // error
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: const BorderSide(color: ColorsTheme.red),
+          borderSide: const BorderSide(color: ColorsTheme.greyBorder),
         ),
     
         errorMaxLines: 2,

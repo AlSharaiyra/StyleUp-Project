@@ -32,9 +32,8 @@ class RecommendationOutfitServices extends RecommendationOutfitInterface {
     if (response.statusCode == 200) {
       try{
       log('Weather API Success: ${response.data}');
-      final Map<String, dynamic> json = jsonDecode(response.data);
-
-      final WeatherData weatherData = WeatherData.fromJson(json);
+      log("data type of data: ${response.data.runtimeType}");
+      final WeatherData weatherData = WeatherData.fromJson(response.data);
       log('Weather data: ${weatherData.toJson()}');
       return weatherData;}
       catch(e){

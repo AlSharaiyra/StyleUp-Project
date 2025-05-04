@@ -5,7 +5,7 @@ class WeatherData {
   int? _utcOffsetSeconds;
   String? _timezone;
   String? _timezoneAbbreviation;
-  int? _elevation;
+  double? _elevation;
   CurrentUnits? _currentUnits;
   Current? _current;
   HourlyUnits? _hourlyUnits;
@@ -18,7 +18,7 @@ class WeatherData {
       int? utcOffsetSeconds,
       String? timezone,
       String? timezoneAbbreviation,
-      int? elevation,
+      double? elevation,
       CurrentUnits? currentUnits,
       Current? current,
       HourlyUnits? hourlyUnits,
@@ -73,8 +73,8 @@ class WeatherData {
   String? get timezoneAbbreviation => _timezoneAbbreviation;
   set timezoneAbbreviation(String? timezoneAbbreviation) =>
       _timezoneAbbreviation = timezoneAbbreviation;
-  int? get elevation => _elevation;
-  set elevation(int? elevation) => _elevation = elevation;
+  double? get elevation => _elevation;
+  set elevation(double? elevation) => _elevation = elevation;
   CurrentUnits? get currentUnits => _currentUnits;
   set currentUnits(CurrentUnits? currentUnits) => _currentUnits = currentUnits;
   Current? get current => _current;
@@ -184,10 +184,10 @@ class Current {
   String? _time;
   int? _interval;
   double? _temperature2m;
-  int? _windSpeed10m;
+  double? _windSpeed10m;
 
   Current(
-      {String? time, int? interval, double? temperature2m, int? windSpeed10m}) {
+      {String? time, int? interval, double? temperature2m, double? windSpeed10m}) {
     if (time != null) {
       this._time = time;
     }
@@ -208,8 +208,8 @@ class Current {
   set interval(int? interval) => _interval = interval;
   double? get temperature2m => _temperature2m;
   set temperature2m(double? temperature2m) => _temperature2m = temperature2m;
-  int? get windSpeed10m => _windSpeed10m;
-  set windSpeed10m(int? windSpeed10m) => _windSpeed10m = windSpeed10m;
+  double? get windSpeed10m => _windSpeed10m;
+  set windSpeed10m(double? windSpeed10m) => _windSpeed10m = windSpeed10m;
 
   Current.fromJson(Map<String, dynamic> json) {
     _time = json['time'];
