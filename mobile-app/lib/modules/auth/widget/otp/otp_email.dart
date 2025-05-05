@@ -6,7 +6,7 @@ class OtpEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String email = "useremail@email.com";
+    const String email = 'useremail@email.com';
     return Text(
       email,
       style:  Theme.of(context).textTheme.bodyLarge!.copyWith(

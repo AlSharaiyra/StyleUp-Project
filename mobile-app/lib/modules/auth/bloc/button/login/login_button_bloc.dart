@@ -21,7 +21,7 @@ class LoginButtonBloc extends Bloc<LoginButtonEvent, LoginButtonState> {
       if (isSucssess) {
         emit(OnSuccess());
       }
-     else{ emit(OnFailed(errorMessage: "login failed"));}
+     else{ emit(const OnFailed(errorMessage: 'login failed'));}
     } catch (e) {
       emit(OnFailed(errorMessage: e.toString()));
     }

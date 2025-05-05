@@ -34,4 +34,10 @@ class AuthApiServices extends IAuthApi {
       String email, String password, String username) {
     throw UnimplementedError();
   }
+  
+  @override
+  Future<Map<String, dynamic>> forgetPassword(String email) {
+    // TODO: implement forgetPassword
+    throw UnimplementedError();
+  }
 }

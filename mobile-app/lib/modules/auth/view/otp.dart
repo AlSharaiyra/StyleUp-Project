@@ -1,5 +1,7 @@
 // ignore_for_file: always_specify_types
 
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,8 +21,8 @@ import 'package:style_up/modules/auth/widget/textfield/pin_put.dart';
 import '../widget/otp/otp_title.dart';
 
 class OtpView extends StatelessWidget {
-  const OtpView({super.key});
-
+  const OtpView({super.key,this.isFromForgetPassword});
+final bool? isFromForgetPassword;
   @override
   Widget build(BuildContext context) {
     final double paddingHorizontal = MediaQuery.of(context).size.width * .10;
@@ -52,7 +54,7 @@ class OtpView extends StatelessWidget {
                     listener: (BuildContext context, PinCodeState state) {
                       if (state is PinCompleted) {
                         if (kDebugMode) {
-                          print("PIN completed: ${state.pin}");
+                          log('PIN completed: ${state.pin}');
                         }
                       } else if (state is PinError) {
                         ScaffoldMessenger.of(context).showSnackBar(

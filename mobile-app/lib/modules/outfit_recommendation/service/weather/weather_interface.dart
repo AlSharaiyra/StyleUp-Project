@@ -1,6 +1,6 @@
 import 'package:style_up/modules/outfit_recommendation/model/weather_data.dart';
 
-abstract class RecommendationOutfitInterface {
+abstract class WeatherInterface {
   Future<Map<String, dynamic>> getOutfitRecommendation(String userId,
       String weatherCondition, String occasion, String stylePreference);
   Future<WeatherData> getWeatherData(

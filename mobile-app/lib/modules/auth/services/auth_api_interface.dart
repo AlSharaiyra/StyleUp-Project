@@ -4,6 +4,8 @@ abstract class IAuthApi {
 
   // Method to register a new user
   Future<Map<String, dynamic>> register(String email, String password, String username);
+// Method to send a forgetPassword
+  Future<Map<String, dynamic>> forgetPassword(String email);
 
   // Method to log out a user
   Future<void> logout();

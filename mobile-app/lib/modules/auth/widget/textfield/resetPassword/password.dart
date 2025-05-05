@@ -11,8 +11,8 @@ import 'package:style_up/modules/auth/bloc/textfield/register/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_state.dart';
 
 import '../../../../../core/widget/textfield/textdield.dart';
-class WidgetRegisterpassword extends StatelessWidget {
-  const WidgetRegisterpassword({super.key, required this.controller});
+class WidgetResetPassword extends StatelessWidget {
+  const WidgetResetPassword({super.key, required this.controller});
   final TextEditingController controller;
 
   @override

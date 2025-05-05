@@ -67,7 +67,9 @@ class LoginView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 155),
                     child: ForgetPassword(
-                      onTap: () {},
+                      onTap: () {
+                        context.go(Routes.forgetPassword);
+                      },
                     ),
                   ),
                   SizedBox(

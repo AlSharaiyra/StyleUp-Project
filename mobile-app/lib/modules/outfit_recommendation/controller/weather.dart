@@ -2,17 +2,17 @@ import 'dart:developer';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:style_up/core/enum/semester.dart';
-import 'package:style_up/modules/outfit_recommendation/service/recommendation_outfit_services.dart';
+import 'package:style_up/modules/outfit_recommendation/service/weather/weather_services.dart';
 
-class RecommendationOutfitController {
-  static final RecommendationOutfitController _recommendationOutfitController =
-      RecommendationOutfitController._internal();
-  final RecommendationOutfitServices _recommendationOutfitServices =
-      RecommendationOutfitServices();
-  RecommendationOutfitController._internal();
+class WeatherController {
+  static final WeatherController _weatherController =
+      WeatherController._internal();
+  final WeatherServices _recommendationOutfitServices =
+      WeatherServices();
+  WeatherController._internal();
 
-  factory RecommendationOutfitController() {
-    return _recommendationOutfitController;
+  factory WeatherController() {
+    return _weatherController;
   }
   Future<Position> _determinePosition() async {
     bool serviceEnabled;

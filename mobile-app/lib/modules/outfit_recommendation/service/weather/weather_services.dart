@@ -1,11 +1,10 @@
-import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:style_up/modules/outfit_recommendation/model/weather_data.dart';
-import 'package:style_up/modules/outfit_recommendation/service/recommendation_outfit_interface.dart';
+import 'package:style_up/modules/outfit_recommendation/service/weather/weather_interface.dart';
 
-class RecommendationOutfitServices extends RecommendationOutfitInterface {
+class WeatherServices extends WeatherInterface {
   @override
   Future<Map<String, dynamic>> getOutfitRecommendation(String userId,
       String weatherCondition, String occasion, String stylePreference) {
@@ -32,7 +31,7 @@ class RecommendationOutfitServices extends RecommendationOutfitInterface {
     if (response.statusCode == 200) {
       try{
       log('Weather API Success: ${response.data}');
-      log("data type of data: ${response.data.runtimeType}");
+      log('data type of data: ${response.data.runtimeType}');
       final WeatherData weatherData = WeatherData.fromJson(response.data);
       log('Weather data: ${weatherData.toJson()}');
       return weatherData;}

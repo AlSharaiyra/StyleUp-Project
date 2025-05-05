@@ -18,4 +18,7 @@ class AuthController {
   Future<bool> register()async {
     return true;
   }
+    Future<bool> forgetPassword(String email)async {
+    return true;
+  }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/core/utils/material_app.dart';
 import 'package:style_up/modules/auth/bloc/age_picker/age_picker_controller.dart';
 import 'package:style_up/modules/auth/bloc/button/ageAndGender/age_gender_button_bloc.dart';
+import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/otp/otp_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/dot_indicator/dot_indicator_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:style_up/modules/auth/bloc/otp/pin_code_controller.dart';
 import 'package:style_up/modules/auth/bloc/change_gender/change_gender_bloc.dart';
 import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_controller.dart';
 import 'package:style_up/modules/auth/bloc/secure_eye_confirm/secure_eye_controller.dart';
+import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
@@ -56,6 +58,12 @@ class BlocUtils extends StatelessWidget {
           create: (context) => OtpButtonBloc(),
         ),   BlocProvider(
           create: (context) => AgeGenderButtonBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ForgetPasswordBloc(),
+        ),
+          BlocProvider(
+          create: (context) => ForgetPasswordFormBloc(),
         ),
       ],
       child: const MaterialAppUtils(),

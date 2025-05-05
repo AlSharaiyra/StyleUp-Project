@@ -64,10 +64,11 @@ class PinCodeTextField extends StatelessWidget {
                               offset: _controllers[index].text.length));
 
                       if (index < 3) {
-                        Future.delayed(Duration(milliseconds: 100), () {
+                        Future.delayed(const Duration(milliseconds: 100), () {
+                          if(context.mounted){
                           FocusScope.of(context)
                               .requestFocus(_focusNodes[index + 1]);
-                        });
+                       } });
                       }
                     }
                     if (_controllers[0].text != '' &&

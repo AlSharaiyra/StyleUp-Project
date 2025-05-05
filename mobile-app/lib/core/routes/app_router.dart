@@ -3,9 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:style_up/modules/auth/view/age_gender_selection.dart';
+import 'package:style_up/modules/auth/view/forget_password.dart';
 import 'package:style_up/modules/auth/view/login.dart';
 import 'package:style_up/modules/auth/view/otp.dart';
 import 'package:style_up/modules/auth/view/register.dart';
+import 'package:style_up/modules/outfit_recommendation/view/home.dart';
 import 'package:style_up/modules/splash/view/splash.dart';
 
 import 'routes.dart';
@@ -30,19 +32,29 @@ class AppRouter {
         path: Routes.splash,
         name: Routes.splash,
         builder: (BuildContext context, GoRouterState state) =>
-             const SplashView(),
+            const SplashView(),
       ),
-       GoRoute(
+      GoRoute(
+        path: Routes.home,
+        name: Routes.home,
+        builder: (BuildContext context, GoRouterState state) =>
+            const HomeView(),
+      ),
+      GoRoute(
+        path: Routes.forgetPassword,
+        name: Routes.forgetPassword,
+        builder: (BuildContext context, GoRouterState state) =>
+            ForgetPasswordView(),
+      ),
+      GoRoute(
         path: Routes.login,
         name: Routes.login,
-        builder: (BuildContext context, GoRouterState state) =>
-             LoginView(),
+        builder: (BuildContext context, GoRouterState state) => LoginView(),
       ),
       GoRoute(
         path: Routes.signup,
         name: Routes.signup,
-        builder: (BuildContext context, GoRouterState state) =>
-             RegisterView(),
+        builder: (BuildContext context, GoRouterState state) => RegisterView(),
       ),
       GoRoute(
         path: Routes.otp,
@@ -70,7 +82,7 @@ class AppRouter {
             },
           );
         },
-              ),
+      ),
       GoRoute(
         path: Routes.ageSelection,
         name: Routes.ageSelection,
@@ -98,7 +110,6 @@ class AppRouter {
             },
           );
         },
-        
       ),
     ],
   );

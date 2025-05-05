@@ -22,7 +22,7 @@ class AgeScroll extends StatelessWidget {
 
     return BlocBuilder<AgePickerController, int>(
         builder: (BuildContext context, int selectedAge) {
-      return Container(
+      return SizedBox(
         height: height,
         child: Center(
           child: ListWheelScrollView.useDelegate(
@@ -53,7 +53,7 @@ class AgeScroll extends StatelessWidget {
                         height: itemHeight * .5,
                         child: Center(
                           child: Text(
-                            "$age",
+                            '$age',
                             style: Theme.of(context)
                                 .textTheme
                                 .displayMedium!

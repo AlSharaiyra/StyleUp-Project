@@ -21,7 +21,7 @@ import 'package:style_up/modules/auth/widget/socialmedia/social_media.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/confirm_password.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/email.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/password.dart';
-import 'package:style_up/modules/outfit_recommendation/controller/recommendation_outfit.dart';
+import 'package:style_up/modules/outfit_recommendation/controller/weather.dart';
 
 import '../widget/register/desc.dart';
 import '../widget/register/register_title.dart';
@@ -125,10 +125,9 @@ class RegisterView extends StatelessWidget {
                                     usernameController.text,
                                     confirmPasswordController.text,
                                     context));
-                            RecommendationOutfitController controller =
-                                RecommendationOutfitController();
+                            WeatherController controller = WeatherController();
                             final re = await controller.getWeatherData();
-                            log("$re re");
+                            log('$re re');
                           }
                         },
                         isRegisterPage: true,

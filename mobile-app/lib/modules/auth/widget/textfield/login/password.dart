@@ -34,10 +34,10 @@ class WidgetLoginpassword extends StatelessWidget {
           suffixIcon: IconButton(
               onPressed: () {
                 if (eyeState.obscurePass == true) {
-                  developer.log("${eyeState.obscurePass}in EYE on enable");
+                  developer.log('${eyeState.obscurePass}in EYE on enable');
                   context.read<SecureEyeController>().add(EyeOnEnable());
                 } else {
-                  developer.log("${eyeState.obscurePass}in EYE disable");
+                  developer.log('${eyeState.obscurePass}in EYE disable');
 
                   context.read<SecureEyeController>().add(EyeOnDisable());
                 }

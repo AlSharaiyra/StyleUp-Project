@@ -1,3 +1,5 @@
+// ignore_for_file: always_specify_types, avoid_dynamic_calls, unnecessary_getters_setters
+
 class WeatherData {
   double? _latitude;
   double? _longitude;
@@ -24,37 +26,38 @@ class WeatherData {
       HourlyUnits? hourlyUnits,
       Hourly? hourly}) {
     if (latitude != null) {
+      // ignore: unnecessary_this
       this._latitude = latitude;
     }
     if (longitude != null) {
-      this._longitude = longitude;
+      _longitude = longitude;
     }
     if (generationtimeMs != null) {
-      this._generationtimeMs = generationtimeMs;
+      _generationtimeMs = generationtimeMs;
     }
     if (utcOffsetSeconds != null) {
-      this._utcOffsetSeconds = utcOffsetSeconds;
+      _utcOffsetSeconds = utcOffsetSeconds;
     }
     if (timezone != null) {
-      this._timezone = timezone;
+      _timezone = timezone;
     }
     if (timezoneAbbreviation != null) {
-      this._timezoneAbbreviation = timezoneAbbreviation;
+      _timezoneAbbreviation = timezoneAbbreviation;
     }
     if (elevation != null) {
-      this._elevation = elevation;
+      _elevation = elevation;
     }
     if (currentUnits != null) {
-      this._currentUnits = currentUnits;
+      _currentUnits = currentUnits;
     }
     if (current != null) {
-      this._current = current;
+      _current = current;
     }
     if (hourlyUnits != null) {
-      this._hourlyUnits = hourlyUnits;
+      _hourlyUnits = hourlyUnits;
     }
     if (hourly != null) {
-      this._hourly = hourly;
+      _hourly = hourly;
     }
   }
 
@@ -93,37 +96,37 @@ class WeatherData {
     _timezoneAbbreviation = json['timezone_abbreviation'];
     _elevation = json['elevation'];
     _currentUnits = json['current_units'] != null
-        ? new CurrentUnits.fromJson(json['current_units'])
+        ? CurrentUnits.fromJson(json['current_units'])
         : null;
     _current =
-        json['current'] != null ? new Current.fromJson(json['current']) : null;
+        json['current'] != null ? Current.fromJson(json['current']) : null;
     _hourlyUnits = json['hourly_units'] != null
-        ? new HourlyUnits.fromJson(json['hourly_units'])
+        ? HourlyUnits.fromJson(json['hourly_units'])
         : null;
     _hourly =
-        json['hourly'] != null ? new Hourly.fromJson(json['hourly']) : null;
+        json['hourly'] != null ? Hourly.fromJson(json['hourly']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['latitude'] = this._latitude;
-    data['longitude'] = this._longitude;
-    data['generationtime_ms'] = this._generationtimeMs;
-    data['utc_offset_seconds'] = this._utcOffsetSeconds;
-    data['timezone'] = this._timezone;
-    data['timezone_abbreviation'] = this._timezoneAbbreviation;
-    data['elevation'] = this._elevation;
-    if (this._currentUnits != null) {
-      data['current_units'] = this._currentUnits!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['latitude'] = _latitude;
+    data['longitude'] = _longitude;
+    data['generationtime_ms'] = _generationtimeMs;
+    data['utc_offset_seconds'] = _utcOffsetSeconds;
+    data['timezone'] = _timezone;
+    data['timezone_abbreviation'] = _timezoneAbbreviation;
+    data['elevation'] = _elevation;
+    if (_currentUnits != null) {
+      data['current_units'] = _currentUnits!.toJson();
     }
-    if (this._current != null) {
-      data['current'] = this._current!.toJson();
+    if (_current != null) {
+      data['current'] = _current!.toJson();
     }
-    if (this._hourlyUnits != null) {
-      data['hourly_units'] = this._hourlyUnits!.toJson();
+    if (_hourlyUnits != null) {
+      data['hourly_units'] = _hourlyUnits!.toJson();
     }
-    if (this._hourly != null) {
-      data['hourly'] = this._hourly!.toJson();
+    if (_hourly != null) {
+      data['hourly'] = _hourly!.toJson();
     }
     return data;
   }
@@ -141,16 +144,16 @@ class CurrentUnits {
       String? temperature2m,
       String? windSpeed10m}) {
     if (time != null) {
-      this._time = time;
+      _time = time;
     }
     if (interval != null) {
-      this._interval = interval;
+      _interval = interval;
     }
     if (temperature2m != null) {
-      this._temperature2m = temperature2m;
+      _temperature2m = temperature2m;
     }
     if (windSpeed10m != null) {
-      this._windSpeed10m = windSpeed10m;
+      _windSpeed10m = windSpeed10m;
     }
   }
 
@@ -171,11 +174,11 @@ class CurrentUnits {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['time'] = this._time;
-    data['interval'] = this._interval;
-    data['temperature_2m'] = this._temperature2m;
-    data['wind_speed_10m'] = this._windSpeed10m;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['time'] = _time;
+    data['interval'] = _interval;
+    data['temperature_2m'] = _temperature2m;
+    data['wind_speed_10m'] = _windSpeed10m;
     return data;
   }
 }
@@ -189,16 +192,16 @@ class Current {
   Current(
       {String? time, int? interval, double? temperature2m, double? windSpeed10m}) {
     if (time != null) {
-      this._time = time;
+      _time = time;
     }
     if (interval != null) {
-      this._interval = interval;
+      _interval = interval;
     }
     if (temperature2m != null) {
-      this._temperature2m = temperature2m;
+      _temperature2m = temperature2m;
     }
     if (windSpeed10m != null) {
-      this._windSpeed10m = windSpeed10m;
+      _windSpeed10m = windSpeed10m;
     }
   }
 
@@ -219,11 +222,11 @@ class Current {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['time'] = this._time;
-    data['interval'] = this._interval;
-    data['temperature_2m'] = this._temperature2m;
-    data['wind_speed_10m'] = this._windSpeed10m;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['time'] = _time;
+    data['interval'] = _interval;
+    data['temperature_2m'] = _temperature2m;
+    data['wind_speed_10m'] = _windSpeed10m;
     return data;
   }
 }
@@ -240,16 +243,16 @@ class HourlyUnits {
       String? relativeHumidity2m,
       String? windSpeed10m}) {
     if (time != null) {
-      this._time = time;
+      _time = time;
     }
     if (temperature2m != null) {
-      this._temperature2m = temperature2m;
+      _temperature2m = temperature2m;
     }
     if (relativeHumidity2m != null) {
-      this._relativeHumidity2m = relativeHumidity2m;
+      _relativeHumidity2m = relativeHumidity2m;
     }
     if (windSpeed10m != null) {
-      this._windSpeed10m = windSpeed10m;
+      _windSpeed10m = windSpeed10m;
     }
   }
 
@@ -271,11 +274,11 @@ class HourlyUnits {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['time'] = this._time;
-    data['temperature_2m'] = this._temperature2m;
-    data['relative_humidity_2m'] = this._relativeHumidity2m;
-    data['wind_speed_10m'] = this._windSpeed10m;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['time'] = _time;
+    data['temperature_2m'] = _temperature2m;
+    data['relative_humidity_2m'] = _relativeHumidity2m;
+    data['wind_speed_10m'] = _windSpeed10m;
     return data;
   }
 }
@@ -292,16 +295,16 @@ class Hourly {
       List<int>? relativeHumidity2m,
       List<double>? windSpeed10m}) {
     if (time != null) {
-      this._time = time;
+      _time = time;
     }
     if (temperature2m != null) {
-      this._temperature2m = temperature2m;
+      _temperature2m = temperature2m;
     }
     if (relativeHumidity2m != null) {
-      this._relativeHumidity2m = relativeHumidity2m;
+      _relativeHumidity2m = relativeHumidity2m;
     }
     if (windSpeed10m != null) {
-      this._windSpeed10m = windSpeed10m;
+      _windSpeed10m = windSpeed10m;
     }
   }
 
@@ -335,11 +338,11 @@ Hourly.fromJson(Map<String, dynamic> json) {
 }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['time'] = this._time;
-    data['temperature_2m'] = this._temperature2m;
-    data['relative_humidity_2m'] = this._relativeHumidity2m;
-    data['wind_speed_10m'] = this._windSpeed10m;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['time'] = _time;
+    data['temperature_2m'] = _temperature2m;
+    data['relative_humidity_2m'] = _relativeHumidity2m;
+    data['wind_speed_10m'] = _windSpeed10m;
     return data;
   }
 }
