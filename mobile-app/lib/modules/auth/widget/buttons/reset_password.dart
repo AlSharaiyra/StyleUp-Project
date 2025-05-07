@@ -3,8 +3,8 @@ import 'package:style_up/core/theme/colors.dart';
 import 'package:style_up/core/widget/buttons/button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ForgetPasswordButton extends StatelessWidget {
-  const ForgetPasswordButton({
+class ResetPasswordButton extends StatelessWidget {
+  const ResetPasswordButton({
     super.key,
     required this.onPressed,
   });
@@ -20,7 +20,7 @@ class ForgetPasswordButton extends StatelessWidget {
         width: width,
         backgroundColor: ColorsTheme.primryButton,
         child: Text(
-          AppLocalizations.of(context)!.forgetPassButton,
+          AppLocalizations.of(context)!.resetPassButton,
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                 fontWeight: FontWeight.bold,
                 color: ColorsTheme.white,

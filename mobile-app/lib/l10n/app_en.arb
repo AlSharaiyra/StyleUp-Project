@@ -37,6 +37,20 @@
   "invalidPass": "Password must be at least 8 characters long and include:\n- One uppercase letter\n- One lowercase letter\n- One digit\n- One special character (!@#$%^&*)"
 ,"passMismatch": "Passwords do not match",
   "invalidUsername": "Username must be 3-16 characters long and can only contain letters, numbers, and underscores",
-  "usernameRequired":"username is required"
+  "usernameRequired":"username is required",
+  "forgetPassTitle":"Forget Password",
+  "forgetPassButton":"Forget Password",
+  "forgetPassDesc":"Please enter your email address",
+  "resetPassButton":"Reset Password",
+  "resetPassDesc":"Please enter your new password",
+  "resetPassTitle":"Reset Password",
+  "resetPassSuccess":"Password reset successfully",
+  "resetPassError":"Error resetting password",
+  "resetPassSuccessDesc":"Your password has been reset successfully. You can now log in with your new password.",
+  "resetPassErrorDesc":"There was an error resetting your password. Please try again later.",
+  "recommendationSelectEvent":"Select your events",
+  "ok":"OK",
+  "cancel":"Cancel"
+
 
 }

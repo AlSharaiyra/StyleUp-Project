@@ -7,8 +7,8 @@ class ResetPasswordTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      AppLocalizations.of(context)!.loginButton,
-      style: Theme.of(context).textTheme.displayMedium,
+      AppLocalizations.of(context)!.resetPassTitle,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 }

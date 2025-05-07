@@ -7,7 +7,7 @@ class ResetPasswordDesc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-                AppLocalizations.of(context)!.loginDesc,
+                AppLocalizations.of(context)!.resetPassDesc,
       style:  Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w300,),
     );
   }

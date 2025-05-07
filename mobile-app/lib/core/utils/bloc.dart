@@ -8,6 +8,7 @@ import 'package:style_up/modules/auth/bloc/button/ageAndGender/age_gender_button
 import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/otp/otp_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_bloc.dart';
+import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/dot_indicator/dot_indicator_bloc.dart';
 import 'package:style_up/modules/auth/bloc/otp/pin_code_controller.dart';
 import 'package:style_up/modules/auth/bloc/change_gender/change_gender_bloc.dart';
@@ -17,6 +18,7 @@ import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_bloc.da
 import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
+import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_bloc.dart';
 
 class BlocUtils extends StatelessWidget {
   const BlocUtils({super.key});
@@ -64,6 +66,11 @@ class BlocUtils extends StatelessWidget {
         ),
           BlocProvider(
           create: (context) => ForgetPasswordFormBloc(),
+        ),
+            BlocProvider(
+          create: (context) => ResetPasswordButtonBloc(),
+        ),    BlocProvider(
+          create: (context) => ResetPasswordFieldsFormBloc(),
         ),
       ],
       child: const MaterialAppUtils(),

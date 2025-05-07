@@ -4,30 +4,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:style_up/core/routes/routes.dart';
-import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password_bloc.dart';
-import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password_event.dart';
-import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password_state.dart';
+import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_button_bloc.dart';
+import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_button_event.dart';
+import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_button_state.dart';
 
 import 'package:style_up/modules/auth/widget/buttons/forget_password_button.dart';
 import 'package:style_up/modules/auth/widget/forgetPassword/forget_password_desc.dart';
 import 'package:style_up/modules/auth/widget/forgetPassword/forget_password_title.dart';
+import 'package:style_up/modules/auth/widget/resetPassword/reset_password_desc.dart';
+import 'package:style_up/modules/auth/widget/resetPassword/reset_password_title.dart';
+import 'package:style_up/modules/auth/widget/textfield/resetPassword/password.dart';
 
-import '../widget/textfield/forgetPassword/email.dart';
+import '../widget/buttons/reset_password.dart';
+import '../widget/textfield/resetPassword/confirm_password.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   ResetPasswordScreen({super.key});
   final formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final double paddingHorizontal = MediaQuery.of(context).size.width * .10;
-    final double paddingVertical = MediaQuery.of(context).size.height * .10;
+    final double paddingHorizontal = MediaQuery.of(context).size.width * .1;
+    final double paddingVertical = MediaQuery.of(context).size.height * .2;
 
     return PopScope(
       canPop: false,
       child: Scaffold(
-        appBar: AppBar(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -39,28 +43,28 @@ class ResetPasswordScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const ForgetPasswordTitle(),
+                  const ResetPasswordTitle(),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.003,
                   ),
-                  const ForgetPasswordDesc(),
+                  const ResetPasswordDesc(),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.06,
                   ),
-                  WidgetForgetPasswordEmail(controller: emailController),
+                  WidgetResetPasswordPassword(controller: passwordController),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
+                  WidgetResetPasswordConfirmpassword(controller: confirmPasswordController),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.17,
+                    height: MediaQuery.of(context).size.height * 0.1,
                   ),
-                  BlocConsumer<ForgetPasswordBloc, ForgetPasswordState>(
-                      listener: (context, state) {
+                  BlocConsumer<ResetPasswordButtonBloc,
+                      ResetPasswordButtonState>(listener: (context, state) {
                     if (state is OnSuccess) {
                       // Navigate to the next screen on success
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Login successful!')),
-                        
                       );
                       context.goNamed(Routes.otp);
                     } else if (state is OnFailed) {
@@ -74,13 +78,14 @@ class ResetPasswordScreen extends StatelessWidget {
                       return const CircularProgressIndicator(); // Show loading indicator
                     }
 
-                    return ForgetPasswordButton(
+                    return ResetPasswordButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           context
-                              .read<ForgetPasswordBloc>()
-                              .add(ForgetPasswordPressed(
-                                email: emailController.text,
+                              .read<ResetPasswordButtonBloc>()
+                              .add(ResetPasswordButtonPressed(
+                                password: passwordController.text,
+                                confirmPassword: confirmPasswordController.text,
                               ));
                         }
                       },

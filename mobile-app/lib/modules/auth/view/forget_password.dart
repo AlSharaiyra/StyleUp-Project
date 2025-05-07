@@ -76,7 +76,7 @@ class ForgetPasswordView extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Login successful!')),
                         );
-                        context.goNamed(Routes.otp);
+                        context.goNamed(Routes.otpForForgetPassword);
                       } else if (state is OnFailed) {
                         // Show error message on failure
                         ScaffoldMessenger.of(context).showSnackBar(

@@ -7,6 +7,7 @@ import 'package:style_up/modules/auth/view/forget_password.dart';
 import 'package:style_up/modules/auth/view/login.dart';
 import 'package:style_up/modules/auth/view/otp.dart';
 import 'package:style_up/modules/auth/view/register.dart';
+import 'package:style_up/modules/auth/view/reset_password.dart';
 import 'package:style_up/modules/outfit_recommendation/view/home.dart';
 import 'package:style_up/modules/splash/view/splash.dart';
 
@@ -41,6 +42,12 @@ class AppRouter {
             const HomeView(),
       ),
       GoRoute(
+        path: Routes.resetPassword,
+        name: Routes.resetPassword,
+        builder: (BuildContext context, GoRouterState state) =>
+            ResetPasswordScreen(),
+      ),
+      GoRoute(
         path: Routes.forgetPassword,
         name: Routes.forgetPassword,
         builder: (BuildContext context, GoRouterState state) =>
@@ -63,6 +70,35 @@ class AppRouter {
         pageBuilder: (BuildContext context, GoRouterState state) {
           return CustomTransitionPage<void>(
             child: const OtpView(),
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder: (BuildContext context,
+                Animation<double> animation,
+                Animation<double> secondaryAnimation,
+                Widget child) {
+              const Offset begin = Offset(1, 0);
+              const Offset end = Offset.zero;
+              const Cubic curve = Curves.easeInOut;
+              Animatable<Offset> tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              Animation<Offset> offsetAnimation = animation.drive(tween);
+
+              return SlideTransition(
+                position: offsetAnimation,
+                child: child,
+              );
+            },
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.otpForForgetPassword,
+        name: Routes.otpForForgetPassword,
+        builder: (BuildContext context, GoRouterState state) => const OtpView(),
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          return CustomTransitionPage<void>(
+            child: const OtpView(
+              isFromForgetPassword: true,
+            ),
             transitionDuration: const Duration(milliseconds: 300),
             transitionsBuilder: (BuildContext context,
                 Animation<double> animation,

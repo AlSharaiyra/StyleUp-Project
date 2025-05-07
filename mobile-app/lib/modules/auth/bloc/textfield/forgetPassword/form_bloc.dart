@@ -31,7 +31,7 @@ class ForgetPasswordFormBloc extends Bloc<ForgetPasswordFormEvent, ForgetPasswor
 
     emit(ForgetPasswordFormInvalid(
       emailErrorMessage: emailError,
-      //passwordErrorMessage: '',
+
     ));
   }
 

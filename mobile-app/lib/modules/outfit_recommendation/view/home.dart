@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/core/theme/colors.dart';
+import 'package:style_up/core/widget/drawer/w_main_drawer.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/event_card.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/message_card.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/outfit_card.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -12,7 +14,7 @@ class HomeView extends StatelessWidget {
     final double padding = MediaQuery.of(context).size.width * 0.075;
     final double spacing = MediaQuery.of(context).size.height * 0.015;
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: const WidgetMainDrawer(),
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
@@ -28,7 +30,7 @@ class HomeView extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  'Select your event :',
+                  AppLocalizations.of(context)!.recommendationSelectEvent,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),

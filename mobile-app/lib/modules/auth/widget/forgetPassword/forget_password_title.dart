@@ -7,7 +7,7 @@ class ForgetPasswordTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      AppLocalizations.of(context)!.loginButton,
+      AppLocalizations.of(context)!.forgetPassTitle,
       style: Theme.of(context).textTheme.displayMedium,
     );
   }
