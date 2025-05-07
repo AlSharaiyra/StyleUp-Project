@@ -20,13 +20,13 @@ class MaleButton extends StatelessWidget {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 555),
           curve: Curves.easeInOut,
-          width: radius * 2, // Dynamic width based on radius
-          height: radius * 2,
+          width: radius * 2.5, // Dynamic width based on radius
+          height: radius * 2.5,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: backgroundColor,
           ),
-          child: Icon(Icons.male, color: iconColor, size: radius * 1.4),
+          child: Icon(Icons.male, color: iconColor, size: radius * 1.7),
         ));
   }
 }

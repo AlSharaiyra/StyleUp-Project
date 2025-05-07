@@ -21,7 +21,7 @@ void main() async {
   // debugRepaintRainbowEnabled = kDebugMode; // Enable only in debug mode
   // debugPrintRebuildDirtyWidgets = kDebugMode;
   // run app
-    await dotenv.load(fileName: '.env'); // Load the .env file
+    //await dotenv.load(fileName: '.env'); // Load the .env file
 
   runApp(
       // DevicePreview(

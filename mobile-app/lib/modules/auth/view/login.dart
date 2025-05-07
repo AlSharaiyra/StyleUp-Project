@@ -14,6 +14,7 @@ import 'package:style_up/modules/auth/bloc/textfield/login/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_state.dart';
 import 'package:style_up/modules/auth/widget/textfield/login/password.dart';
 
+import '../../../core/constant/images.dart';
 import '../widget/buttons/craete_account_button.dart';
 import '../widget/buttons/login_button.dart';
 import '../widget/register/forget_pass.dart';
@@ -32,8 +33,9 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double paddingHorizontal = MediaQuery.of(context).size.width * .10;
-    final double paddingVertical = MediaQuery.of(context).size.height * .10;
-
+    final double paddingVertical = MediaQuery.of(context).size.height * .05;
+    final double imageWidth = MediaQuery.of(context).size.width * 0.5; 
+    final double imageHeight = MediaQuery.of(context).size.height * 0.15; 
     return PopScope(
       canPop: false,
       child: Scaffold(
@@ -48,13 +50,19 @@ class LoginView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  Image.asset(
+                    AppImages.logo,
+                    width: imageWidth,
+                    height: imageHeight,
+                    fit: BoxFit.cover,
+                  ),
                   const LoginTitle(),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.003,
                   ),
                   const LoginDesc(),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.06,
+                    height: MediaQuery.of(context).size.height * 0.05,
                   ),
                   WidgetLoginEmail(controller: emailController),
                   SizedBox(
@@ -73,11 +81,11 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.07,
+                    height: MediaQuery.of(context).size.height * 0.06,
                   ),
                   const SocialMediaWidget(),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.17,
+                    height: MediaQuery.of(context).size.height * 0.06,
                   ),
                   BlocListener<LoginFormBloc, LoginFormState>(
                   listener: (context, state) {

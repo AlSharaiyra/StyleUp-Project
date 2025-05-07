@@ -10,6 +10,9 @@ import 'package:style_up/core/routes/app_router.dart';
 import 'package:style_up/core/theme/theme_data.dart';
 import 'package:style_up/l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/modules/auth/view/login.dart';
+
+import '../../modules/auth/view/gender.dart';
 
 
 /// [MaterialAppUtils]
@@ -33,7 +36,7 @@ class MaterialAppUtils extends StatelessWidget {
   Widget build(BuildContext context) {
     // Access the localization delegate from the current context
 
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'Flutter Demo', // Title of the app
       debugShowCheckedModeBanner: false, // Hides the debug banner in the app
       supportedLocales: L10n.all,
@@ -46,7 +49,8 @@ class MaterialAppUtils extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
       ],
 
-      routerConfig: AppRouter.router,
+      //routerConfig: AppRouter.router,
+      home: Gender(),
     );
   }
 }
