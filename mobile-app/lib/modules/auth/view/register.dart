@@ -38,17 +38,18 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double paddingHorizontal = MediaQuery.of(context).size.width * .07;
-    final double paddingVertical = MediaQuery.of(context).size.height * .074;
+    final double paddingVertical = MediaQuery.of(context).size.height * .08;
     final double spacing = MediaQuery.of(context).size.height * .01;
     return PopScope(
       onPopInvokedWithResult: (bool didPop, d) {
         context.read<SecureEyeController>().add(EyeOnDisable());
       },
       child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: paddingVertical, horizontal: paddingHorizontal),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: paddingVertical, horizontal: paddingHorizontal),
             child: Form(
               key: formKey,
               child: Column(

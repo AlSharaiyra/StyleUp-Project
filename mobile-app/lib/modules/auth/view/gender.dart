@@ -39,13 +39,13 @@ class Gender extends StatelessWidget {
                   child: GenderDesc(),
                 ),
                 SizedBox(
-                  height: spacing * 10,
+                  height: spacing * 5,
                 ),
                 GenderImage(
                   image: state.image,
                 ),
                 SizedBox(
-                  height: spacing * 8,
+                  height: spacing * 4,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

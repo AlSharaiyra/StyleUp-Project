@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/core/bloc/language/language_bloc.dart';
+import 'package:style_up/core/bloc/theme/theme_bloc.dart';
 import 'package:style_up/core/utils/material_app.dart';
 import 'package:style_up/modules/auth/bloc/age_picker/age_picker_controller.dart';
 import 'package:style_up/modules/auth/bloc/button/ageAndGender/age_gender_button_bloc.dart';
@@ -45,32 +47,41 @@ class BlocUtils extends StatelessWidget {
         BlocProvider(
           create: (context) => PageBloc(),
         ),
-           BlocProvider(
+        BlocProvider(
           create: (context) => LoginFormBloc(),
-        ),   BlocProvider(
+        ),
+        BlocProvider(
           create: (context) => RegisterFieldsFormBloc(),
         ),
         BlocProvider(
           create: (context) => LoginButtonBloc(),
         ),
-           BlocProvider(
+        BlocProvider(
           create: (context) => RegisterButtonBloc(),
         ),
-           BlocProvider(
+        BlocProvider(
           create: (context) => OtpButtonBloc(),
-        ),   BlocProvider(
+        ),
+        BlocProvider(
           create: (context) => AgeGenderButtonBloc(),
         ),
         BlocProvider(
           create: (context) => ForgetPasswordBloc(),
         ),
-          BlocProvider(
+        BlocProvider(
           create: (context) => ForgetPasswordFormBloc(),
         ),
-            BlocProvider(
+        BlocProvider(
           create: (context) => ResetPasswordButtonBloc(),
-        ),    BlocProvider(
+        ),
+        BlocProvider(
           create: (context) => ResetPasswordFieldsFormBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ThemeBloc(),
+        ),
+        BlocProvider(
+          create: (context) => LanguageBloc(),
         ),
       ],
       child: const MaterialAppUtils(),

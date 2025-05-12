@@ -8,13 +8,16 @@ class WServiceDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double padding = MediaQuery.of(context).size.width * 0.07;
+    final double padding = MediaQuery.of(context).size.width * 0.0625;
+    final double spacing = MediaQuery.of(context).size.height * 0.0125;
+
     //provider
     return Padding(
       //padding
       padding: EdgeInsets.all(padding),
       child: SingleChildScrollView(
         child: Column(
+          spacing: spacing,
           children: [
             //bottom for search
             WidgetServiceTabs(
@@ -24,9 +27,7 @@ class WServiceDrawer extends StatelessWidget {
             ),
             //bottom for packet
             WidgetServiceTabs(
-                icon: Icons.safety_check,
-                title: "packet",
-                onTap: () {}),
+                icon: Icons.safety_check, title: "packet", onTap: () {}),
             //bottom for change theam
             WidgetServiceTabs(
               icon: Icons.safety_check,
@@ -40,7 +41,6 @@ class WServiceDrawer extends StatelessWidget {
               onTap: () {},
             ),
             //bottom for assistance question
-         
           ],
         ),
       ),

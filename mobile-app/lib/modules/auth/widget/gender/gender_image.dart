@@ -9,7 +9,7 @@ class GenderImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double imageWidth = MediaQuery.of(context).size.width * 0.65; 
+    final double imageWidth = MediaQuery.of(context).size.width * 0.6; 
     //final double imageHeight = MediaQuery.of(context).size.height * 0.35; 
     return CircleAvatar(
       minRadius: 40,
