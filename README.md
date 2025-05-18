@@ -12,7 +12,7 @@ This is the full-stack repository for the StyleUp project.
 - UI/UX: Asem Zaidan
 - Frontend: Ayman Adas, Qutouf Ghawanmeh
 - Backend: Walid Sharaiyra
-- AI/ML: All of us
+- AI/ML: Asem Zaidan
 
 ## 👨‍💻 Developer Instructions
 
