@@ -7,6 +7,7 @@ import 'package:style_up/modules/auth/view/otp.dart';
 import 'package:style_up/modules/auth/view/register.dart';
 import 'package:style_up/modules/auth/view/reset_password.dart';
 import 'package:style_up/modules/outfit_recommendation/view/home.dart';
+import 'package:style_up/modules/setting/view/settings.dart';
 import 'package:style_up/modules/splash/view/splash.dart';
 
 import 'routes.dart';
@@ -27,6 +28,10 @@ class AppRouter {
       buildRoute(
         Routes.otpForForgetPassword,
         const OtpView(isFromForgetPassword: true),
+      ),
+       buildRoute(
+        Routes.setting,
+        const SettingsScreen(),
       ),
       buildRoute(Routes.ageSelection, AgeAndGenderSelectionSView()),
     ],

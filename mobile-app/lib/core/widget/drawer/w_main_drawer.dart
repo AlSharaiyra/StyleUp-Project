@@ -14,7 +14,6 @@ class WidgetMainDrawer extends StatelessWidget {
     const double elevation = 4;
     return  Drawer(
       elevation: elevation,
-      backgroundColor: ColorsTheme.selectOutfitButton.withAlpha(222),
       child: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical:  padding),

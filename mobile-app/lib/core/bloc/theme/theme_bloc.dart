@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/core/bloc/theme/theme_event.dart';
 import 'package:style_up/core/bloc/theme/theme_state.dart';
+import 'package:style_up/core/config/shared_preferance.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent,ThemeState>{
   ThemeBloc() : super( ThemeIntial()){
@@ -8,7 +9,8 @@ class ThemeBloc extends Bloc<ThemeEvent,ThemeState>{
   }
   void _changeTheme(ChangeTheme event,Emitter<ThemeState> emit){
     emit(const ThemeLoading());
-    emit(ThemeSucssess(theme: event.theme));
+    SharedPreferanceStorage.sharedPreferance.changeTheme(event.themeName);
+    emit(ThemeSucssess(theme: event.theme,themeName: event.themeName));
     
   }
 

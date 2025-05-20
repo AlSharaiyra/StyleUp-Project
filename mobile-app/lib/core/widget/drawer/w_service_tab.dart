@@ -38,7 +38,7 @@ class WidgetServiceTabs extends StatelessWidget {
                     Theme.of(context)
                         .textTheme
                         .labelLarge
-                        ?.copyWith(color: Colors.black),
+                        ?.copyWith(),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
