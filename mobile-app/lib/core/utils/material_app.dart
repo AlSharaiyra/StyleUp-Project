@@ -70,5 +70,6 @@ class MaterialAppUtils extends StatelessWidget {
         );
       });
     });
+
   }
 }
