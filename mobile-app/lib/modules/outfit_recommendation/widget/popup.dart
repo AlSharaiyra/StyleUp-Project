@@ -27,7 +27,7 @@ class PopupCard extends StatelessWidget {
                 text,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: ColorsTheme.black,
-                    ),
+                ),
               ),
             ),
             LayoutBuilder(

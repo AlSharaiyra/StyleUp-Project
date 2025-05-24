@@ -22,6 +22,8 @@ import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_bloc.dart';
 
+import '../../modules/bottom_bar/bloc/navigationbar/navigation_controller.dart';
+
 class BlocUtils extends StatelessWidget {
   const BlocUtils({super.key});
 
@@ -82,6 +84,9 @@ class BlocUtils extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LanguageBloc(),
+        ),
+        BlocProvider(
+          create: (context) => NavigationBloc()
         ),
       ],
       child: const MaterialAppUtils(),

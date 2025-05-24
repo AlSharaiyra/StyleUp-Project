@@ -14,6 +14,9 @@ import 'package:style_up/core/routes/app_router.dart';
 import 'package:style_up/l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../modules/bottom_bar/view/bottom_bar.dart';
+import '../../modules/outfits/view/closet.dart';
+
 /// [MaterialAppUtils]
 /// A stateless widget that wraps the app in a [MaterialApp] with localization support.
 ///
@@ -52,7 +55,7 @@ class MaterialAppUtils extends StatelessWidget {
             final theme = snapshot.data?[0] as ThemeData?;
             final locale = snapshot.data?[1] as Locale?;
 
-            return MaterialApp.router(
+            return MaterialApp(
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,
               supportedLocales: L10n.all,
@@ -64,7 +67,8 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              routerConfig: AppRouter.router,
+              home: const BottomBar(),
+              //routerConfig: AppRouter.router,
             );
           },
         );
