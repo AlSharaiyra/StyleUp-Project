@@ -13,7 +13,7 @@ class Closet extends StatelessWidget {
       appBar: AppBar(
         title:const ClosetTitle(),
         actions: [
-          Filtering()
+          const Filtering()
         ],
       ),
       body: const GridCloset(),
