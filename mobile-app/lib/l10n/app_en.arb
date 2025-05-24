@@ -60,5 +60,9 @@
   "notificationToggle": "Notifications",
   "regional": "Regional",
   "language": "Language",
-  "acccesibilty_tools":"Accessibilty tools"
+  "acccesibilty_tools": "Accessibilty tools",
+  "my_closet": "My Closet",
+  "edit_profile": "Edit Profile",
+  "edit_profile_desc": "Change your name and email on the website below",
+  "save_changes": "Save Changes"
 }

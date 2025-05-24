@@ -60,5 +60,9 @@
   "notificationToggle": "الإشعارات",
   "regional": "الإعدادات الإقليمية",
   "language": "اللغة",
-  "acccesibilty_tools":"امكانية الوصول"
+  "acccesibilty_tools":"امكانية الوصول",
+  "my_closet":"خزانتي",
+  "edit_profile":"تعديل الملف الشخصي",
+  "edit_profile_desc":"غير اسمك والايكميل الخاص بك في الموقع ادناه",
+  "save_changes":"حفظ التعديلات"
 }

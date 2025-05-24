@@ -11,6 +11,4 @@ class LanguageBloc extends Bloc<LanguageEvent,LanguageState>{
     emit(LanguageSucssess(language: event.language));
     
   }
-
-
 }

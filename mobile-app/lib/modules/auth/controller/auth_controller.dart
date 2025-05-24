@@ -21,6 +21,9 @@ class AuthController {
     Future<bool> forgetPassword(String email)async {
     return true;
   }
+    Future<bool> editProfile(String email,String username)async {
+    return true;
+  }
    Future<bool> resetPassword(String password,String confirmPassword)async {
     return true;
   }

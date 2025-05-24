@@ -7,7 +7,7 @@ class ClosetTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'My Closet',
-      style: Theme.of(context).textTheme.displayMedium,
+      style: Theme.of(context).textTheme.displaySmall,
     );
   }
 }

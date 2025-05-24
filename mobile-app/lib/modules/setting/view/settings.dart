@@ -39,7 +39,6 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             centerTitle: true,
-  
             elevation: 0,
           ),
           body: Padding(
@@ -80,7 +79,7 @@ class SettingsScreen extends StatelessWidget {
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () {
                           // Navigate to edit profile page
-                          Navigator.pushNamed(context, '/edit-profile');
+                          context.pushNamed(Routes.editProfile);
                         },
                       ),
                       SettingsItemModel(
@@ -100,7 +99,7 @@ class SettingsScreen extends StatelessWidget {
                         title: local.language,
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () {
-                         showLanguageDialog(context);
+                          showLanguageDialog(context);
                         },
                       ),
                       SettingsItemModel(

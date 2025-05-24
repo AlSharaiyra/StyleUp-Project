@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:style_up/modules/auth/view/age_gender_selection.dart';
+import 'package:style_up/modules/auth/view/edit_user_profile.dart';
 import 'package:style_up/modules/auth/view/forget_password.dart';
 import 'package:style_up/modules/auth/view/login.dart';
 import 'package:style_up/modules/auth/view/otp.dart';
@@ -25,11 +26,12 @@ class AppRouter {
       buildRoute(Routes.login, LoginView()),
       buildRoute(Routes.signup, RegisterView()),
       buildRoute(Routes.otp, const OtpView()),
+      buildRoute(Routes.editProfile, const EditUserProfile()),
       buildRoute(
         Routes.otpForForgetPassword,
         const OtpView(isFromForgetPassword: true),
       ),
-       buildRoute(
+      buildRoute(
         Routes.setting,
         const SettingsScreen(),
       ),
@@ -49,7 +51,8 @@ class AppRouter {
           const begin = Offset(1, 0); // slide from right
           const end = Offset.zero;
           const curve = Curves.easeInOut;
-          final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          final tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
           final offsetAnimation = animation.drive(tween);
           return SlideTransition(position: offsetAnimation, child: child);
         },
