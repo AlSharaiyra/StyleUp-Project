@@ -8,7 +8,8 @@ class GridCloset extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double imageHeight = MediaQuery.of(context).size.height * 0.16;
-    //final double spacing = MediaQuery.of(context).size.height * 0.02;
+    final double imageWidth = MediaQuery.of(context).size.height * 0.2;
+    final double spacing = MediaQuery.of(context).size.height * 0.015;
     final double padding = MediaQuery.of(context).size.width * 0.02;
     return GridView.builder(
         itemCount: 8,
@@ -21,26 +22,32 @@ class GridCloset extends StatelessWidget {
             padding: EdgeInsets.all(padding),
             child: Container(
               decoration: BoxDecoration(
-                color: ColorsTheme.greyDot,
+                color: ColorsTheme.greyBox,
                 borderRadius: BorderRadius.circular(18),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.1), 
-                    offset: const Offset(0, 6), 
-                    blurRadius: 10,
+                    color: Colors.black.withValues(alpha: 0.16),
+                    offset: const Offset(0, 4),
+                    blurRadius: 12,
+                    spreadRadius: 1,
                   ),
                 ],
               ),
               child: Column(
-                //spacing: spacing,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Spacer(),
-                  Center(
-                    child: Image.network(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_bmXrSNSANFEEoSjZTO9EG6j4OrZrdxaJA&s',
+                  SizedBox(
+                    height: spacing,
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: SizedBox(
+                      width: imageWidth, 
                       height: imageHeight,
-                      fit: BoxFit.contain,
+                      child: Image.network(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Yhcytvn4_g7qfXgXOHwlDVZf3v9XtXgZvQ&s',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const Spacer(),
@@ -55,7 +62,7 @@ class GridCloset extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Black summer T-shirt',
+                      'Yellow summer T-shirt',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: ColorsTheme.black,
                           ),

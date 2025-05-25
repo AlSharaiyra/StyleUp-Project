@@ -68,7 +68,7 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: const EditUserProfile(),
+              home: const BottomBar(),
               //routerConfig: AppRouter.router,
             );
           },

@@ -11,6 +11,7 @@ class ColorsTheme {
   static const Color primryButton = Color.fromRGBO(16, 159, 255, 1);
   static const Color privacycolor = Color.fromRGBO(66, 133, 244, 1);
   static const Color greyButton = Color.fromRGBO(236, 236, 236, 1);
+  static const Color greyBox = Color.fromRGBO(235, 234, 234, 1);
   static const Color greyDot = Color.fromRGBO(217, 217, 217, 1);
   static const Color selectOutfitButton=Color.fromRGBO(177, 208, 252, 1);
   static const Color transparent = Colors.transparent;
