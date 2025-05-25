@@ -10,7 +10,6 @@ class Closet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, //TODO change the application background to white
       appBar: AppBar(
         title:const ClosetTitle(),
         actions: [

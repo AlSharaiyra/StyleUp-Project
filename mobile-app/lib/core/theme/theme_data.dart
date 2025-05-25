@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:style_up/core/theme/colors.dart';
 
 class Themeedata {
-  static final ThemeData light = ThemeData.light();
+  static final ThemeData light = ThemeData.light().copyWith(
+      scaffoldBackgroundColor: Colors.white);
   static final ThemeData dark = ThemeData.dark().copyWith(
       scaffoldBackgroundColor: ColorsTheme.black, // Set background color
 
