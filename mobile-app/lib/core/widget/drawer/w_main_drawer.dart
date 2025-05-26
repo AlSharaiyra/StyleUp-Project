@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/core/theme/colors.dart';
-import 'package:style_up/core/widget/drawer/w_head_drawer.dart';
 import 'package:style_up/core/widget/drawer/w_service_drawer.dart';
 
 class WidgetMainDrawer extends StatelessWidget {

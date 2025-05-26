@@ -8,9 +8,6 @@ import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_b
 import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_button_event.dart';
 import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_button_state.dart';
 
-import 'package:style_up/modules/auth/widget/buttons/forget_password_button.dart';
-import 'package:style_up/modules/auth/widget/forgetPassword/forget_password_desc.dart';
-import 'package:style_up/modules/auth/widget/forgetPassword/forget_password_title.dart';
 import 'package:style_up/modules/auth/widget/resetPassword/reset_password_desc.dart';
 import 'package:style_up/modules/auth/widget/resetPassword/reset_password_title.dart';
 import 'package:style_up/modules/auth/widget/textfield/resetPassword/password.dart';

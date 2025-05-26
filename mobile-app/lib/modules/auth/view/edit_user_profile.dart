@@ -25,7 +25,6 @@ class EditUserProfile extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final horizontalPadding = screenWidth * 0.05; // 5% padding
-    final verticalSpacingSmall = screenHeight * 0.02; // 2% spacing
     final verticalSpacingMedium = screenHeight * 0.04; // 4% spacing
     final verticalSpacingLarge = screenHeight * 0.06; // 6% spacing
 

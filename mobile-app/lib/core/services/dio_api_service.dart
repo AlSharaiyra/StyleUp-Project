@@ -8,7 +8,7 @@ class DioApiService extends IApi {
 DioApiService()
       : dio = Dio(
           BaseOptions(
-            baseUrl: baseUrl, // Base URL for all requests
+            baseUrl: baseUrl+apiUrl, // Base URL for all requests
             connectTimeout: const Duration(seconds: 5), // Connection timeout
             receiveTimeout: const Duration(seconds: 3), // Receive timeout
             headers: {

@@ -5,12 +5,10 @@ class SharedPreferanceStorage {
   static final SharedPreferanceStorage sharedPreferance =
       SharedPreferanceStorage._internal();
   SharedPreferanceStorage._internal();
-  String? _token;
   factory SharedPreferanceStorage() {
     return sharedPreferance;
   }
-  String? get getToken => _token;
-  set setToken(String token) => _token = token;
+
   Future<bool?> isDark() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     return preferences.getBool('Dark');

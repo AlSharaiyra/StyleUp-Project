@@ -30,8 +30,8 @@ class SplashImage extends StatelessWidget {
             duration: const Duration(milliseconds: 3000),
             curve: Curves.fastLinearToSlowEaseIn,
             padding: EdgeInsets.only(top: containerOpacity * 121),
-            child: Center(
-              child: const Text(
+            child: const Center(
+              child: Text(
                 'Welcome to StyleUp',
                 style: TextStyle(
                   fontSize: 24,

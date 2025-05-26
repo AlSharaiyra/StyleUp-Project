@@ -46,7 +46,7 @@ class RegisterView extends StatelessWidget {
       },
       child: Scaffold(
         body: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(
                 vertical: paddingVertical, horizontal: paddingHorizontal),

@@ -24,24 +24,24 @@ class WServiceDrawer extends StatelessWidget {
             //bottom for search
             WidgetServiceTabs(
               icon: Icons.settings,
-              title: "Setting",
+              title: 'Setting',
               onTap: () {
                 context.pushNamed(Routes.setting);
               },
             ),
             //bottom for packet
             WidgetServiceTabs(
-                icon: Icons.safety_check, title: "packet", onTap: () {}),
+                icon: Icons.safety_check, title: 'packet', onTap: () {}),
             //bottom for change theam
             WidgetServiceTabs(
               icon: Icons.safety_check,
-              title: "apperance",
+              title: 'apperance',
               onTap: () {},
             ),
             //bottom for change language
             WidgetServiceTabs(
               icon: Icons.safety_check,
-              title: "language",
+              title: 'language',
               onTap: () {},
             ),
             //bottom for assistance question
