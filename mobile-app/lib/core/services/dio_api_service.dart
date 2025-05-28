@@ -27,7 +27,7 @@ DioApiService()
   
 
   @override
-  Future<void> delete(String url) async {
+  Future<void> delete(String url,Map<String, dynamic>? header) async {
     try {
       await dio.delete(url);
     } on DioException catch (e) {
@@ -36,7 +36,7 @@ DioApiService()
   }
 
   @override
-  Future<Map<String, dynamic>> get(String url) async {
+  Future<Map<String, dynamic>> get(String url,Map<String, dynamic>? header) async {
     try {
       final response = await dio.get(url);
       if (response.statusCode == 200) {
@@ -50,7 +50,7 @@ DioApiService()
   }
 
   @override
-  Future<Map<String, dynamic>> post(String url, Map<String, dynamic> data) async {
+  Future<Map<String, dynamic>> post(String url, Map<String, dynamic> data,Map<String, dynamic>? header) async {
     try {
       final response = await dio.post(url, data: data);
       if (response.statusCode == 201 || response.statusCode == 200) {
@@ -64,7 +64,7 @@ DioApiService()
   }
 
   @override
-  Future<Map<String, dynamic>> put(String url, Map<String, dynamic> data) async {
+  Future<Map<String, dynamic>> put(String url, Map<String, dynamic> data,Map<String, dynamic>? header ) async {
     try {
       final response = await dio.put(url, data: data);
       if (response.statusCode == 200) {

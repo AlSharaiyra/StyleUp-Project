@@ -3,9 +3,14 @@ abstract class IAuthApi {
   Future<Map<String, dynamic>> login(String email, String password);
 
   // Method to register a new user
-  Future<Map<String, dynamic>> register(String email, String password, String username);
+  Future<Map<String, dynamic>> register(
+      String email, String password, String username, String confirmPassword);
 // Method to send a forgetPassword
   Future<Map<String, dynamic>> forgetPassword(String email);
+  Future<Map<String, dynamic>> verifyOtp(String email, String otp);
+  Future<Map<String, dynamic>> requestOtp(
+    String email,
+  );
 
   // Method to log out a user
   Future<void> logout();
