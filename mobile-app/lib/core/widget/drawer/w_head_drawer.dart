@@ -21,16 +21,16 @@ class WDrawerHead extends StatelessWidget {
               border: Border.all(width: 4),
             ),
             //circle picture for user
-            child: CircleAvatar(
+            child: const CircleAvatar(
                 backgroundImage: NetworkImage(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjDGMp734S91sDuUFqL51_xRTXS15iiRoHew&s"),
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjDGMp734S91sDuUFqL51_xRTXS15iiRoHew&s'),
                 radius: 50.0),
           ),
 
           //username
 
           Text(
-            "auth.userName",
+            'auth.userName',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],

@@ -10,9 +10,15 @@ import 'package:style_up/core/bloc/language/language_bloc.dart';
 import 'package:style_up/core/bloc/theme/theme_bloc.dart';
 import 'package:style_up/core/bloc/theme/theme_state.dart';
 import 'package:style_up/core/config/shared_preferance.dart';
-import 'package:style_up/core/routes/app_router.dart';
 import 'package:style_up/l10n/l10n.dart';
+
 import 'package:style_up/l10n/generated/app_localizations.dart';
+
+import 'package:style_up/core/routes/app_router.dart';
+
+import 'package:style_up/modules/auth/view/age_gender_selection.dart';
+
+import '../../modules/bottom_bar/view/bottom_bar.dart';
 
 
 /// [MaterialAppUtils]
@@ -65,7 +71,9 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
+
               routerConfig: AppRouter.router,
+
             );
           },
         );

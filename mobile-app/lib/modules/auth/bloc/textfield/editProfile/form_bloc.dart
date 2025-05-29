@@ -56,15 +56,6 @@ class EditProfileFormBloc extends Bloc<EditProfileFormEvent, EditProfileFormStat
     ));
   }
 
-  void _onPasswordChanged(UsernameChanged event, Emitter<EditProfileFormState> emit) {
-    final String passwordError = _validatePassword(event.username, event.context);
-    developer.log(passwordError);
-
-    emit(EditProfileFormInvalid(
-      emailErrorMessage: '',
-      usernameErrorMessage: passwordError,
-    ));
-  }
 
   bool _isValidUsername(String username) {
     final RegExp usernameRegex = RegExp(r'^[a-zA-Z0-9._%+-]{3,30}$');

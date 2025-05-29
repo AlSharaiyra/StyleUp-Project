@@ -8,7 +8,7 @@ class DioApiService extends IApi {
 DioApiService()
       : dio = Dio(
           BaseOptions(
-            baseUrl: baseUrl, // Base URL for all requests
+            baseUrl: baseUrl+apiUrl, // Base URL for all requests
             connectTimeout: const Duration(seconds: 5), // Connection timeout
             receiveTimeout: const Duration(seconds: 3), // Receive timeout
             headers: {
@@ -27,18 +27,18 @@ DioApiService()
   
 
   @override
-  Future<void> delete(String url) async {
+  Future<void> delete(String url,Map<String, dynamic>? header) async {
     try {
-      await dio.delete(url);
+      await dio.delete(url,options: Options(headers: header));
     } on DioException catch (e) {
       throw Exception('Failed to delete: ${e.message}');
     }
   }
 
   @override
-  Future<Map<String, dynamic>> get(String url) async {
+  Future<Map<String, dynamic>> get(String url,Map<String, dynamic>? header) async {
     try {
-      final response = await dio.get(url);
+      final response = await dio.get(url,options: Options(headers: header));
       if (response.statusCode == 200) {
         return response.data;
       } else {
@@ -50,9 +50,9 @@ DioApiService()
   }
 
   @override
-  Future<Map<String, dynamic>> post(String url, Map<String, dynamic> data) async {
+  Future<Map<String, dynamic>> post(String url, Map<String, dynamic> data,Map<String, dynamic>? header) async {
     try {
-      final response = await dio.post(url, data: data);
+      final response = await dio.post(url, data: data,options: Options(headers: header));
       if (response.statusCode == 201 || response.statusCode == 200) {
         return response.data;
       } else {
@@ -64,9 +64,9 @@ DioApiService()
   }
 
   @override
-  Future<Map<String, dynamic>> put(String url, Map<String, dynamic> data) async {
+  Future<Map<String, dynamic>> put(String url, Map<String, dynamic> data,Map<String, dynamic>? header ) async {
     try {
-      final response = await dio.put(url, data: data);
+      final response = await dio.put(url, data: data,options: Options(headers: header));
       if (response.statusCode == 200) {
         return response.data;
       } else {

@@ -14,6 +14,8 @@ void main() async {
     DeviceOrientation
         .portraitDown, //Allows the app to run in the inverted portrait mode
   ]);
+    await dotenv.load(fileName: '.env');
+
   // // delegate for create localizartion
   // // var delegate = await LocalizationDelegate.create(
   // //     fallbackLocale: 'en', supportedLocales: ['en', 'ar']);
