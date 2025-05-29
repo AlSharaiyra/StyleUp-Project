@@ -7,7 +7,8 @@ import 'dart:developer' as developer;
 
 import '../../../../../core/constant/icons.dart';
 import '../../../../../core/widget/textfield/textdield.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/l10n/generated/app_localizations.dart';
+
 
 class WidgetRegisterEmail extends StatelessWidget {
   const WidgetRegisterEmail({super.key, required this.controller});

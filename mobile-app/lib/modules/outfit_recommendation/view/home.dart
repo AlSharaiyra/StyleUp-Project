@@ -4,7 +4,7 @@ import 'package:style_up/core/widget/drawer/w_main_drawer.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/event_card.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/message_card.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/outfit_card.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/l10n/generated/app_localizations.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/outfit_generate.dart';
 
 
@@ -73,7 +73,11 @@ class HomeView extends StatelessWidget {
                SizedBox(
                 height: spacing * 0.1,
               ),
+              const OutfitGenerate(),
               const OutfitCard(imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_bmXrSNSANFEEoSjZTO9EG6j4OrZrdxaJA&s', text: 'Black t-shirt would be nice !'),
+              SizedBox(
+                height: spacing * 0.1,
+              ),
               const OutfitGenerate(),
             ],
           ),

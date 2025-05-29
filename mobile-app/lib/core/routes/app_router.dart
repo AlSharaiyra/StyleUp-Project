@@ -7,6 +7,7 @@ import 'package:style_up/modules/auth/view/login.dart';
 import 'package:style_up/modules/auth/view/otp.dart';
 import 'package:style_up/modules/auth/view/register.dart';
 import 'package:style_up/modules/auth/view/reset_password.dart';
+import 'package:style_up/modules/bottom_bar/view/bottom_bar.dart';
 import 'package:style_up/modules/outfit_recommendation/view/home.dart';
 import 'package:style_up/modules/setting/view/settings.dart';
 import 'package:style_up/modules/splash/view/splash.dart';
@@ -17,7 +18,7 @@ class AppRouter {
   static String? token;
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.home,
+    initialLocation: Routes.BottomBar,
     routes: <GoRoute>[
       buildRoute(Routes.splash, const SplashView()),
       buildRoute(Routes.home, const HomeView()),
@@ -27,6 +28,7 @@ class AppRouter {
       buildRoute(Routes.signup, RegisterView()),
       buildRoute(Routes.otp, const OtpView()),
       buildRoute(Routes.editProfile, const EditUserProfile()),
+      buildRoute(Routes.BottomBar, const BottomBar()),
       buildRoute(
         Routes.otpForForgetPassword,
         const OtpView(isFromForgetPassword: true),

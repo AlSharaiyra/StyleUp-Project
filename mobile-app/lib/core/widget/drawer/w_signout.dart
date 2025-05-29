@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/modules/auth/controller/auth_controller.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/l10n/generated/app_localizations.dart';
+
 
 class WSignout extends StatelessWidget {
   const WSignout({super.key, required this.title, required this.content});
