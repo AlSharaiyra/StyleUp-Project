@@ -6,7 +6,7 @@ import '../../../core/theme/colors.dart';
 import '../bloc/navigationbar/navigation_controller.dart';
 import '../bloc/navigationbar/navigation_event.dart';
 import '../bloc/navigationbar/navigation_state.dart';
-import '../model/pages.dart';
+import '../config/pages.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});

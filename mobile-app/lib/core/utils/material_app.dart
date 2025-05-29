@@ -12,6 +12,7 @@ import 'package:style_up/core/bloc/theme/theme_state.dart';
 import 'package:style_up/core/config/shared_preferance.dart';
 import 'package:style_up/l10n/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/modules/auth/view/age_gender_selection.dart';
 
 import '../../modules/bottom_bar/view/bottom_bar.dart';
 
@@ -65,7 +66,7 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: const BottomBar(),
+              home:  AgeAndGenderSelectionSView(),
               //routerConfig: AppRouter.router,
             );
           },
