@@ -1,0 +1,39 @@
+{
+    "gender": ["Men", "Women", "Unisex", "Girls", "Boys"],
+    "masterCategory": ["Apparel", "Accessories", "Footwear"],
+    "subCategory": {
+      "Apparel": ["Topwear", "Dress", "Bottomwear", "Apparel Set", "Saree"],
+      "Accessories": ["Belts", "Scarves", "Mufflers", "Bags", "Watches", "Socks", "Headwear", "Accessories", "Ties", "Gloves"],
+      "Footwear": ["Shoes", "Sandal", "Flip Flops"]
+    },
+    "articleType": {
+      "Topwear": ["Tshirts", "Tops", "Kurtas", "Kurtis", "Tunics", "Rompers", "Lehenga Choli", "Dresses", "Sweaters", "Sweatshirts", "Rain Jacket", "Shirts", "Waistcoat", "Jackets", "Nehru Jackets", "Blazers", "Shrug", "Dupatta", "Suspenders"],
+      "Dress": ["Dresses", "Jumpsuit"],
+      "Bottomwear": ["Shorts", "Skirts", "Capris", "Jeggings", "Salwar", "Trousers", "Tracksuits", "Stockings", "Rain Trousers", "Patiala", "Churidar", "Salwar and Dupatta", "Track Pants", "Leggings", "Jeans", "Tights"],
+      "Apparel Set": ["Clothing Set", "Kurta Sets"],
+      "Belts": ["Tshirts", "Belts"],
+      "Scarves": ["Scarves"],
+      "Saree": ["Sarees"],
+      "Mufflers": ["Mufflers"],
+      "Shoes": ["Sports Shoes", "Flats", "Casual Shoes", "Heels", "Formal Shoes"],
+      "Bags": ["Handbags", "Laptop Bag", "Duffel Bag", "Backpacks", "Clutches", "Messenger Bag", "Rucksacks", "Mobile Pouch", "Wallets", "Trolley Bag", "Waist Pouch", "Travel Accessory", "Tablet Sleeve"],
+      "Watches": ["Watches"],
+      "Socks": ["Socks"],
+      "Sandal": ["Sandals", "Sports Sandals", "Flip Flops"],
+      "Headwear": ["Caps", "Hat"],
+      "Flip Flops": ["Flip Flops"],
+      "Accessories": ["Accessory Gift Set", "Travel Accessory", "Messenger Bag", "Hair Accessory", "Key chain"],
+      "Ties": ["Ties"],
+      "Gloves": ["Gloves"]
+    },
+    "baseColour": [
+      "Grey", "Red", "White", "Blue", "Black", "Pink", "Navy Blue", "Brown", "Olive", "Yellow", "Green", "Multi",
+      "Beige", "Orange", "Sea Green", "Purple", "Peach", "Off White", "Maroon", "Magenta", "Charcoal", "Mustard",
+      "Rust", "Cream", "Lavender", "Teal", "Grey Melange", "Khaki", "Tan", "Turquoise Blue", "Lime Green",
+      "Mushroom Brown", "Burgundy", "Coffee Brown", "Nude", "Mauve", "Gold", "Fluorescent Green", "Skin", "Silver",
+      "Steel", "Bronze", "Copper", "Rose", "Metallic", "Taupe"
+    ],
+    "season": ["Summer", "Winter", "Spring", "Fall", "All"],
+    "usage": ["Casual", "Ethnic", "Sports", "Party", "Formal", "Smart Casual", "Travel"]
+  }
+  

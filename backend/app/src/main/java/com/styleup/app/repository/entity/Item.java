@@ -30,31 +30,23 @@ public class Item {
 
     private String url;
 
-    // TODO: might need to change it to ItemGender
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private String gender;
 
     @Column(name = "MASTER_CATEGORY")
-    @Enumerated(EnumType.STRING)
-    private MasterCategory masterCategory;
+    private String masterCategory;
 
     @Column(name = "SUB_CATEGORY")
-    @Enumerated(EnumType.STRING)
-    private SubCategory subCategory;
+    private String subCategory;
 
     @Column(name = "ARTICLE_TYPE")
-    @Enumerated(EnumType.STRING)
-    private ArticleType articleType;
+    private String articleType;
 
     @Column(name = "BASE_COLOUR")
-    @Enumerated(EnumType.STRING)
-    private BaseColour baseColour;
+    private String baseColour;
 
-    @Enumerated(EnumType.STRING)
-    private Season season;
+    private String season;
 
-    @Enumerated(EnumType.STRING)
-    private Usage usage;
+    private String usage;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "WARDROBE_ID")

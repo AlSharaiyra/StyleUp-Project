@@ -11,6 +11,7 @@ import com.styleup.app.model.request.CreateUserRequest;
 import com.styleup.app.model.request.RequestOtpRequest;
 import com.styleup.app.model.request.SetGenderAndAgeRequest;
 import com.styleup.app.repository.entity.User;
+import com.styleup.app.repository.entity.Wardrobe;
 import com.styleup.app.repository.repo.UserRepository;
 import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
@@ -72,12 +73,15 @@ public class UserService {
         otpService.sendOtp(otpRequest);
 
         User user = new User();
+        Wardrobe wardrobe = new Wardrobe();
 
         user.setFullName(request.getFullName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setStatus(UserStatus.UNVERIFIED);
         user.setRevokedTokensBefore(Date.from(Instant.now()));
+        user.setWardrobe(wardrobe);
+        wardrobe.setUser(user);
 
         userRepository.save(user);
         log.info("User with email: {} created successfully, userId: {}", user.getEmail(), user.getId());

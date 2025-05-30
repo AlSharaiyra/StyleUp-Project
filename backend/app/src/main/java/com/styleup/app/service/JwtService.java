@@ -20,7 +20,7 @@ public class JwtService {
 
     private final String JWT_SECRET;
 
-    public JwtService(@Value("${jwt.secret}") String jwtSecret) {
+    public JwtService(@Value("${jwt.secret}") final String jwtSecret) {
         this.JWT_SECRET = jwtSecret;
     }
 

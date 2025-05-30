@@ -11,6 +11,8 @@ backend/*.iml
 backend/.mvn/
 backend/.gradle/
 backend/*.jar
+backend/app/src/main/resources/credentials.csv
+backend/app/src/main/resources/enums.json
 
 # AI (Python)
 ai/__pycache__/
