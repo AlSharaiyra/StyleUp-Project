@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: styleup_postgres
+    environment:
+      POSTGRES_DB: styleup_db
+      POSTGRES_USER: styleupclient
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - styleup-net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: styleup_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: walidkhsharaiyra@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - styleup-net
+
+volumes:
+  postgres_data:
+
+networks:
+  styleup-net:
