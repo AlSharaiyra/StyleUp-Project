@@ -12,6 +12,7 @@ class WidgetTextField extends StatelessWidget {
     this.isPass = false,
     this.validator,
     this.onSaved,
+    this.onFieldSubmitted,
     this.onChanged,
     this.maxLines = 1,
     this.minLines,
@@ -34,6 +35,7 @@ class WidgetTextField extends StatelessWidget {
   final bool isPass;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
+  final void Function(String)? onFieldSubmitted;
   final void Function(String)? onChanged;
   final int? minLines;
   final int? maxLines;
@@ -66,12 +68,12 @@ class WidgetTextField extends StatelessWidget {
       obscuringCharacter: '*',
       validator: validator,
       onSaved: onSaved,
+      onFieldSubmitted: onFieldSubmitted,
       onChanged: onChanged,
       minLines: minLines,
       maxLines: maxLines,
       // Decoration
       decoration: InputDecoration(
-        border: InputBorder.none,
         label: Text(labelText ?? ''),
         hintText: (hintText ?? ''),
         helperText: helperText,
@@ -82,7 +84,6 @@ class WidgetTextField extends StatelessWidget {
         prefixIcon: Icon(
           iconBefore,
         ),
-        //todo will make an eye for obscure password with bloc controller
         suffixIcon: isShowIconPass ? suffixIcon : null,
     
         // Border Style

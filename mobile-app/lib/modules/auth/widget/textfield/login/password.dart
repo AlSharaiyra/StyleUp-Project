@@ -45,7 +45,10 @@ class WidgetLoginpassword extends StatelessWidget {
               },
               icon: Icon(eyeState.icon)),
           controller: controller,
-          onChanged: (String p0) {
+          // onChanged: (String p0) {
+          //   context.read<LoginFormBloc>().add(PasswordChanged(p0,context));
+          // },
+          onFieldSubmitted: (String p0) {
             context.read<LoginFormBloc>().add(PasswordChanged(p0,context));
           },
           // onSaved: controllerAuth.dataUser.setEmail,

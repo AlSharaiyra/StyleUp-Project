@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:style_up/core/widget/gestureDetector/gesturedetector.dart';
 
 import '../../../core/theme/colors.dart';
-import '../../../core/widget/gestureDetector/gesturedetector.dart';
 
 class YesButton extends StatelessWidget {
- final VoidCallback onTap;
-  const YesButton({super.key, required this.onTap});
+  final VoidCallback onTap;
+  const YesButton({super.key,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final double radius = MediaQuery.of(context).size.width * 0.085;
+    final double width = MediaQuery.of(context).size.width * 0.57;
+    final double height = MediaQuery.of(context).size.height * 0.06;
     return WidgetGesturedetector(
       onTap: onTap,
       child: Container(
-        width: radius * 2.5, // Dynamic width based on radius
-        height: radius * 2.5,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: ColorsTheme.privacycolor
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: ColorsTheme.primryButton,
+          borderRadius: BorderRadius.circular(25),
         ),
-        child: Icon(Icons.check, color: ColorsTheme.greyDot, size: radius * 1.7),
+        child: Center(
+          child: Text(
+            'Yes , I like this one',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+               color: ColorsTheme.white,
+               fontWeight: FontWeight.w500
+            ),
+          ),
+        ),
       ),
     );
   }

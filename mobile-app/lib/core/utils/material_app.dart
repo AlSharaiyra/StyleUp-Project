@@ -15,8 +15,10 @@ import 'package:style_up/l10n/l10n.dart';
 import 'package:style_up/l10n/generated/app_localizations.dart';
 
 import 'package:style_up/core/routes/app_router.dart';
+import 'package:style_up/modules/outfit_recommendation/view/home.dart';
 
-import 'package:style_up/modules/auth/view/age_gender_selection.dart';
+
+
 
 import '../../modules/bottom_bar/view/bottom_bar.dart';
 
@@ -59,7 +61,7 @@ class MaterialAppUtils extends StatelessWidget {
             final theme = snapshot.data?[0] as ThemeData?;
             final locale = snapshot.data?[1] as Locale?;
 
-            return MaterialApp.router(
+            return MaterialApp(
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,
               supportedLocales: L10n.all,
@@ -71,8 +73,8 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-
-              routerConfig: AppRouter.router,
+              home: HomeView(),
+              //routerConfig: AppRouter.router,
 
             );
           },

@@ -22,9 +22,12 @@ class WidgetEditProfileEmail extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
         labelText: AppLocalizations.of(context)!.email,
         iconBefore: AppIcons.email,
-        onChanged: (String p0) {
+        // onChanged: (String p0) {
+        //   context.read<EditProfileFormBloc>().add(EmailChanged(p0,context));
+        // },
+        onFieldSubmitted:(String p0) {
           context.read<EditProfileFormBloc>().add(EmailChanged(p0,context));
-        },
+        } ,
         errorText: state is EditProfileFormInvalid ? state.emailErrorMessage : null,
         controller: controller,
         // onSaved: controllerAuth.dataUser.setEmail,

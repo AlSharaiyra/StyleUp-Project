@@ -21,9 +21,12 @@ class WidgetLoginEmail extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
         labelText: AppLocalizations.of(context)!.email,
         iconBefore: AppIcons.email,
-        onChanged: (String p0) {
+        // onChanged: (String p0) {
+        //   context.read<LoginFormBloc>().add(EmailChanged(p0,context));
+        // },
+        onFieldSubmitted:(String p0) {
           context.read<LoginFormBloc>().add(EmailChanged(p0,context));
-        },
+        } ,
         errorText: state is LoginFormInvalid ? state.emailErrorMessage : null,
         controller: controller,
         // onSaved: controllerAuth.dataUser.setEmail,

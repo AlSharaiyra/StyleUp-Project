@@ -11,6 +11,7 @@ import 'package:style_up/modules/auth/bloc/textfield/register/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_state.dart';
 
 import '../../../../../core/widget/textfield/textdield.dart';
+
 class WidgetResetPasswordPassword extends StatelessWidget {
   const WidgetResetPasswordPassword({super.key, required this.controller});
   final TextEditingController controller;
@@ -42,9 +43,14 @@ class WidgetResetPasswordPassword extends StatelessWidget {
                 icon: Icon(eyeState.icon),
               ),
               controller: controller,
-              onChanged: (String p0) {
-                          context.read<RegisterFieldsFormBloc>().add(PasswordChanged(p0,context));
+              // onChanged: (String p0) {
+              //             context.read<RegisterFieldsFormBloc>().add(PasswordChanged(p0,context));
 
+              // },
+              onFieldSubmitted: (String p0) {
+                context
+                    .read<RegisterFieldsFormBloc>()
+                    .add(PasswordChanged(p0, context));
               },
               errorText: formState is RegisterFormInvalid
                   ? formState.passwordErrorMessage

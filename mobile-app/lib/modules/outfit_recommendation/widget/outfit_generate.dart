@@ -18,7 +18,7 @@ class OutfitGenerate extends StatelessWidget {
             return const Center(
               child: PopupCard(
                 imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_bmXrSNSANFEEoSjZTO9EG6j4OrZrdxaJA&s',
-                text: 'Our Suggesting',
+                text: 'Try those T-shirts',
               ),
             );
           },

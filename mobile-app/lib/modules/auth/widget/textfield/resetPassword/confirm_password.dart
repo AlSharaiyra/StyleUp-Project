@@ -43,7 +43,12 @@ final TextEditingController controller;
                   }
                 },
                 icon: Icon(eyeState.icon)),
-            onChanged: (String p0) {
+            // onChanged: (String p0) {
+            //   context
+            //       .read<ResetPasswordFieldsFormBloc>()
+            //       .add(ConfirmPasswordChanged(p0,context));
+            // },
+            onFieldSubmitted: (String p0) {
               context
                   .read<ResetPasswordFieldsFormBloc>()
                   .add(ConfirmPasswordChanged(p0,context));

@@ -43,10 +43,13 @@ class WidgetRegisterpassword extends StatelessWidget {
                 icon: Icon(eyeState.icon),
               ),
               controller: controller,
-              onChanged: (String p0) {
-                          context.read<RegisterFieldsFormBloc>().add(PasswordChanged(p0,context));
+              // onChanged: (String p0) {
+              //             context.read<RegisterFieldsFormBloc>().add(PasswordChanged(p0,context));
 
-              },
+              // },
+              onFieldSubmitted:(String p0) {
+                context.read<RegisterFieldsFormBloc>().add(PasswordChanged(p0,context));
+              } ,
               errorText: formState is RegisterFormInvalid
                   ? formState.passwordErrorMessage
                   : null,

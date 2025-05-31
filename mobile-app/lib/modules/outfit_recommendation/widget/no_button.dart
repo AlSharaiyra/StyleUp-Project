@@ -10,17 +10,29 @@ class NoButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double radius = MediaQuery.of(context).size.width * 0.085;
+    final double width = MediaQuery.of(context).size.width * 0.57;
+    final double height = MediaQuery.of(context).size.height * 0.06;
     return WidgetGesturedetector(
       onTap: onTap,
       child: Container(
-        width: radius * 2.5, // Dynamic width based on radius
-        height: radius * 2.5,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: ColorsTheme.greyBorder
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: ColorsTheme.no_button,
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(
+            color: ColorsTheme.primryButton,
+          )
         ),
-        child: Icon(Icons.close, color: ColorsTheme.privacycolor, size: radius * 1.7),
+        child: Center(
+          child: Text(
+            'No , show me the next',
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+               color: ColorsTheme.primryButton,
+               fontWeight: FontWeight.w500
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -1,0 +1,10 @@
+baseUrl=localhost
+registerUrl=/users
+loginUrl=/auth/login
+logoutUrl=/auth/logout
+fetchUserUrl=/users/fvferfref
+verifyOtp=/otp/verify-otp
+requestOtp=/otp/request-otp
+apiUrl=/api/v1
+refreshTokenUrl=/auth/refresh-token
+forgetPasswordUrl=/s

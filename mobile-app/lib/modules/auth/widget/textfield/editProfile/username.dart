@@ -25,9 +25,13 @@ final TextEditingController controller;
             controller: controller,
             iconBefore: AppIcons.user,
             errorText: state is EditProfileFormInvalid ?state.usernameErrorMessage:null,
-            onChanged: (String p0) {
+            // onChanged: (String p0) {
+            //   context.read<EditProfileFormBloc>().add(UsernameChanged(p0,context));
+            // },
+            onFieldSubmitted: (String p0) {
               context.read<EditProfileFormBloc>().add(UsernameChanged(p0,context));
-            } // onSaved: controllerAuth.dataUser.setEmail,
+            },
+             // onSaved: controllerAuth.dataUser.setEmail,
             );
       }
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/core/theme/colors.dart';
 import 'package:style_up/modules/auth/bloc/age_picker/age_picker_controller.dart';
 import 'package:style_up/modules/auth/bloc/age_picker/age_picker_event.dart';
 
@@ -13,10 +14,10 @@ class AgeScroll extends StatelessWidget {
         FixedExtentScrollController(initialItem: 17);
 
     final double height = MediaQuery.of(context).size.height * 0.4;
-    final double fontSizeNotSelected =
-        MediaQuery.of(context).size.width * 0.055;
+    // final double fontSizeNotSelected =
+    //     MediaQuery.of(context).size.width * 0.055;
     final double fontSizeSelected = MediaQuery.of(context).size.width * 0.07;
-    final double itemHeight = MediaQuery.of(context).size.height * 0.075;
+    final double itemHeight = MediaQuery.of(context).size.height * 0.09;
 
     const int childNumber = 90;
 
@@ -28,14 +29,16 @@ class AgeScroll extends StatelessWidget {
           child: Stack(
             children: [
               Positioned.fill(
-                  top: height * 0.02,
+                  top: height * 0.05,
                   child: const Divider(
                     thickness: 3,
+                    color: ColorsTheme.black,
                   )),
               Positioned.fill(
-                  bottom: height * 0.22,
+                  bottom: height * 0.25,
                   child: const Divider(
                     thickness: 3,
+                    color: ColorsTheme.black,
                   )),
               ListWheelScrollView.useDelegate(
                 controller: controller,
@@ -50,7 +53,7 @@ class AgeScroll extends StatelessWidget {
                   builder: (BuildContext context, int index) {
                     final int age = index + 1;
                     final int distance = (age - selectedAge).abs();
-                    final double maxDistance =
+                    const double maxDistance =
                         5;
                     final double scale = (1 - (distance / maxDistance))
                         .clamp(0.6, 1.0); 
