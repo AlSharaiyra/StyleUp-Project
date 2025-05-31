@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/ForgetPassword/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/ForgetPassword/form_state.dart';
 import 'dart:developer' as developer;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/l10n/generated/app_localizations.dart';
+
 
 class ForgetPasswordFormBloc extends Bloc<ForgetPasswordFormEvent, ForgetPasswordFormState> {
   ForgetPasswordFormBloc() : super(ForgetPasswordFormInitial()) {

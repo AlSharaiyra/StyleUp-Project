@@ -12,7 +12,7 @@ class GridCloset extends StatelessWidget {
     final double spacing = MediaQuery.of(context).size.height * 0.015;
     final double padding = MediaQuery.of(context).size.width * 0.02;
     return GridView.builder(
-        itemCount: 8,
+        itemCount: 6,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: padding,

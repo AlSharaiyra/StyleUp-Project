@@ -11,7 +11,8 @@ import 'package:style_up/modules/auth/bloc/change_gender/change_gender_bloc.dart
 import 'package:style_up/modules/auth/bloc/change_gender/change_gender_state.dart';
 import 'package:style_up/modules/auth/widget/buttons/next_button.dart';
 import 'package:style_up/modules/auth/view/gender.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/l10n/generated/app_localizations.dart';
+
 
 import '../bloc/dot_indicator/dot_indicator_bloc.dart';
 import '../bloc/dot_indicator/dot_indicator_event.dart';

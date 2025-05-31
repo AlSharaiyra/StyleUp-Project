@@ -13,7 +13,8 @@ import 'package:style_up/core/config/shared_preferance.dart';
 import 'package:style_up/core/routes/app_router.dart';
 import 'package:style_up/core/theme/theme_data.dart';
 import 'package:style_up/l10n/l10n.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'package:style_up/l10n/generated/app_localizations.dart';
 
 
 /// [MaterialAppUtils]
@@ -61,7 +62,7 @@ class MaterialAppUtils extends StatelessWidget {
               
               theme: themeState is ThemeSucssess ? themeState.theme : theme,
               locale:languageState is LanguageSucssess?languageState.language: locale,
-              localizationsDelegates: const [
+              localizationsDelegates:  [
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,

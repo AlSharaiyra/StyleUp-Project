@@ -5,7 +5,8 @@ import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_controller.dart
 import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_event.dart';
 import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_state.dart';
 import 'dart:developer' as developer;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:style_up/l10n/generated/app_localizations.dart';
+
 import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_state.dart';

@@ -13,4 +13,5 @@ class Routes {
 
   static const String ageSelection = '/age-selection';
   static const String genderSelection = 'gender';
+  static const String BottomBar = '/bottom-bar';
 }

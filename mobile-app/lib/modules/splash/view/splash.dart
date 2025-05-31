@@ -52,7 +52,7 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
       final token=await storage.getAccessToken();
     if (token != null && token.isNotEmpty) {
 
-      context.pushReplacement(Routes.login);}
+      context.pushReplacement(Routes.BottomBar);}
     else{
       context.pushReplacement(Routes.login);}
     });
