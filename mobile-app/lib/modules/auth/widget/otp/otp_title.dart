@@ -9,10 +9,10 @@ class OtpTitle extends StatelessWidget {
     final double fontsize = MediaQuery.of(context).size.width * .087;
     return Text(
       AppLocalizations.of(context)!.verifyAccountTitle,
-      style:  Theme.of(context).textTheme.displaySmall!.copyWith(
-        fontWeight: FontWeight.bold,
-        fontSize: fontsize
-        ),
+      style: Theme.of(context)
+          .textTheme
+          .displaySmall!
+          .copyWith(fontWeight: FontWeight.bold, fontSize: fontsize),
     );
   }
 }

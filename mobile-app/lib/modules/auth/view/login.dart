@@ -107,6 +107,7 @@ class LoginView extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Login successful!')),
                         );
+                        context.push(Routes.home);
                       } else if (state is OnFailed) {
                         // Show error message on failure
                         ScaffoldMessenger.of(context).showSnackBar(

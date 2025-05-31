@@ -8,20 +8,20 @@ import 'package:style_up/core/bloc/theme/theme_event.dart';
 import 'package:style_up/core/bloc/theme/theme_state.dart';
 import 'package:style_up/core/config/shared_preferance.dart';
 import 'package:style_up/core/routes/routes.dart';
+import 'package:style_up/core/theme/theme_data.dart';
 import 'package:style_up/modules/setting/model/setting_model.dart';
 import 'package:style_up/modules/setting/widget/language_dialog/language_dialog.dart';
+import 'package:style_up/modules/setting/widget/logout_dialog.dart';
 
-List<SettingsSection> getSections(BuildContext context,ThemeState state) {
+List<SettingsSection> getSections(BuildContext context, ThemeState state) {
   final local = AppLocalizations.of(context)!;
-    bool isDark = false;
-    Future<void> loadDarkModePreference() async {
-      final prefs = await SharedPreferanceStorage.sharedPreferance.isDark();
-      isDark = prefs ?? false;
-    }
+  bool isDark = false;
+  Future<void> loadDarkModePreference() async {
+    final prefs = await SharedPreferanceStorage.sharedPreferance.isDark();
+    isDark = prefs ?? false;
+  }
 
-    
-
-    loadDarkModePreference();
+  loadDarkModePreference();
   final List<SettingsSection> sections = [
     SettingsSection(
       sectionTitle: '',
@@ -32,7 +32,7 @@ List<SettingsSection> getSections(BuildContext context,ThemeState state) {
             value: state is ThemeSucssess ? state.themeName == 'Dark' : isDark,
             onChanged: (value) {
               context.read<ThemeBloc>().add(ChangeTheme(
-                    theme: value ? ThemeData.dark() : ThemeData.light(),
+                    theme: value ? Themeedata.dark : Themeedata.light,
                     themeName: value ? 'Dark' : 'light',
                   ));
             },
@@ -73,11 +73,10 @@ List<SettingsSection> getSections(BuildContext context,ThemeState state) {
           },
         ),
         SettingsItemModel(
-          title: local.acccesibilty_tools,
-          trailing: const Icon(Icons.chevron_right),
+          title: local.logout,
+          trailing: const Icon(Icons.logout),
           onTap: () {
-            // Navigate to accessibility tools
-            Navigator.pushNamed(context, '/accessibility');
+            showLogoutDialog(context);
           },
         ),
       ],

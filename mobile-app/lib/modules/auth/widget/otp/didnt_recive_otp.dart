@@ -10,18 +10,19 @@ class DidntReciveOtp extends StatelessWidget {
       children: <Widget>[
         Text(
           AppLocalizations.of(context)!.didntReceive,
-          style:  Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w300,)  ,
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                fontWeight: FontWeight.w300,
+              ),
         ),
         InkWell(
-          onTap: () {
-            
-          },
+          onTap: () {},
           child: Text(
             AppLocalizations.of(context)!.resendOtp,
-            style:  Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, ),
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
         ),
-     
       ],
     );
   }

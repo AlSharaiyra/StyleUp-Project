@@ -10,6 +10,8 @@
         android:hardwareAccelerated="false"
         android:enableOnBackInvokedCallback="true"
         android:exported="true"
+        android:usesCleartextTraffic="true"
+
 > 
 
         <activity

@@ -3,8 +3,8 @@ import 'package:style_up/modules/auth/widget/otp/otp_email.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OtpDesc extends StatelessWidget {
-  const OtpDesc({super.key});
-
+  const OtpDesc({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +23,9 @@ class OtpDesc extends StatelessWidget {
                 fontWeight: FontWeight.w300,
               ),
         ),
-        const OtpEmail(),
+        OtpEmail(
+          email: email,
+        ),
       ],
     );
   }

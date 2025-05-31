@@ -14,7 +14,7 @@ const RegisterParams({
       'email': email,
       'password': password,
       'confirmPassword': confirmPassword,
-      'username': username,
+      'fullName': username,
     };
   }
 
