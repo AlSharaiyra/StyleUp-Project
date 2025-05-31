@@ -103,6 +103,45 @@ class AppLocalizationsAr extends AppLocalizations {
   String get nextButton => 'التالي';
 
   @override
+  String get internalServerError =>
+      'حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.';
+
+  @override
+  String get validationException => 'يرجى التحقق من المعلومات المدخلة.';
+
+  @override
+  String get userNotFound => 'المستخدم غير موجود.';
+
+  @override
+  String get otpNotFound => 'رمز التحقق غير موجود. يرجى طلب رمز جديد.';
+
+  @override
+  String get otpIsExpired => 'رمز التحقق منتهي الصلاحية. يرجى طلب رمز جديد.';
+
+  @override
+  String get unverifiedUser => 'حسابك غير مفعل.';
+
+  @override
+  String get invalidCredentials =>
+      'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get expiredCredentials =>
+      'انتهت صلاحية الجلسة. يرجى تسجيل الدخول مرة أخرى.';
+
+  @override
+  String get emailAlreadyExists => 'هذا البريد الإلكتروني مسجل بالفعل.';
+
+  @override
+  String get vTokenNotFound => 'رمز التحقق غير موجود.';
+
+  @override
+  String get passwordMismatch => 'كلمات المرور غير متطابقة.';
+
+  @override
+  String get requestTimeout => 'انتهت مهلة الطلب. يرجى المحاولة مرة أخرى.';
+
+  @override
   String get finishButton => 'إنهاء';
 
   @override
@@ -142,6 +181,18 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resetPassButton => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get logout_confirm => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get yes => 'نعم';
+
+  @override
+  String get no => 'لا';
 
   @override
   String get resetPassDesc => 'يرجى إدخال كلمة المرور الجديدة';

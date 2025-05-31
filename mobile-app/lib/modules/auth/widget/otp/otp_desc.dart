@@ -4,8 +4,8 @@ import 'package:style_up/l10n/generated/app_localizations.dart';
 
 
 class OtpDesc extends StatelessWidget {
-  const OtpDesc({super.key});
-
+  const OtpDesc({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +24,9 @@ class OtpDesc extends StatelessWidget {
                 fontWeight: FontWeight.w300,
               ),
         ),
-        const OtpEmail(),
+        OtpEmail(
+          email: email,
+        ),
       ],
     );
   }

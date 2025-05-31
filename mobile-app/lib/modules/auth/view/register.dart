@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:style_up/core/constant/api_url.dart';
 import 'package:style_up/core/routes/routes.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_event.dart';
@@ -21,7 +22,6 @@ import 'package:style_up/modules/auth/widget/socialmedia/social_media.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/confirm_password.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/email.dart';
 import 'package:style_up/modules/auth/widget/textfield/register/password.dart';
-import 'package:style_up/modules/outfit_recommendation/controller/weather.dart';
 
 import '../widget/register/desc.dart';
 import '../widget/register/register_title.dart';
@@ -85,26 +85,17 @@ class RegisterView extends StatelessWidget {
                     height: 3 * spacing,
                   ),
                   BlocListener<RegisterFieldsFormBloc, RegisterFormState>(
-                    listener: (context, state) {
-                      if (state is RegisterFormValid) {
-                        // Trigger RegisterButtonBloc when the form is valid
-                        context.read<RegisterButtonBloc>().add(
-                              RegisterButtonPressed(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              ),
-                            );
-                      }
-                    },
+                    listener: (context, state) {},
                     child:
                         BlocConsumer<RegisterButtonBloc, RegisterButtonState>(
                             listener: (context, state) {
                       if (state is OnSuccess) {
-                        // Navigate to the next screen on success
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Register successful!')),
+                        context.pushNamed(
+                          Routes.otp,
+                          queryParameters: {
+                            'email': state.user.email,
+                          },
                         );
-                        context.push(Routes.otp);
                       } else if (state is OnFailed) {
                         // Show error message on failure
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -126,9 +117,23 @@ class RegisterView extends StatelessWidget {
                                     usernameController.text,
                                     confirmPasswordController.text,
                                     context));
-                            WeatherController controller = WeatherController();
-                            final re = await controller.getWeatherData();
-                            log('$re re');
+                            // WeatherController controller = WeatherController();
+                            // final re = await controller.getWeatherData();
+                            // log('$re re');
+                            //  if (state is RegisterFormValid) {
+                            log("baseUrl: $baseUrl");
+
+                            log("inside register button");
+                            // Trigger RegisterButtonBloc when the form is valid
+                            context.read<RegisterButtonBloc>().add(
+                                  RegisterButtonPressed(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                    username: usernameController.text,
+                                    confirmPass: confirmPasswordController.text,
+                                  ),
+                                );
+                            // }
                           }
                         },
                         isRegisterPage: true,

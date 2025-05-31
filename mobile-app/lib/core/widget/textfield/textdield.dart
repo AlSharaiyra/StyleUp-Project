@@ -54,14 +54,14 @@ class WidgetTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const double borderRadius = 25;
- 
+
     return TextFormField(
       // General
       controller: controller,
       // close keyboard when click outside text field
       onTapOutside: (PointerDownEvent event) =>
           FocusManager.instance.primaryFocus?.unfocus(),
-    
+
       keyboardType: keyboardType,
       initialValue: initialValue,
       obscureText: isPass,
@@ -74,6 +74,12 @@ class WidgetTextField extends StatelessWidget {
       maxLines: maxLines,
       // Decoration
       decoration: InputDecoration(
+
+        //border: InputBorder.none,
+
+        filled: true,
+        fillColor: Colors.white,
+
         label: Text(labelText ?? ''),
         hintText: (hintText ?? ''),
         helperText: helperText,
@@ -85,23 +91,31 @@ class WidgetTextField extends StatelessWidget {
           iconBefore,
         ),
         suffixIcon: isShowIconPass ? suffixIcon : null,
-    
+
         // Border Style
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
           borderSide: const BorderSide(color: ColorsTheme.greyBorder),
         ),
+
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
           borderSide: const BorderSide(color: ColorsTheme.greyBorder),
         ),
-    
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: const BorderSide(color: ColorsTheme.greyBorder),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: const BorderSide(color: ColorsTheme.greyBorder),
+        ),
         // error
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
           borderSide: const BorderSide(color: ColorsTheme.greyBorder),
         ),
-    
+
         errorMaxLines: 2,
       ),
     );

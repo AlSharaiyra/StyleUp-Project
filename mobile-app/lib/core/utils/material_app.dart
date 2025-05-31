@@ -10,9 +10,12 @@ import 'package:style_up/core/bloc/language/language_bloc.dart';
 import 'package:style_up/core/bloc/theme/theme_bloc.dart';
 import 'package:style_up/core/bloc/theme/theme_state.dart';
 import 'package:style_up/core/config/shared_preferance.dart';
+import 'package:style_up/core/routes/app_router.dart';
+import 'package:style_up/core/theme/theme_data.dart';
 import 'package:style_up/l10n/l10n.dart';
 
 import 'package:style_up/l10n/generated/app_localizations.dart';
+
 
 import 'package:style_up/core/routes/app_router.dart';
 import 'package:style_up/modules/outfit_recommendation/view/home.dart';
@@ -21,6 +24,7 @@ import 'package:style_up/modules/outfit_recommendation/view/home.dart';
 
 
 import '../../modules/bottom_bar/view/bottom_bar.dart';
+
 
 
 /// [MaterialAppUtils]
@@ -42,7 +46,7 @@ class MaterialAppUtils extends StatelessWidget {
   Future<ThemeData?> getAppTheme() async {
     final isDark = await SharedPreferanceStorage().isDark();
     if (isDark == null) return null;
-    return isDark ? ThemeData.dark() : ThemeData.light();
+    return isDark ? Themeedata.dark: Themeedata.light;
   }
 
   Future<Locale?> getAppLocale() async {
@@ -61,20 +65,22 @@ class MaterialAppUtils extends StatelessWidget {
             final theme = snapshot.data?[0] as ThemeData?;
             final locale = snapshot.data?[1] as Locale?;
 
-            return MaterialApp(
+            return MaterialApp.router(
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,
               supportedLocales: L10n.all,
+              
               theme: themeState is ThemeSucssess ? themeState.theme : theme,
               locale:languageState is LanguageSucssess?languageState.language: locale,
-              localizationsDelegates: const [
+              localizationsDelegates:  [
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: HomeView(),
-              //routerConfig: AppRouter.router,
+              //home: HomeView(),
+              routerConfig: AppRouter.router,
+
 
             );
           },

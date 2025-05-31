@@ -3,9 +3,9 @@ import 'package:style_up/core/theme/colors.dart';
 
 class Themeedata {
   static final ThemeData light = ThemeData.light().copyWith(
-      scaffoldBackgroundColor: Colors.white);
+      scaffoldBackgroundColor: const Color.fromRGBO(238, 238,238, 1));
   static final ThemeData dark = ThemeData.dark().copyWith(
-      scaffoldBackgroundColor: ColorsTheme.black, // Set background color
+      scaffoldBackgroundColor: ColorsTheme.black.withAlpha(200), // Set background color
 
       primaryTextTheme: const TextTheme(
         bodyLarge: TextStyle(color: ColorsTheme.white),

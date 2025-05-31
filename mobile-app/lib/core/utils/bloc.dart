@@ -6,10 +6,11 @@ import 'package:style_up/core/bloc/language/language_bloc.dart';
 import 'package:style_up/core/bloc/theme/theme_bloc.dart';
 import 'package:style_up/core/utils/material_app.dart';
 import 'package:style_up/modules/auth/bloc/age_picker/age_picker_controller.dart';
+import 'package:style_up/modules/auth/bloc/button/VerifyOtp/verify_otp_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/ageAndGender/age_gender_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/editProfile/edit_profile_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password_bloc.dart';
-import 'package:style_up/modules/auth/bloc/button/otp/otp_button_bloc.dart';
+import 'package:style_up/modules/auth/bloc/button/resendOtp/resend_otp_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/resetPassword/reset_password_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/dot_indicator/dot_indicator_bloc.dart';
@@ -64,7 +65,10 @@ class BlocUtils extends StatelessWidget {
           create: (context) => RegisterButtonBloc(),
         ),
         BlocProvider(
-          create: (context) => OtpButtonBloc(),
+          create: (context) => ResendOtpButtonBloc(),
+        ),
+        BlocProvider(
+          create: (context) => VerifyOtpButtonBloc(),
         ),
         BlocProvider(
           create: (context) => AgeGenderButtonBloc(),

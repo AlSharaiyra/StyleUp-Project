@@ -103,6 +103,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nextButton => 'Next';
 
   @override
+  String get internalServerError =>
+      'Something went wrong. Please try again later.';
+
+  @override
+  String get validationException => 'Please check the entered information.';
+
+  @override
+  String get userNotFound => 'User not found.';
+
+  @override
+  String get otpNotFound => 'OTP not found. Please request a new one.';
+
+  @override
+  String get otpIsExpired => 'OTP has expired. Please request a new one.';
+
+  @override
+  String get unverifiedUser => 'Your account is not verified.';
+
+  @override
+  String get invalidCredentials => 'Invalid email or password.';
+
+  @override
+  String get expiredCredentials =>
+      'Your session has expired. Please log in again.';
+
+  @override
+  String get emailAlreadyExists => 'This email is already registered.';
+
+  @override
+  String get vTokenNotFound => 'Verification token not found.';
+
+  @override
+  String get passwordMismatch => 'Passwords do not match.';
+
+  @override
+  String get requestTimeout => 'The request timed out. Please try again.';
+
+  @override
   String get finishButton => 'Finish';
 
   @override
@@ -142,6 +180,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resetPassButton => 'Reset Password';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get logout_confirm => 'Are you sure you want to logout?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
 
   @override
   String get resetPassDesc => 'Please enter your new password';

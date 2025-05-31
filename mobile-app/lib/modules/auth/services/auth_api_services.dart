@@ -1,5 +1,12 @@
+import 'dart:developer';
+
+import 'package:dartz/dartz.dart';
 import 'package:style_up/core/constant/api_url.dart';
 import 'package:style_up/core/services/api_interface.dart';
+import 'package:style_up/modules/auth/model/create_user.dart';
+import 'package:style_up/modules/auth/model/login.dart';
+import 'package:style_up/modules/auth/model/user_info.dart';
+import 'package:style_up/modules/auth/model/verify_otp.dart';
 import 'package:style_up/modules/auth/params/forget_password_params.dart';
 import 'package:style_up/modules/auth/params/get_user_info_params.dart';
 import 'package:style_up/modules/auth/params/login_params.dart';
@@ -15,59 +22,96 @@ class AuthApiServices extends IAuthApi {
   IApi api = DioApiService();
 
   @override
-  Future<Map<String, dynamic>> getUserInfo(GetUserInfoParams params) async {
-
-    final data = await api.get(fetchUserUrl,params.toHeader());
-    return data;
+  Future<Either<String,GetUserResponse>> getUserInfo(
+      GetUserInfoParams params) async {
+    try {
+      final data = await api.get(fetchUserUrl, params.toHeader());
+      return Right(GetUserResponse.fromJson(data));
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> login(LoginParams params) async {
-
-    final Map<String, dynamic> data =
-        await api.post(loginUrl,params.toJson(),{});
-    return data;
+  Future<Either<String, LoginResponse>> login(LoginParams params) async {
+    try {
+      final data = await api.post(loginUrl, params.toJson(), {});
+      return Right(LoginResponse.fromJson(data));
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 
   @override
-  Future<void> logout(LogoutParams params) async {
-
-    await api.post(logoutUrl, {},params.toHeader());
+  Future<Either<String, Map<String, dynamic>>> logout(
+      LogoutParams params) async {
+    try {
+      final data = await api.post(logoutUrl, {}, params.toHeader());
+      return Right(data);
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> refreshToken(RefreshTokenParams params) async {
-
-    final Map<String, dynamic> data = await api.post(refreshTokenUrl, {},params.toHeader());
-    return data;
+  Future<Either<String, Map<String, dynamic>>> refreshToken(
+      RefreshTokenParams params) async {
+    try {
+      final data = await api.post(refreshTokenUrl, {}, params.toHeader());
+      return Right(data);
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> register(
-    RegisterParams params) async {
-    final Map<String, dynamic> data = await api.post(registerUrl,
-        params.toJson(),{});
-    return data;
+  Future<Either<String, CreateUserResponse>> register(
+      RegisterParams params) async {
+    try {
+      final data = await api.post(registerUrl, params.toJson(), {});
+      log("data is $data.data");
+      log(data.toString());
+
+      return Right(CreateUserResponse.fromJson(data));
+    } catch (e) {
+      log(e.toString());
+
+      return Left(e.toString());
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> forgetPassword(ForgetPasswordParams params) async {
-    final Map<String, dynamic> data =
-        await api.post(forgetPasswordUrl, params.toJson(),{});
-    return data;
+  Future<Either<String, Map<String, dynamic>>> forgetPassword(
+      ForgetPasswordParams params) async {
+    try {
+      final data = await api.post(forgetPasswordUrl, params.toJson(), {});
+
+      return Right(data);
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> requestOtp(RequestOtpParams params) async {
-    final Map<String, dynamic> data =
-        await api.post(requestOtpUrl, params.toJson(),{});
-    return data;
+  Future<Either<String, Map<String, dynamic>>> resendOtp(
+      RequestOtpParams params) async {
+    try {
+      final data = await api.post(requestOtpUrl, params.toJson(), {});
+      return Right(data);
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 
   @override
-  Future<Map<String, dynamic>> verifyOtp(VerifyOtpParams params) async {
-    final Map<String, dynamic> data = await api
-        .post(forgetPasswordUrl, params.toJson(),{});
-    return data;
+  Future<Either<String, VerifyOtpResponse>> verifyOtp(
+      VerifyOtpParams params) async {
+    try {
+      log(params.toJson().toString());
+      final data = await api.post(verifyOtpUrl, params.toJson(), {});
+      return Right(VerifyOtpResponse.fromJson(data));
+    } catch (e) {
+      return Left(e.toString());
+    }
   }
 }

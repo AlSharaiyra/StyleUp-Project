@@ -278,6 +278,78 @@ abstract class AppLocalizations {
   /// **'Next'**
   String get nextButton;
 
+  /// No description provided for @internalServerError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again later.'**
+  String get internalServerError;
+
+  /// No description provided for @validationException.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check the entered information.'**
+  String get validationException;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User not found.'**
+  String get userNotFound;
+
+  /// No description provided for @otpNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP not found. Please request a new one.'**
+  String get otpNotFound;
+
+  /// No description provided for @otpIsExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP has expired. Please request a new one.'**
+  String get otpIsExpired;
+
+  /// No description provided for @unverifiedUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is not verified.'**
+  String get unverifiedUser;
+
+  /// No description provided for @invalidCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password.'**
+  String get invalidCredentials;
+
+  /// No description provided for @expiredCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has expired. Please log in again.'**
+  String get expiredCredentials;
+
+  /// No description provided for @emailAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already registered.'**
+  String get emailAlreadyExists;
+
+  /// No description provided for @vTokenNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification token not found.'**
+  String get vTokenNotFound;
+
+  /// No description provided for @passwordMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match.'**
+  String get passwordMismatch;
+
+  /// No description provided for @requestTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'The request timed out. Please try again.'**
+  String get requestTimeout;
+
   /// No description provided for @finishButton.
   ///
   /// In en, this message translates to:
@@ -355,6 +427,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reset Password'**
   String get resetPassButton;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @logout_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get logout_confirm;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
 
   /// No description provided for @resetPassDesc.
   ///

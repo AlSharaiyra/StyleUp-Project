@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-  final String baseUrl= dotenv.env['BASE_URL']??'localhost';
+  final String baseUrl= dotenv.env['baseUrl']??'localhost';
   final String fetchUserUrl= dotenv.env['fetchUserUrl']??'localhost';
 
   final String forgetPasswordUrl= dotenv.env['forgetPasswordUrl']??'localhost';

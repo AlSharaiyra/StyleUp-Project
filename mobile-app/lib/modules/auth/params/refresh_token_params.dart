@@ -9,7 +9,6 @@ class RefreshTokenParams {
   Map<String, dynamic> toJson() {
     return {
       'refreshToken': refreshToken,
-      'accessToken': accessToken,
     };
   }
   Map<String, dynamic> toHeader() => {

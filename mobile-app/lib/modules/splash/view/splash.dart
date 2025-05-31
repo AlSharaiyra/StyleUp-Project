@@ -2,16 +2,19 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:style_up/core/config/secure_token_storage.dart';
 import 'package:style_up/core/routes/routes.dart';
 
 import '../../../core/theme/colors.dart';
 import '../widget/splash_image.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
   @override
   State<SplashView> createState() => _SplashViewState();
 }
+
 class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _colorAnimation;
@@ -44,8 +47,14 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     });
 
     // Navigate after 4 seconds
-    Timer(const Duration(seconds: 4), () {
-      context.pushReplacement(Routes.login);
+    Timer(const Duration(seconds: 4), () async {
+      SecureTokenStorage storage = SecureTokenStorage.instance;
+      final token=await storage.getAccessToken();
+    if (token != null && token.isNotEmpty) {
+
+      context.pushReplacement(Routes.BottomBar);}
+    else{
+      context.pushReplacement(Routes.login);}
     });
   }
 
