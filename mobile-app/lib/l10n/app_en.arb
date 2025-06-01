@@ -58,6 +58,7 @@
   "logout_confirm": "Are you sure you want to logout?",
   "yes": "Yes",
   "no": "No",
+  
   "resetPassDesc": "Please enter your new password",
   "resetPassTitle": "Reset Password",
   "resetPassSuccess": "Password reset successfully",

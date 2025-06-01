@@ -7,11 +7,12 @@ class Routes {
   static const String resetPassword = '/resetPassword';
   static const String setting = '/setting';
   static const String editProfile = '/editProfile';
+  static const String userProfile = '/userProfile';
 
   static const String otp = '/otp';
     static const String otpForForgetPassword = '/forgetPassword/otp';
 
   static const String ageSelection = '/age-selection';
   static const String genderSelection = 'gender';
-  static const String BottomBar = '/bottom-bar';
+  static const String bottomBar = '/bottom-bar';
 }

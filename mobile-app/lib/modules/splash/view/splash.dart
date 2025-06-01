@@ -49,12 +49,14 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     // Navigate after 4 seconds
     Timer(const Duration(seconds: 4), () async {
       SecureTokenStorage storage = SecureTokenStorage.instance;
-      final token=await storage.getAccessToken();
-    if (token != null && token.isNotEmpty) {
-
-      context.pushReplacement(Routes.BottomBar);}
-    else{
-      context.pushReplacement(Routes.login);}
+      final token = await storage.getAccessToken();
+      if (token != null && token.isNotEmpty) {
+        if (context.mounted) {
+          context.pushReplacement(Routes.login);
+        } else {
+          context.pushReplacement(Routes.login);
+        }
+      }
     });
   }
 

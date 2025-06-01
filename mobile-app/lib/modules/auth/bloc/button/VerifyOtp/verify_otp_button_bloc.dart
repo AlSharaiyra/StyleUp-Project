@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/core/constant/error_codes.dart';
 import 'package:style_up/modules/auth/controller/auth_controller.dart';
 import 'package:style_up/modules/auth/model/verify_otp.dart';
 import 'verify_otp_button_event.dart';
@@ -20,7 +21,9 @@ class VerifyOtpButtonBloc
       final response = await AuthController().verifyOtp(event.params);
       await Future.delayed(const Duration(seconds: 2));
       response.fold((String l) {
-        emit(OnFailed(errorMessage: l));
+        final errorMessage = getErrorMessage(event.context, l);
+
+        emit(OnFailed(errorMessage: errorMessage));
       }, (VerifyOtpResponse r) {
         emit(OnSuccess());
       });

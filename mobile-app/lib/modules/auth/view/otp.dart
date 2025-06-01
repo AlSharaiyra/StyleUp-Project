@@ -94,9 +94,11 @@ class OtpView extends StatelessWidget {
                         context
                             .read<VerifyOtpButtonBloc>()
                             .add(VerifyOtpButtonPressed(
+                                context: context,
                                 params: VerifyOtpParams(
                                     otp: state.pin,
                                     email: email,
+                                    
                                     otpPurpose: getOtpPurpose(
                                       (isFromForgetPassword ?? false)
                                           ? OtpPurpose.RESET_PASSWORD
@@ -139,6 +141,7 @@ class OtpView extends StatelessWidget {
                           context
                               .read<VerifyOtpButtonBloc>()
                               .add(VerifyOtpButtonPressed(
+                                  context: context,
                                   params: VerifyOtpParams(
                                       otp: pin,
                                       email: email,

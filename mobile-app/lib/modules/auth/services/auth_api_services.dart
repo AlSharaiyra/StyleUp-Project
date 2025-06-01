@@ -5,6 +5,7 @@ import 'package:style_up/core/constant/api_url.dart';
 import 'package:style_up/core/services/api_interface.dart';
 import 'package:style_up/modules/auth/model/create_user.dart';
 import 'package:style_up/modules/auth/model/login.dart';
+import 'package:style_up/modules/auth/model/refresh_token.dart';
 import 'package:style_up/modules/auth/model/user_info.dart';
 import 'package:style_up/modules/auth/model/verify_otp.dart';
 import 'package:style_up/modules/auth/params/forget_password_params.dart';
@@ -22,7 +23,7 @@ class AuthApiServices extends IAuthApi {
   IApi api = DioApiService();
 
   @override
-  Future<Either<String,GetUserResponse>> getUserInfo(
+  Future<Either<String, GetUserResponse>> getUserInfo(
       GetUserInfoParams params) async {
     try {
       final data = await api.get(fetchUserUrl, params.toHeader());
@@ -36,7 +37,12 @@ class AuthApiServices extends IAuthApi {
   Future<Either<String, LoginResponse>> login(LoginParams params) async {
     try {
       final data = await api.post(loginUrl, params.toJson(), {});
-      return Right(LoginResponse.fromJson(data));
+      return data.fold(
+        (String l) {
+          return Left(l);
+        },
+        (Map<String, dynamic> r) => Right(LoginResponse.fromJson(r)),
+      );
     } catch (e) {
       return Left(e.toString());
     }
@@ -47,18 +53,28 @@ class AuthApiServices extends IAuthApi {
       LogoutParams params) async {
     try {
       final data = await api.post(logoutUrl, {}, params.toHeader());
-      return Right(data);
+      return data.fold(
+        (String l) {
+          return Left(l);
+        },
+        (Map<String, dynamic> r) => Right(r),
+      );
     } catch (e) {
       return Left(e.toString());
     }
   }
 
   @override
-  Future<Either<String, Map<String, dynamic>>> refreshToken(
+  Future<Either<String, RefreshTokenResponse>> refreshToken(
       RefreshTokenParams params) async {
     try {
       final data = await api.post(refreshTokenUrl, {}, params.toHeader());
-      return Right(data);
+      return data.fold(
+        (String l) {
+          return Left(l);
+        },
+        (Map<String, dynamic> r) => Right(RefreshTokenResponse.fromJson(r)),
+      );
     } catch (e) {
       return Left(e.toString());
     }
@@ -69,10 +85,15 @@ class AuthApiServices extends IAuthApi {
       RegisterParams params) async {
     try {
       final data = await api.post(registerUrl, params.toJson(), {});
-      log("data is $data.data");
+      log('data is $data.data');
       log(data.toString());
 
-      return Right(CreateUserResponse.fromJson(data));
+      return data.fold(
+        (String l) {
+          return Left(l);
+        },
+        (Map<String, dynamic> r) => Right(CreateUserResponse.fromJson(r)),
+      );
     } catch (e) {
       log(e.toString());
 
@@ -86,7 +107,12 @@ class AuthApiServices extends IAuthApi {
     try {
       final data = await api.post(forgetPasswordUrl, params.toJson(), {});
 
-      return Right(data);
+      return data.fold(
+        (String l) {
+          return Left(l);
+        },
+        (Map<String, dynamic> r) => Right(r),
+      );
     } catch (e) {
       return Left(e.toString());
     }
@@ -97,7 +123,12 @@ class AuthApiServices extends IAuthApi {
       RequestOtpParams params) async {
     try {
       final data = await api.post(requestOtpUrl, params.toJson(), {});
-      return Right(data);
+      return data.fold(
+        (String l) {
+          return Left(l);
+        },
+        (Map<String, dynamic> r) => Right(r),
+      );
     } catch (e) {
       return Left(e.toString());
     }
@@ -109,7 +140,12 @@ class AuthApiServices extends IAuthApi {
     try {
       log(params.toJson().toString());
       final data = await api.post(verifyOtpUrl, params.toJson(), {});
-      return Right(VerifyOtpResponse.fromJson(data));
+      return data.fold(
+        (String l) {
+          return Left(l);
+        },
+        (Map<String, dynamic> r) => Right(VerifyOtpResponse.fromJson(r)),
+      );
     } catch (e) {
       return Left(e.toString());
     }

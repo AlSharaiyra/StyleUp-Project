@@ -94,6 +94,7 @@ class LoginView extends StatelessWidget {
                       context.read<LoginButtonBloc>().add(
                         LoginButtonPressed(
                           email: emailController.text,
+                          context: context,
                           password: passwordController.text,
                         ),
                       );

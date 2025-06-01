@@ -45,6 +45,14 @@ List<SettingsSection> getSections(BuildContext context, ThemeState state) {
     SettingsSection(
       sectionTitle: local.profile,
       items: [
+          SettingsItemModel(
+          title: local.editProfile,
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () {
+            // Navigate to edit profile page
+            context.pushNamed(Routes.userProfile);
+          },
+        ),
         SettingsItemModel(
           title: local.editProfile,
           trailing: const Icon(Icons.chevron_right),

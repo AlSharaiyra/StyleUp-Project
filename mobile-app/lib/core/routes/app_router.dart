@@ -7,6 +7,7 @@ import 'package:style_up/modules/auth/view/login.dart';
 import 'package:style_up/modules/auth/view/otp.dart';
 import 'package:style_up/modules/auth/view/register.dart';
 import 'package:style_up/modules/auth/view/reset_password.dart';
+import 'package:style_up/modules/auth/view/user_profile.dart';
 import 'package:style_up/modules/bottom_bar/view/bottom_bar.dart';
 import 'package:style_up/modules/outfit_recommendation/view/home.dart';
 import 'package:style_up/modules/setting/view/settings.dart';
@@ -29,7 +30,8 @@ class AppRouter {
       buildRoute(Routes.editProfile, const EditUserProfile()),
       buildRoute(Routes.setting, const SettingsScreen()),
       buildRoute(Routes.ageSelection, AgeAndGenderSelectionSView()),
-      buildRoute(Routes.BottomBar, const BottomBar()),
+      buildRoute(Routes.bottomBar, const BottomBar()),
+      buildRoute(Routes.userProfile, const UserProfilePage()),
 
       // Dynamic Routes Below (with parameters)
       GoRoute(

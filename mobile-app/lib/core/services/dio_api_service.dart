@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:style_up/core/constant/api_url.dart';
 import 'package:style_up/core/services/api_interface.dart';
@@ -17,6 +18,7 @@ class DioApiService extends IApi {
             headers: {
               'Content-Type': 'application/json', // Default headers
             },
+            validateStatus: (status) => true, // ⬅️ Accept all status codes
           ),
         ) {
     // Add interceptors (optional)
@@ -30,7 +32,11 @@ class DioApiService extends IApi {
   @override
   Future<void> delete(String url, Map<String, dynamic>? header) async {
     try {
-      await dio.delete(url, options: Options(headers: header));
+      await dio.delete(url,
+          options: Options(
+            headers: header,
+            validateStatus: (status) => true, // Accept all HTTP status codes
+          ));
     } on DioException catch (e) {
       throw Exception('Failed to delete: ${e.message}');
     }
@@ -40,7 +46,11 @@ class DioApiService extends IApi {
   Future<Map<String, dynamic>> get(
       String url, Map<String, dynamic>? header) async {
     try {
-      final response = await dio.get(url, options: Options(headers: header));
+      final response = await dio.get(url,
+          options: Options(
+            headers: header,
+            validateStatus: (status) => true, // Accept all HTTP status codes
+          ));
       if (response.statusCode == 200) {
         return response.data;
       } else {
@@ -52,18 +62,22 @@ class DioApiService extends IApi {
   }
 
   @override
-  Future<Map<String, dynamic>> post(String url, Map<String, dynamic> data,
-      Map<String, dynamic>? header) async {
+  Future<Either<String, Map<String, dynamic>>> post(String url,
+      Map<String, dynamic> data, Map<String, dynamic>? header) async {
     try {
-      log("baseUrl: $baseUrl");
-      log("data: $data");
+      log('baseUrl: $baseUrl');
+      log('data: $data');
 
-      final response =
-          await dio.post(url, data: data, options: Options(headers: header));
+      final response = await dio.post(url,
+          data: data,
+          options: Options(
+            headers: header,
+            validateStatus: (status) => true, // Accept all HTTP status codes
+          ));
       if (response.statusCode == 201 || response.statusCode == 200) {
-        return response.data;
+        return right(response.data);
       } else {
-        throw Exception('Failed to post data: ${response.statusCode}');
+        return left(response.data['errorCode']);
       }
     } on DioException catch (e) {
       throw Exception('Failed to post: ${e.message}');
@@ -74,8 +88,12 @@ class DioApiService extends IApi {
   Future<Map<String, dynamic>> put(String url, Map<String, dynamic> data,
       Map<String, dynamic>? header) async {
     try {
-      final response =
-          await dio.put(url, data: data, options: Options(headers: header));
+      final response = await dio.put(url,
+          data: data,
+          options: Options(
+            headers: header,
+            validateStatus: (status) => true, // Accept all HTTP status codes
+          ));
       if (response.statusCode == 200) {
         return response.data;
       } else {

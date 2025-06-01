@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/core/constant/error_codes.dart';
 import 'package:style_up/modules/auth/controller/auth_controller.dart';
 import 'package:style_up/modules/auth/model/create_user.dart';
 import 'package:style_up/modules/auth/params/register_params.dart';
@@ -26,7 +29,10 @@ class RegisterButtonBloc
       await Future.delayed(const Duration(seconds: 2));
       response.fold(
         (String l) {
-          emit( OnFailed(errorMessage: l));
+          log('error message $l');
+          final errorMessage = getErrorMessage(event.context, l);
+
+          emit( OnFailed(errorMessage: errorMessage));
         },
         (CreateUserResponse r) {
           emit(OnSuccess(user: r));

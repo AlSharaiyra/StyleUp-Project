@@ -7,7 +7,6 @@ class NoButton extends StatelessWidget {
   final VoidCallback onTap;
   const NoButton({super.key, required this.onTap});
 
-
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width * 0.57;
@@ -18,19 +17,16 @@ class NoButton extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: ColorsTheme.no_button,
-          borderRadius: BorderRadius.circular(25),
-          border: Border.all(
-            color: ColorsTheme.primryButton,
-          )
-        ),
+            color: ColorsTheme.noButton,
+            borderRadius: BorderRadius.circular(25),
+            border: Border.all(
+              color: ColorsTheme.primryButton,
+            )),
         child: Center(
           child: Text(
             'No , show me the next',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-               color: ColorsTheme.primryButton,
-               fontWeight: FontWeight.w500
-            ),
+                color: ColorsTheme.primryButton, fontWeight: FontWeight.w500),
           ),
         ),
       ),

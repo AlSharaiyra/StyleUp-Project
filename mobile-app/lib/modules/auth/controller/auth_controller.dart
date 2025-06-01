@@ -1,11 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:style_up/core/config/secure_token_storage.dart';
 import 'package:style_up/modules/auth/model/create_user.dart';
 import 'package:style_up/modules/auth/model/login.dart';
+import 'package:style_up/modules/auth/model/refresh_token.dart';
 import 'package:style_up/modules/auth/model/user_info.dart';
 import 'package:style_up/modules/auth/model/verify_otp.dart';
 import 'package:style_up/modules/auth/params/get_user_info_params.dart';
 import 'package:style_up/modules/auth/params/login_params.dart';
 import 'package:style_up/modules/auth/params/logout_params.dart';
+import 'package:style_up/modules/auth/params/refresh_token_params.dart';
 import 'package:style_up/modules/auth/params/register_params.dart';
 import 'package:style_up/modules/auth/params/verify_otp_params.dart';
 import 'package:style_up/modules/auth/services/auth_api_interface.dart';
@@ -23,6 +26,22 @@ class AuthController {
     return await api.login(params);
   }
 
+  Future<String> refreshToken(RefreshTokenParams params) async {
+    final response = await api.refreshToken(params);
+    response.fold(
+      (String l) {
+        return l;
+      },
+      (RefreshTokenResponse r) {
+        SecureTokenStorage storage = SecureTokenStorage.instance;
+        storage.saveAccessToken(r.accessToken);
+        storage.saveRefreshToken(r.refreshToken);
+        return 'succsess';
+      },
+    );
+    return '';
+  }
+
   Future<bool> sendOtp(String otp) async {
     return true;
   }
@@ -31,6 +50,7 @@ class AuthController {
       VerifyOtpParams params) async {
     return await api.verifyOtp(params);
   }
+
   Future<Either<String, GetUserResponse>> getUserInfo(
       GetUserInfoParams params) async {
     return await api.getUserInfo(params);

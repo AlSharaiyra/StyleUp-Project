@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:style_up/modules/auth/model/create_user.dart';
 import 'package:style_up/modules/auth/model/login.dart';
+import 'package:style_up/modules/auth/model/refresh_token.dart';
 import 'package:style_up/modules/auth/model/user_info.dart';
 import 'package:style_up/modules/auth/model/verify_otp.dart';
 import 'package:style_up/modules/auth/params/forget_password_params.dart';
@@ -28,7 +29,7 @@ abstract class IAuthApi {
 
   Future<Either<String, void>> logout(LogoutParams params);
 
-  Future<Either<String, Map<String, dynamic>>> refreshToken(
+  Future<Either<String,RefreshTokenResponse>> refreshToken(
       RefreshTokenParams params);
 
   Future<Either<String,GetUserResponse>> getUserInfo(

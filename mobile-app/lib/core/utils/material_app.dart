@@ -17,13 +17,6 @@ import 'package:style_up/l10n/l10n.dart';
 import 'package:style_up/l10n/generated/app_localizations.dart';
 
 
-import 'package:style_up/core/routes/app_router.dart';
-import 'package:style_up/modules/outfit_recommendation/view/home.dart';
-
-
-
-
-import '../../modules/bottom_bar/view/bottom_bar.dart';
 
 
 

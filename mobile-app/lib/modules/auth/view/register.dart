@@ -121,14 +121,15 @@ class RegisterView extends StatelessWidget {
                             // final re = await controller.getWeatherData();
                             // log('$re re');
                             //  if (state is RegisterFormValid) {
-                            log("baseUrl: $baseUrl");
+                            log('baseUrl: $baseUrl');
 
-                            log("inside register button");
+                            log('inside register button');
                             // Trigger RegisterButtonBloc when the form is valid
                             context.read<RegisterButtonBloc>().add(
                                   RegisterButtonPressed(
                                     email: emailController.text,
                                     password: passwordController.text,
+                                    context: context,
                                     username: usernameController.text,
                                     confirmPass: confirmPasswordController.text,
                                   ),
