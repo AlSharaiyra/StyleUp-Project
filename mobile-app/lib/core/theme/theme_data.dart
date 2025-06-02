@@ -3,7 +3,10 @@ import 'package:style_up/core/theme/colors.dart';
 
 class Themeedata {
   static final ThemeData light = ThemeData.light().copyWith(
-      scaffoldBackgroundColor: const Color.fromRGBO(238, 238,238, 1));
+      scaffoldBackgroundColor: const Color.fromRGBO(238, 238,238, 1),
+      appBarTheme: const AppBarTheme(
+         backgroundColor:   Color.fromRGBO(238, 238,238, 1)
+      ));
   static final ThemeData dark = ThemeData.dark().copyWith(
       scaffoldBackgroundColor: ColorsTheme.black.withAlpha(200), // Set background color
 
@@ -40,5 +43,8 @@ class Themeedata {
         titleLarge: TextStyle(color: ColorsTheme.white),
         titleMedium: TextStyle(color: ColorsTheme.white),
         titleSmall: TextStyle(color: ColorsTheme.white),
+      ),
+      appBarTheme: const AppBarTheme(
+         backgroundColor:   Color.fromRGBO(238, 238,238, 1)
       ));
 }

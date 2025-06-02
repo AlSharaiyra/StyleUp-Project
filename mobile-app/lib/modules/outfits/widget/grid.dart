@@ -7,12 +7,12 @@ class GridCloset extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double imageHeight = MediaQuery.of(context).size.height * 0.16;
-    final double imageWidth = MediaQuery.of(context).size.height * 0.2;
     final double spacing = MediaQuery.of(context).size.height * 0.015;
     final double padding = MediaQuery.of(context).size.width * 0.02;
     return GridView.builder(
-        itemCount: 6,
+      shrinkWrap: true,
+      //physics: const NeverScrollableScrollPhysics(),
+        itemCount: 8,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: padding,
@@ -22,7 +22,7 @@ class GridCloset extends StatelessWidget {
             padding: EdgeInsets.all(padding),
             child: Container(
               decoration: BoxDecoration(
-                color: ColorsTheme.greyBox,
+                color: ColorsTheme.white,
                 borderRadius: BorderRadius.circular(18),
                 boxShadow: [
                   BoxShadow(
@@ -37,32 +37,32 @@ class GridCloset extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: spacing,
+                    height: spacing*0.4,
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: SizedBox(
-                      width: imageWidth, 
-                      height: imageHeight,
-                      child: Image.network(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Yhcytvn4_g7qfXgXOHwlDVZf3v9XtXgZvQ&s',
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        'assets/shirt.png',
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  const Spacer(),
+                  SizedBox(
+                    height: spacing*0.4,
+                  ),
                   Container(
                     width: double.infinity,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                      color: ColorsTheme.white,
+                      color: ColorsTheme.greyButton,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(18),
                         bottomRight: Radius.circular(18),
                       ),
                     ),
                     child: Text(
-                      'Yellow summer T-shirt',
+                      'Black summer T-shirt',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: ColorsTheme.black,
                           ),

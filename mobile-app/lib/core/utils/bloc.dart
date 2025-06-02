@@ -24,6 +24,7 @@ import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_bloc.dart';
+import 'package:style_up/modules/outfits/controller/bloc/filter/expaned_filter_bloc.dart';
 
 import '../../modules/bottom_bar/bloc/navigationbar/navigation_controller.dart';
 
@@ -100,6 +101,9 @@ class BlocUtils extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => EditProfileFormBloc()
+        ),
+        BlocProvider(
+          create: (context) => FilterBloc()
         ),
       ],
       child: const MaterialAppUtils(),

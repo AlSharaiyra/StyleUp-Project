@@ -1,13 +1,130 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/modules/outfits/widget/apply_button.dart';
+import 'package:style_up/modules/outfits/widget/season_grid.dart';
+import 'package:style_up/modules/outfits/widget/type_grid.dart';
+
+import '../../../core/theme/colors.dart';
+import '../controller/bloc/filter/expaned_filter_bloc.dart';
+import '../controller/bloc/filter/expaned_filter_event.dart';
+import '../controller/bloc/filter/expaned_filter_state.dart';
 
 class Filtering extends StatelessWidget {
   const Filtering({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: (){},
-      icon: const Icon(Icons.tune),
+    final double padding = MediaQuery.of(context).size.width * 0.12;
+    final double dividerHight = MediaQuery.of(context).size.width * 0.02;
+    final double textpadding = MediaQuery.of(context).size.width * 0.04;
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: padding),
+      child: BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
+        return Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          'Filter',
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall
+                              ?.copyWith(),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: const Icon(Icons.close))
+                  ],
+                ),
+                Divider(
+                  thickness: 2,
+                  height: dividerHight,
+                  color: ColorsTheme.greyBorder,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: textpadding),
+                      child: Text(
+                        'Type',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        context.read<FilterBloc>().add(ToggleTypeSection());
+                      },
+                      icon: Icon(
+                        state.isTypeSectionOn
+                            ? Icons.expand_more
+                            : Icons.expand_less,
+                        size: 35,
+                      ),
+                    )
+                  ],
+                ),
+                state.isTypeSectionOn
+                    ? Padding(
+                        padding: EdgeInsets.only(
+                            left: textpadding, right: textpadding),
+                        child: const TypeGrid(),
+                      )
+                    : const SizedBox.shrink(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: textpadding),
+                      child: Text(
+                        'Season',
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        context.read<FilterBloc>().add(ToggleSeasonSection());
+                      },
+                      icon: Icon(
+                        state.isSeasonSectionOn
+                            ? Icons.expand_more
+                            : Icons.expand_less,
+                        size: 35,
+                      ),
+                    )
+                  ],
+                ),
+                state.isSeasonSectionOn
+                    ? Padding(
+                        padding: EdgeInsets.only(
+                            left: textpadding, right: textpadding),
+                        child: const SeasonGrid(),
+                      )
+                    : const SizedBox.shrink(),
+              ],
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: Center(
+                child: ApplyButton(
+                  onTap: () {}
+                ),
+              )
+            )
+          ],
+        );
+      }),
     );
   }
 }

@@ -1,0 +1,4 @@
+enum FilterSection {
+  type,
+  season,
+}

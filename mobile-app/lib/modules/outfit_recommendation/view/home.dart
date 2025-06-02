@@ -17,8 +17,6 @@ class HomeView extends StatelessWidget {
     final double padding = MediaQuery.of(context).size.width * 0.075;
     final double spacing = MediaQuery.of(context).size.height * 0.015;
     return Scaffold(
-      drawer: const WidgetMainDrawer(),
-      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(padding),
