@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_state.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 
 
 class RegisterFieldsFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {

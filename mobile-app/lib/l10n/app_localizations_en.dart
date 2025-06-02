@@ -24,12 +24,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registerTitle => 'Created Account';
 
   @override
-  String get acceptPolicy =>
-      'By creating your account you accept the Terms of use and Privacy Policy';
+  String get acceptPolicy => 'By creating your account you accept the Terms of use and Privacy Policy';
 
   @override
-  String get registerDesc =>
-      'Fill Your Information below or register with your social account.';
+  String get registerDesc => 'Fill Your Information below or register with your social account.';
 
   @override
   String get loginDesc => 'Welcome back, you\'ve been missed';
@@ -59,8 +57,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get termsAndCondition => 'Terms & Conditions.';
 
   @override
-  String get appPolicy =>
-      'By using this app, you agree to comply with these policies.';
+  String get appPolicy => 'By using this app, you agree to comply with these policies.';
 
   @override
   String get verifyAccountTitle => 'Verify Your Account';
@@ -90,8 +87,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get genderTitle => 'Tell us about yourself';
 
   @override
-  String get genderDesc =>
-      'To give you a better experience, we want to know your gender';
+  String get genderDesc => 'To give you a better experience, we want to know your gender';
 
   @override
   String get maleGender => 'Male';
@@ -101,6 +97,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nextButton => 'Next';
+
+  @override
+  String get internalServerError => 'Something went wrong. Please try again later.';
+
+  @override
+  String get validationException => 'Please check the entered information.';
+
+  @override
+  String get userNotFound => 'User not found.';
+
+  @override
+  String get otpNotFound => 'OTP not found. Please request a new one.';
+
+  @override
+  String get otpIsExpired => 'OTP has expired. Please request a new one.';
+
+  @override
+  String get unverifiedUser => 'Your account is not verified.';
+
+  @override
+  String get invalidCredentials => 'Invalid email or password.';
+
+  @override
+  String get expiredCredentials => 'Your session has expired. Please log in again.';
+
+  @override
+  String get emailAlreadyExists => 'This email is already registered.';
+
+  @override
+  String get vTokenNotFound => 'Verification token not found.';
+
+  @override
+  String get passwordMismatch => 'Passwords do not match.';
+
+  @override
+  String get requestTimeout => 'The request timed out. Please try again.';
 
   @override
   String get finishButton => 'Finish';
@@ -118,15 +150,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidEmail => '\'Please enter a valid email address\'';
 
   @override
-  String get invalidPass =>
-      'Password must be at least 8 characters long and include:\n- One uppercase letter\n- One lowercase letter\n- One digit\n- One special character (!@#\$%^&*)';
+  String get invalidPass => 'Password must be at least 8 characters long and include:\n- One uppercase letter\n- One lowercase letter\n- One digit\n- One special character (!@#\$%^&*)';
 
   @override
   String get passMismatch => 'Passwords do not match';
 
   @override
-  String get invalidUsername =>
-      'Username must be 3-16 characters long and can only contain letters, numbers, and underscores';
+  String get invalidUsername => 'Username must be 3-16 characters long and can only contain letters, numbers, and underscores';
 
   @override
   String get usernameRequired => 'username is required';
@@ -144,6 +174,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassButton => 'Reset Password';
 
   @override
+  String get logout => 'Logout';
+
+  @override
+  String get logout_confirm => 'Are you sure you want to logout?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
   String get resetPassDesc => 'Please enter your new password';
 
   @override
@@ -156,18 +198,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassError => 'Error resetting password';
 
   @override
-  String get resetPassSuccessDesc =>
-      'Your password has been reset successfully. You can now log in with your new password.';
+  String get resetPassSuccessDesc => 'Your password has been reset successfully. You can now log in with your new password.';
 
   @override
-  String get resetPassErrorDesc =>
-      'There was an error resetting your password. Please try again later.';
+  String get resetPassErrorDesc => 'There was an error resetting your password. Please try again later.';
 
   @override
   String get recommendationSelectEvent => 'Select your events';
 
   @override
   String get ok => 'OK';
+
+  @override
+  String get age => 'Age';
+
+  @override
+  String get user_profile => 'User Profile';
+
+  @override
+  String get filter => 'Filter';
+
+  @override
+  String get type => 'Type';
+
+  @override
+  String get apparel => 'Apparel';
+
+  @override
+  String get accessories => 'Accessories';
+
+  @override
+  String get footwear => 'Footwear';
+
+  @override
+  String get winter => 'Winter';
+
+  @override
+  String get spring => 'Spring';
+
+  @override
+  String get summer => 'Summer';
+
+  @override
+  String get fall => 'Fall';
+
+  @override
+  String get season => 'Season';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get gender => 'Gender';
 
   @override
   String get cancel => 'Cancel';
@@ -209,8 +291,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get edit_profile => 'Edit Profile';
 
   @override
-  String get edit_profile_desc =>
-      'Change your name and email on the website below';
+  String get edit_profile_desc => 'Change your name and email on the website below';
 
   @override
   String get save_changes => 'Save Changes';

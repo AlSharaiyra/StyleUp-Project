@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:style_up/core/config/secure_token_storage.dart';
 import 'package:style_up/core/routes/routes.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/modules/auth/controller/auth_controller.dart';
 import 'package:style_up/modules/auth/params/logout_params.dart';
 

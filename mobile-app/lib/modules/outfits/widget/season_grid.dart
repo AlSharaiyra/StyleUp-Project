@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/core/enum/filter.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/modules/outfits/model/filter_model.dart';
 import 'package:style_up/modules/outfits/widget/filter_button.dart';
 
@@ -8,9 +9,18 @@ class SeasonGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = AppLocalizations.of(context)!;
+
+    final localizedSeasons = [
+      local.winter,
+      local.spring,
+      local.summer,
+      local.fall,
+    ];
     const types = FilterOptions.seasonOptions;
     return GridView.builder(
         itemCount: types.length,
+        padding: EdgeInsets.zero,
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -19,8 +29,10 @@ class SeasonGrid extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           final type = types[index];
+          final season = localizedSeasons[index];
+
           return FilterButton(
-            text: type,
+            text: season,
             section: FilterSection.season,
             onTap: () {
               // debugPrint('Type selected: $type');

@@ -73,7 +73,7 @@ class AuthApiServices extends IAuthApi {
         (String l) {
           return Left(l);
         },
-        (Map<String, dynamic> r) => Right(RefreshTokenResponse.fromJson(r)),
+          (Map<String, dynamic> r) => Right(RefreshTokenResponse.fromJson(r)),
       );
     } catch (e) {
       return Left(e.toString());

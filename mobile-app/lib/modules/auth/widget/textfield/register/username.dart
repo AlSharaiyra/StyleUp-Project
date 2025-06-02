@@ -7,7 +7,7 @@ import 'dart:developer' as developer;
 
 import '../../../../../core/constant/icons.dart';
 import '../../../../../core/widget/textfield/textdield.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 
 
 class WidgetAuthUsername extends StatelessWidget {

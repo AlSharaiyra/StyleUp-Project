@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/modules/outfits/widget/apply_button.dart';
 import 'package:style_up/modules/outfits/widget/season_grid.dart';
 import 'package:style_up/modules/outfits/widget/type_grid.dart';
@@ -30,7 +31,7 @@ class Filtering extends StatelessWidget {
                     Expanded(
                       child: Center(
                         child: Text(
-                          'Filter',
+                          AppLocalizations.of(context)!.filter,
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall
@@ -54,9 +55,16 @@ class Filtering extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: textpadding),
+                      padding: EdgeInsets.only(
+                        left: AppLocalizations.of(context)!.localeName == 'en'
+                            ? textpadding
+                            : 0,
+                        right: AppLocalizations.of(context)!.localeName == 'en'
+                            ? 0
+                            : textpadding,
+                      ),
                       child: Text(
-                        'Type',
+                       AppLocalizations.of(context)!.type,
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                     ),
@@ -84,9 +92,16 @@ class Filtering extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: textpadding),
+                      padding: EdgeInsets.only(
+                        left: AppLocalizations.of(context)!.localeName == 'en'
+                            ? textpadding
+                            : 0,
+                        right: AppLocalizations.of(context)!.localeName == 'en'
+                            ? 0
+                            : textpadding,
+                      ),
                       child: Text(
-                        'Season',
+                        AppLocalizations.of(context)!.season,
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                     ),
@@ -113,15 +128,12 @@ class Filtering extends StatelessWidget {
               ],
             ),
             Positioned(
-              bottom: 0,
-              right: 0,
-              left: 0,
-              child: Center(
-                child: ApplyButton(
-                  onTap: () {}
-                ),
-              )
-            )
+                bottom: 0,
+                right: 0,
+                left: 0,
+                child: Center(
+                  child: ApplyButton(onTap: () {}),
+                ))
           ],
         );
       }),

@@ -15,12 +15,11 @@ import 'package:style_up/modules/splash/view/splash.dart';
 
 import 'routes.dart';
 
-
 class AppRouter {
   static String? token;
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.splash,
+    initialLocation: Routes.userProfile,
     routes: <GoRoute>[
       buildRoute(Routes.splash, const SplashView()),
       buildRoute(Routes.home, const HomeView()),
@@ -31,7 +30,19 @@ class AppRouter {
       buildRoute(Routes.setting, const SettingsScreen()),
       buildRoute(Routes.ageSelection, AgeAndGenderSelectionSView()),
       buildRoute(Routes.bottomBar, const BottomBar()),
-      buildRoute(Routes.userProfile, const UserProfilePage()),
+      GoRoute(
+        path: Routes.userProfile,
+        name: Routes.userProfile,
+        pageBuilder: (context, state) {
+
+          return _buildTransition(
+            state,
+            UserProfilePage(
+             
+            ),
+          );
+        },
+      ),
 
       // Dynamic Routes Below (with parameters)
       GoRoute(

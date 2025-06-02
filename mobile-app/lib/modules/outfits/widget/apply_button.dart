@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/core/theme/colors.dart';
 import 'package:style_up/core/widget/gestureDetector/gesturedetector.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 
 class ApplyButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -25,7 +26,7 @@ class ApplyButton extends StatelessWidget {
         ),
         alignment: Alignment.center,
         child: Text(
-          'Apply',
+         AppLocalizations.of(context)!.apply,
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 color: ColorsTheme.white
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/modules/auth/widget/otp/otp_email.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 
 
 class OtpDesc extends StatelessWidget {

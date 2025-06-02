@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
 
 import 'package:style_up/core/bloc/Language/Language_event.dart';
 import 'package:style_up/core/bloc/language/language_bloc.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 
 void showLanguageDialog(BuildContext context) async {
 

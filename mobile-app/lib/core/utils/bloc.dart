@@ -25,6 +25,7 @@ import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_bloc.dart';
 import 'package:style_up/modules/outfits/controller/bloc/filter/expaned_filter_bloc.dart';
+import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
 
 import '../../modules/bottom_bar/bloc/navigationbar/navigation_controller.dart';
 
@@ -43,6 +44,9 @@ class BlocUtils extends StatelessWidget {
         ),
         BlocProvider(
           create: (BuildContext context) => AgePickerController(),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => UserProfileBloc(),
         ),
         BlocProvider(
           create: (context) => PinCodeController(),

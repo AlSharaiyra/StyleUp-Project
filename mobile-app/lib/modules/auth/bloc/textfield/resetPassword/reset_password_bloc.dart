@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_state.dart';
 

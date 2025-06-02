@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 import 'package:flutter/material.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 
 class ErrorCodes {
   static const String INTERNAL_SERVER_ERROR = 'INTERNAL_SERVER_ERROR';

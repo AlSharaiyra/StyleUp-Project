@@ -14,8 +14,8 @@ import 'package:style_up/core/routes/app_router.dart';
 import 'package:style_up/core/theme/theme_data.dart';
 import 'package:style_up/l10n/l10n.dart';
 
-import 'package:style_up/l10n/generated/app_localizations.dart';
 import 'package:style_up/modules/outfits/view/closet.dart';
+import 'package:style_up/l10n/app_localizations.dart';
 
 
 

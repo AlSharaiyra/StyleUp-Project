@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import 'package:go_router/go_router.dart';
 import 'package:style_up/core/bloc/theme/theme_bloc.dart';
 import 'package:style_up/core/bloc/theme/theme_event.dart';
@@ -9,7 +8,9 @@ import 'package:style_up/core/bloc/theme/theme_state.dart';
 import 'package:style_up/core/config/shared_preferance.dart';
 import 'package:style_up/core/routes/routes.dart';
 import 'package:style_up/core/theme/theme_data.dart';
-import 'package:style_up/l10n/generated/app_localizations.dart';
+import 'package:style_up/l10n/app_localizations.dart';
+import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
+import 'package:style_up/modules/auth/bloc/user_profile/user_profile_event.dart';
 import 'package:style_up/modules/setting/model/setting_model.dart';
 import 'package:style_up/modules/setting/widget/language_dialog/language_dialog.dart';
 import 'package:style_up/modules/setting/widget/logout_dialog.dart';
@@ -45,10 +46,11 @@ List<SettingsSection> getSections(BuildContext context, ThemeState state) {
     SettingsSection(
       sectionTitle: local.profile,
       items: [
-          SettingsItemModel(
-          title: local.editProfile,
+        SettingsItemModel(
+          title: local.user_profile,
           trailing: const Icon(Icons.chevron_right),
           onTap: () {
+            context.read<UserProfileBloc>().add(GetUserProfile(context));
             // Navigate to edit profile page
             context.pushNamed(Routes.userProfile);
           },
