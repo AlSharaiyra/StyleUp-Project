@@ -16,6 +16,7 @@ import 'package:style_up/l10n/l10n.dart';
 
 import 'package:style_up/modules/outfits/view/closet.dart';
 import 'package:style_up/l10n/app_localizations.dart';
+import 'package:style_up/modules/splash/view/splash.dart';
 
 
 
@@ -72,7 +73,7 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: Closet(),
+              home: SplashView(),
               //routerConfig: AppRouter.router,
 
 

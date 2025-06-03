@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/core/constant/images.dart';
+import 'package:style_up/core/theme/colors.dart';
+
 class SplashImage extends StatelessWidget {
   const SplashImage({super.key, required this.containerOpacity});
   final double containerOpacity;
@@ -25,19 +27,21 @@ class SplashImage extends StatelessWidget {
         // Text moves downward
         AnimatedOpacity(
           opacity: containerOpacity,
-            duration: const Duration(milliseconds: 1500),
+          duration: const Duration(milliseconds: 1500),
           child: AnimatedPadding(
             duration: const Duration(milliseconds: 3000),
             curve: Curves.fastLinearToSlowEaseIn,
             padding: EdgeInsets.only(top: containerOpacity * 121),
-            child: const Center(
+            child: Center(
               child: Text(
                 'Welcome to StyleUp',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall
+                    ?.copyWith(
+                      color: ColorsTheme.greyText,
+                      fontWeight: FontWeight.bold
+                    ),
                 textAlign: TextAlign.center,
               ),
             ),

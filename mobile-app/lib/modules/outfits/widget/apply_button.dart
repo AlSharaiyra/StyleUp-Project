@@ -28,8 +28,8 @@ class ApplyButton extends StatelessWidget {
         child: Text(
          AppLocalizations.of(context)!.apply,
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                color: ColorsTheme.white
-              ),
+            color: ColorsTheme.white
+          ),
         ),
       ),
     );

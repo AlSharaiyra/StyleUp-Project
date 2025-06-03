@@ -32,8 +32,8 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
 
     // Define color animation from one color to another
     _colorAnimation = ColorTween(
-      begin: ColorsTheme.white,
-      end: ColorsTheme.secondryButton, // or any target color
+      begin: ColorsTheme.secondryButton,
+      end: ColorsTheme.white, // or any target color
     ).animate(_controller);
 
     // Start color animation
