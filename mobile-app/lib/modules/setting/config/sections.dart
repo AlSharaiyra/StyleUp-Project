@@ -7,6 +7,7 @@ import 'package:style_up/core/bloc/theme/theme_event.dart';
 import 'package:style_up/core/bloc/theme/theme_state.dart';
 import 'package:style_up/core/config/shared_preferance.dart';
 import 'package:style_up/core/routes/routes.dart';
+import 'package:style_up/core/theme/colors.dart';
 import 'package:style_up/core/theme/theme_data.dart';
 import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
@@ -38,6 +39,16 @@ List<SettingsSection> getSections(BuildContext context, ThemeState state) {
                     themeName: value ? 'Dark' : 'light',
                   ));
             },
+            thumbColor: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.selected)
+                  ? ColorsTheme.primryButton // ON
+                  : ColorsTheme.greyBorder; // OFF
+            }),
+            trackColor: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.selected)
+                  ? ColorsTheme.secondryButton // ON
+                  : ColorsTheme.greyBox; // OFF
+            }),
           ),
           onTap: null, // No tap for switch item
         ),

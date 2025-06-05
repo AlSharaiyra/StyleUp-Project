@@ -16,6 +16,5 @@ class ColorsTheme {
   static const Color greyDot = Color.fromRGBO(217, 217, 217, 1);
   static const Color noButton =Color.fromRGBO(247, 251, 252, 1);
   static const Color selectOutfitButton=Color.fromRGBO(177, 208, 252, 1);
-  static const Color filterButton = Color.fromRGBO(119, 119, 199, 0.5);
   static const Color transparent = Colors.transparent;
 }

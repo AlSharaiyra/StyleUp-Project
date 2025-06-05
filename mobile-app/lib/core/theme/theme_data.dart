@@ -9,7 +9,9 @@ class Themeedata {
       ));
   static final ThemeData dark = ThemeData.dark().copyWith(
       scaffoldBackgroundColor: ColorsTheme.black.withAlpha(200), // Set background color
-
+      appBarTheme:  AppBarTheme(
+         backgroundColor:ColorsTheme.black.withAlpha(200),
+      ),
       primaryTextTheme: const TextTheme(
         bodyLarge: TextStyle(color: ColorsTheme.white),
         bodyMedium: TextStyle(color: ColorsTheme.white),
@@ -44,7 +46,6 @@ class Themeedata {
         titleMedium: TextStyle(color: ColorsTheme.white),
         titleSmall: TextStyle(color: ColorsTheme.white),
       ),
-      appBarTheme: const AppBarTheme(
-         backgroundColor:   Color.fromRGBO(238, 238,238, 1)
-      ));
+      
+      );
 }
