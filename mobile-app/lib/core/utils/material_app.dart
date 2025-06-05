@@ -14,9 +14,10 @@ import 'package:style_up/core/routes/app_router.dart';
 import 'package:style_up/core/theme/theme_data.dart';
 import 'package:style_up/l10n/l10n.dart';
 
-import 'package:style_up/modules/outfits/view/closet.dart';
+
 import 'package:style_up/l10n/app_localizations.dart';
-import 'package:style_up/modules/splash/view/splash.dart';
+import 'package:style_up/modules/bottom_bar/view/bottom_bar.dart';
+
 
 
 
@@ -73,7 +74,7 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: SplashView(),
+              home: BottomBar(),
               //routerConfig: AppRouter.router,
 
 

@@ -20,52 +20,61 @@ class SettingsScreen extends StatelessWidget {
     return Builder(
       builder: (context) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              local.settings,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: screenWidth * 0.055,
-              ),
-            ),
-            centerTitle: true,
-            elevation: 0,
-          ),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-            child: BlocBuilder<ThemeBloc, ThemeState>(
-              builder: (context, state) {
-                return ListView.builder(
-                  itemCount: getSections(context,state).length,
-                  itemBuilder: (context, index) {
-                    final section = getSections(context,state)[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (section.sectionTitle.isNotEmpty)
-                          Padding(
-                            padding: EdgeInsets.only(top: screenWidth * 0.05),
-                            child: Text(
-                              section.sectionTitle,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: screenWidth * 0.2),
+                Center(
+                  child: Text(
+                    local.settings,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: screenWidth * 0.065,
+                    ),
+                  ),
+                ),
+                SizedBox(height: screenWidth * 0.09),
+                Flexible(
+                  child: BlocBuilder<ThemeBloc, ThemeState>(
+                    builder: (context, state) {
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: getSections(context, state).length,
+                        itemBuilder: (context, index) {
+                          final section = getSections(context, state)[index];
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (section.sectionTitle.isNotEmpty)
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: screenWidth * 0.05),
+                                  child: Text(
+                                    section.sectionTitle,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelMedium
+                                        ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                        ),
                                   ),
-                            ),
-                          ),
-                        ...section.items.map((item) => SettingsItem(
-                              title: item.title,
-                              trailing: item.trailing,
-                              onTap: item.onTap,
-                            )),
-                      ],
-                    );
-                  },
-                );
-              },
+                                ),
+                              ...section.items.map((item) => SettingsItem(
+                                    title: item.title,
+                                    trailing: item.trailing,
+                                    onTap: item.onTap,
+                                  )),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         );

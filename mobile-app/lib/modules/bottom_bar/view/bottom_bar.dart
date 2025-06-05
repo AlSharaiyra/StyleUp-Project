@@ -14,31 +14,63 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => NavigationBloc(),
-      child: BlocBuilder<NavigationBloc, NavigationState>(
-        builder: (context, state){
+        create: (_) => NavigationBloc(),
+        child: BlocBuilder<NavigationBloc, NavigationState>(
+            builder: (context, state) {
           return Scaffold(
             extendBody: true,
-            body: Pages.screens[state.selectedIndex],
-            bottomNavigationBar: CurvedNavigationBar(
-             index: state.selectedIndex,
-             backgroundColor: ColorsTheme.transparent,
-             color: ColorsTheme.selectOutfitButton,
-             buttonBackgroundColor:ColorsTheme.primryButton,
-             animationDuration: const Duration(milliseconds: 300),
-             animationCurve: Curves.easeInOut,
-              onTap: (index){
-                 context.read<NavigationBloc>().add(NavigateTo(index));
-              },
-              items: const[
-                Icon(Icons.checkroom),
-                Icon(Icons.flash_on_outlined),
-                Icon(Icons.person),
-              ]
+            body:Padding(
+              padding: const EdgeInsets.only(bottom: 60),
+              child:  Pages.screens[state.selectedIndex],
+            ),
+            bottomNavigationBar: Container(
+              decoration: const BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12, 
+                    offset: Offset(0, -1), 
+                    blurRadius: 10,
+                  ),
+                ],
+              ),
+              child: CurvedNavigationBar(
+                  index: state.selectedIndex,
+                  backgroundColor: ColorsTheme.transparent,
+                  color: ColorsTheme.white,
+                  buttonBackgroundColor: ColorsTheme.primryButton,
+                  animationDuration: const Duration(milliseconds: 300),
+                  animationCurve: Curves.easeInOut,
+                  onTap: (index) {
+                    context.read<NavigationBloc>().add(NavigateTo(index));
+                  },
+                  items: [
+                    Icon(
+                      Icons.checkroom,
+                      color: state.selectedIndex == 0
+                          ? Colors.white
+                          : ColorsTheme.primryButton,
+                    ),
+                    Icon(
+                      Icons.camera_alt_rounded,
+                      color: state.selectedIndex == 1
+                          ? Colors.white
+                          : ColorsTheme.primryButton,
+                    ),
+                    Icon(
+                      Icons.flash_on_outlined,
+                      color: state.selectedIndex == 2
+                          ? Colors.white
+                          : ColorsTheme.primryButton,
+                    ),
+                    Icon(
+                      Icons.person,
+                      color: state.selectedIndex == 3
+                          ? Colors.white
+                          : ColorsTheme.primryButton,
+                    ),
+                  ]),
             ),
           );
-        }
-      )
-    );
+        }));
   }
 }
