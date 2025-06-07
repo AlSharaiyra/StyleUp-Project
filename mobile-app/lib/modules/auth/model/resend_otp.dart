@@ -1,24 +1,21 @@
 import 'package:equatable/equatable.dart';
 
-class VerifyOtpResponse extends Equatable {
-    const VerifyOtpResponse({
+class ResendOtpResponse extends Equatable {
+    const ResendOtpResponse({
         required this.message,
         required this.recipientEmail,
         required this.otpPurpose,
-        required this.verificationToken,
     });
 
     final String message;
     final String recipientEmail;
     final String otpPurpose;
-    final String ?verificationToken;
 
-    factory VerifyOtpResponse.fromJson(Map<String, dynamic> json){ 
-        return VerifyOtpResponse(
+    factory ResendOtpResponse.fromJson(Map<String, dynamic> json){ 
+        return ResendOtpResponse(
             message: json['message'] ?? '',
             recipientEmail: json['recipientEmail'] ?? '',
             otpPurpose: json['otpPurpose'] ?? '',
-            verificationToken: json['verificationToken'] ?? '',
         );
     }
 
@@ -26,10 +23,9 @@ class VerifyOtpResponse extends Equatable {
         'message': message,
         'recipientEmail': recipientEmail,
         'otpPurpose': otpPurpose,
-        'verificationToken': verificationToken,
     };
 
     @override
     List<Object?> get props => [
-    message, recipientEmail, otpPurpose, verificationToken, ];
+    message, recipientEmail, otpPurpose, ];
 }

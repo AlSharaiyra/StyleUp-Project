@@ -28,7 +28,6 @@ class SeasonGrid extends StatelessWidget {
           childAspectRatio: 3.8,
         ),
         itemBuilder: (context, index) {
-          final type = types[index];
           final season = localizedSeasons[index];
 
           return FilterButton(

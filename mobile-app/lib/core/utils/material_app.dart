@@ -16,7 +16,6 @@ import 'package:style_up/l10n/l10n.dart';
 
 
 import 'package:style_up/l10n/app_localizations.dart';
-import 'package:style_up/modules/bottom_bar/view/bottom_bar.dart';
 
 
 
@@ -61,7 +60,7 @@ class MaterialAppUtils extends StatelessWidget {
             final theme = snapshot.data?[0] as ThemeData?;
             final locale = snapshot.data?[1] as Locale?;
 
-            return MaterialApp(
+            return MaterialApp.router(
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,
               supportedLocales: L10n.all,
@@ -74,8 +73,8 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              home: BottomBar(),
-              //routerConfig: AppRouter.router,
+              // home: BottomBar(),
+              routerConfig: AppRouter.router,
 
 
             );

@@ -8,10 +8,13 @@ abstract class ResendOtpButtonEvent extends Equatable {
 }
 
 class ResendOtpButtonPressed extends ResendOtpButtonEvent {
-  final String pinput;
+  final String email;
+  final String otpPurpose;
 
-  const ResendOtpButtonPressed({required this.pinput, });
+  const ResendOtpButtonPressed({required this.email,
+    required this.otpPurpose});
 
   @override
-  List<Object?> get props => <Object?>[pinput,];
+  List<Object?> get props => <Object?>[email,otpPurpose
+  ];
 }

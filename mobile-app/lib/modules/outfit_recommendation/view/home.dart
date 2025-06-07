@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:style_up/core/theme/colors.dart';
-import 'package:style_up/core/widget/drawer/w_main_drawer.dart';
 import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/event_card.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/message_card.dart';

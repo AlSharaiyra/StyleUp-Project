@@ -16,11 +16,12 @@ import '../widget/buttons/reset_password.dart';
 import '../widget/textfield/resetPassword/confirm_password.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  ResetPasswordScreen({super.key});
+  ResetPasswordScreen({super.key, required this.email, required this.verificationToken});
   final formKey = GlobalKey<FormState>();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-
+final String email ;
+final String verificationToken;
   @override
   Widget build(BuildContext context) {
     final double paddingHorizontal = MediaQuery.of(context).size.width * .1;

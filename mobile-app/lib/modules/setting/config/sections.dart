@@ -63,7 +63,7 @@ List<SettingsSection> getSections(BuildContext context, ThemeState state) {
           onTap: () {
             context.read<UserProfileBloc>().add(GetUserProfile(context));
             // Navigate to edit profile page
-            context.pushNamed(Routes.userProfile);
+            context.push(Routes.userProfile);
           },
         ),
         SettingsItemModel(

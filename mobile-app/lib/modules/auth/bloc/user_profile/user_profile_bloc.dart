@@ -23,7 +23,7 @@ class UserProfileBloc
 
     try {
       final SecureTokenStorage storage=SecureTokenStorage.instance;
-      final response = await AuthController().getUserInfo(GetUserInfoParams(accessToken:await storage.getAccessToken() ??''));
+      final response = await AuthController().getUserInfo(GetUserInfoParams(accessToken:await storage.getAccessToken() ??'',), event.context);
       await Future.delayed(const Duration(seconds: 2));
       response.fold(
         (String l) {

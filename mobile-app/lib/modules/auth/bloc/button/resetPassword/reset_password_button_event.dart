@@ -10,9 +10,10 @@ abstract class ResetPasswordButtonEvent extends Equatable {
 class ResetPasswordButtonPressed extends ResetPasswordButtonEvent {
   final String confirmPassword;
   final String password;
-
-  const ResetPasswordButtonPressed({required this.confirmPassword, required this.password});
+final String? verificationToken;
+final String? email;
+  const ResetPasswordButtonPressed({required this.confirmPassword, required this.password, this.verificationToken, this.email});
 
   @override
-  List<Object?> get props => <Object?>[confirmPassword, password];
+  List<Object?> get props => <Object?>[confirmPassword, password, verificationToken, email];
 }

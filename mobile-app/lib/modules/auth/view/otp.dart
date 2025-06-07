@@ -85,7 +85,14 @@ class OtpView extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: spacing * 2),
-                const DidntReciveOtp(),
+                 DidntReciveOtp(
+                  email: email,
+                  otpPurpose: getOtpPurpose(
+                    (isFromForgetPassword ?? false)
+                        ? OtpPurpose.RESET_PASSWORD
+                        : OtpPurpose.CREATE_USER,
+                  ),
+                ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.35),
                 BlocListener<PinCodeController, PinCodeState>(
                     listener: (context, state) {

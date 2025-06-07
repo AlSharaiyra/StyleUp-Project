@@ -23,7 +23,7 @@ void showLogoutDialog(BuildContext context) {
           onPressed: () async {
             final SecureTokenStorage storage = SecureTokenStorage.instance;
             final response = await AuthController().logout(LogoutParams(
-                accessToken: await storage.getAccessToken() ?? ''));
+                accessToken: await storage.getAccessToken() ?? ''),context);
             response.fold(
               (String l) {
                 ScaffoldMessenger.of(context).showSnackBar(

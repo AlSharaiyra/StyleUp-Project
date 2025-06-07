@@ -1,11 +1,10 @@
-import 'package:style_up/modules/outfits/model/outfit.dart';
+import 'package:style_up/modules/outfits/params/delete_outfit.dart';
+import 'package:style_up/modules/outfits/params/get_outfit.dart';
+import 'package:style_up/modules/outfits/params/upload_outfit.dart';
 
 abstract class OutfitInterface {
-  Future<List<Outfit>> getOutfits();
+  Future<void> getOutfits(GetOutfitParams params);
 
-  Future<void> getOutfitById(int id);
-  Future<void> getOutfitDetailById(int id);
-  Future<void> removeOutfitById(int id);
-  Future<void> updateOutfitById(int id);
-  Future<void> addOutfit(Outfit outfit);
+  Future<void> removeOutfitById(  DeleteOutfitParams params);
+  Future<void> addOutfit(UploadOutfitParams params);
 }

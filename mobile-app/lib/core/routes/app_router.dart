@@ -19,7 +19,7 @@ class AppRouter {
   static String? token;
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.userProfile,
+    initialLocation: Routes.bottomBar,
     routes: <GoRoute>[
       buildRoute(Routes.splash, const SplashView()),
       buildRoute(Routes.home, const HomeView()),
@@ -34,12 +34,9 @@ class AppRouter {
         path: Routes.userProfile,
         name: Routes.userProfile,
         pageBuilder: (context, state) {
-
           return _buildTransition(
             state,
-            UserProfilePage(
-             
-            ),
+            const UserProfilePage(),
           );
         },
       ),
