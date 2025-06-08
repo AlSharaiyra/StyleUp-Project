@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:style_up/core/constant/icons.dart';
 import 'package:style_up/core/theme/colors.dart';
 import 'package:style_up/core/widget/textfield/textdield.dart';
@@ -42,8 +41,6 @@ class UploadItem extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   SizedBox(height: spacing),
-                  
-                  // BlocBuilder showing image or error
                   BlocBuilder<ImageBloc, ImageState>(
                     builder: (context, state) {
                       if (state is ImageSelected) {
@@ -96,15 +93,8 @@ class UploadItem extends StatelessWidget {
                       backgroundColor: WidgetStateProperty.all(ColorsTheme.primryButton),
                       fixedSize: WidgetStateProperty.all(const Size(240, 42)),
                     ),
-                    onPressed: () async{
-                      final status = await Permission.photos.request(); // or .camera for camera
-  if (status.isGranted) {
-    context.read<ImageBloc>().add(PickImageEvent(ImageSource.gallery));
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Permission denied')),
-    );
-  }
+                    onPressed: () {
+                      context.read<ImageBloc>().add(PickImageEvent(ImageSource.gallery));
                     },
                     child: Text(
                       'Choose from Gallery',
