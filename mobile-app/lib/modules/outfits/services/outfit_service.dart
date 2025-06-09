@@ -71,7 +71,7 @@ final refreshToken=AuthApiServices().refreshToken;
   Future<Either<String, List<GetWarddropItems>>> getOutfits(
       GetOutfitParams params, BuildContext context) async {
     try {
-      final response = await api.get(getOutfitUrl, params.toHeader());
+      final response = await api.get(getWardrobeItemsUrl, params.toHeader());
 
       if (_isSuccessful(response)) {
         final List<GetWarddropItems> items = (response.data as List)
