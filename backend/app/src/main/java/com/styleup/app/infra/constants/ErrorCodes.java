@@ -16,6 +16,9 @@ public class ErrorCodes {
     public static final String EMPTY_WARDROBE = "EMPTY_WARDROBE";
     public static final String IMG_UPLOAD_ERROR = "IMG_UPLOAD_ERROR";
     public static final String FEATURE_EXTRACTION_FAILED = "FEATURE_EXTRACTION_FAILED";
+    public static final String ITEM_NOT_FOUND = "ITEM_NOT_FOUND";
+    public static final String ACTION_NOT_ALLOWED = "ACTION_NOT_ALLOWED";
+    public static final String IMG_DELETE_ERROR = "IMG_DELETE_ERROR";
 
 
 }

@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.IOException;
@@ -43,6 +44,7 @@ import static com.styleup.app.infra.constants.ErrorCodes.*;
 @RequiredArgsConstructor
 public class WardrobeService {
 
+    private final ItemRepository itemRepository;
     private final WardrobeRepository wardrobeRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
@@ -70,7 +72,7 @@ public class WardrobeService {
     }
 
 
-    public ItemModel uploadImage(final MultipartFile file, final String description, final String userId) {
+    public ItemModel uploadImage(final MultipartFile file, final String description, final String userId, final boolean withModel) {
 
         User user = userRepository.findById(UUID.fromString(userId))
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with ID: " + userId, USER_NOT_FOUND));
@@ -78,18 +80,22 @@ public class WardrobeService {
         String imageUrl = upload(file, String.valueOf(user.getId()));
 
         final FeaturesModel features;
-        try {
-            features = fastApiClient.sendFileToFastApi(file.getBytes());
-        } catch (IOException e) {
-            throw new GenericException("Failed to extract features from image", FEATURE_EXTRACTION_FAILED);
+        Wardrobe wardrobe = user.getWardrobe();
+        Item item = new Item();
+
+        if (withModel) {
+            try {
+                features = fastApiClient.sendFileToFastApi(file.getBytes());
+                item = modelMapper.populateItemFromFeaturesModel(features);
+            } catch (IOException e) {
+                throw new GenericException("Failed to extract features from image", FEATURE_EXTRACTION_FAILED);
+            }
         }
 
-        Wardrobe wardrobe = user.getWardrobe();
-        Item item = modelMapper.populateItemFromFeaturesModel(features);
-
-        if (!description.isEmpty()) {
+        if (description != null && !description.isBlank()) {
             item.setDescription(description);
         }
+
         item.setUrl(imageUrl);
         item.setWardrobe(wardrobe);
 
@@ -101,7 +107,7 @@ public class WardrobeService {
         return modelMapper.toItemModel(item);
     }
 
-    public String upload(final MultipartFile file, final String userId){
+    private String upload(final MultipartFile file, final String userId) {
         try {
             PutObjectRequest request = PutObjectRequest.builder()
                     .bucket(bucketName)
@@ -111,11 +117,56 @@ public class WardrobeService {
             s3Client.putObject(request, RequestBody.fromInputStream(file.getInputStream(), file.getSize()));
 
         } catch (Exception ex) {
-            throw new GenericException("An error happended while uploading image", IMG_UPLOAD_ERROR);
+            throw new GenericException("An error happened while uploading image", IMG_UPLOAD_ERROR);
         }
 
         // As Image URL
         return regionEndpoint + "/" + bucketName + "/" + userId + "/" + file.getOriginalFilename();
     }
 
+
+    public String deleteItem(final String userId, final String itemId) {
+
+        Item item = itemRepository.findById(UUID.fromString(itemId))
+                .orElseThrow(() -> new ResourceNotFoundException("Item not found with ID: " + itemId, ITEM_NOT_FOUND));
+
+        if (!item.getWardrobe().getUser().getId().equals(UUID.fromString(userId))) {
+            throw new GenericException("Not allowed to delete this item", ACTION_NOT_ALLOWED);
+        }
+
+        String imageUrl = item.getUrl();
+
+        try {
+            delete(imageUrl);
+
+            Wardrobe wardrobe = item.getWardrobe();
+            wardrobe.getItems().remove(item);
+            wardrobe.setNoOfItems(wardrobe.getNoOfItems() - 1);
+
+            itemRepository.delete(item);
+            wardrobeRepository.save(wardrobe);
+
+        } catch (Exception ex) {
+            throw new GenericException("Failed to delete image from Wasabi", IMG_DELETE_ERROR);
+        }
+
+        return "Image deleted successfully";
+    }
+
+
+    private void delete(final String imageUrl) {
+
+        String basePrefix = regionEndpoint + "/" + bucketName + "/";
+        if (!imageUrl.startsWith(basePrefix)) {
+            throw new IllegalArgumentException("Invalid image URL");
+        }
+        String key = imageUrl.substring(basePrefix.length());
+
+        DeleteObjectRequest deleteRequest = DeleteObjectRequest.builder()
+                .bucket(bucketName)
+                .key(key)
+                .build();
+
+        s3Client.deleteObject(deleteRequest);
+    }
 }

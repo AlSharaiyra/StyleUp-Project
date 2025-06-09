@@ -89,10 +89,12 @@ public class AuthService {
         String accessToken = jwtService.generateAccessToken(user.getEmail(), String.valueOf(user.getId()));
         String refreshToken = jwtService.generateRefreshToken(user.getEmail(), String.valueOf(user.getId()));
 
+        final boolean isFirstLogin = user.getLastLogin() == null;
+
         user.setLastLogin(LocalDateTime.now());
         userRepository.save(user);
 
-        return new AuthResponse(accessToken, refreshToken);
+        return new AuthResponse(accessToken, refreshToken, isFirstLogin);
     }
 
     /**
@@ -114,7 +116,7 @@ public class AuthService {
                         username,
                         jwtService.extractUserId(request.getRefreshToken())
                 );
-                return new AuthResponse(accessToken, request.getRefreshToken());
+                return new AuthResponse(accessToken, request.getRefreshToken(), false);
             } else {
                 throw new InvalidCredentialsException("Invalid or expired refresh token", INVALID_CREDENTIALS);
             }

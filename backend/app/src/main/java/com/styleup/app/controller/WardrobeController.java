@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,12 +39,13 @@ public class WardrobeController {
     @PostMapping("/items")
     public ResponseEntity<ItemModel> uploadImage(
             @RequestParam("file") final MultipartFile file,
+            @RequestParam(value = "withModel", defaultValue = "true", required = false) final boolean withModel,
             @RequestParam(value = "description", required = false) final String description,
             final HttpServletRequest request) {
 
         final String userId = helperService.extractUserIdFromJwt(request);
 
-        return ResponseEntity.ok().body(wardrobeService.uploadImage(file, description, userId));
+        return ResponseEntity.ok().body(wardrobeService.uploadImage(file, description, userId, withModel));
     }
 
     @Operation(description = """
@@ -55,5 +57,16 @@ public class WardrobeController {
         String userId = helperService.extractUserIdFromJwt(request);
 
         return ResponseEntity.ok().body(wardrobeService.getAllItems(userId));
+    }
+
+    @Operation(description = """
+            An API to delete an item in user`s wardrobe.
+            """)
+    @DeleteMapping("/items/{itemId}")
+    public ResponseEntity<String> getAllItems(final HttpServletRequest request, @PathVariable("itemId") final String itemId) {
+
+        String userId = helperService.extractUserIdFromJwt(request);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(wardrobeService.deleteItem(userId, itemId));
     }
 }
