@@ -18,4 +18,7 @@ final String getOutfitUrl = dotenv.env['getOutfitUrl'] ?? 'localhost';
 final String uploadOutfitUrl = dotenv.env['uploadOutfitUrl'] ?? 'localhost';
 final String resetPasswordUrl = dotenv.env['resetPasswordUrl'] ?? 'localhost';
 final String setAgeAndGenderUrl = dotenv.env['setAgeAndGenderUrl'] ?? 'localhost';
+final String getWardrobeItemsUrl = dotenv.env['getWardrobeItemsUrl'] ?? 'localhost';
+final String uploaItemUrl = dotenv.env['uploaItemUrl'] ?? 'localhost';
+final String deleteItemUrl = dotenv.env['deleteItemUrl'] ?? 'localhost';
 

@@ -1,4 +1,13 @@
-import 'package:style_up/modules/outfits/model/outfit.dart';
+
+import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:style_up/modules/outfits/model/get_warddrop_item.dart';
+import 'package:style_up/modules/outfits/model/upload_warrdrop_item.dart';
+import 'package:style_up/modules/outfits/params/delete_outfit.dart';
+import 'package:style_up/modules/outfits/params/get_outfit.dart';
+import 'package:style_up/modules/outfits/params/upload_outfit.dart';
+import 'package:style_up/modules/outfits/services/outfit_interface.dart';
+import 'package:style_up/modules/outfits/services/outfit_service.dart';
 
 class OutfitController {
   static final OutfitController _outfitController =
@@ -8,13 +17,15 @@ class OutfitController {
   factory OutfitController() {
     return _outfitController;
   }
-  Future<List<Outfit>> getOutfits() async {
-    return [];
+  final IOutfitService _outfitService = OutfitService();
+  Future<Either<String,List<GetWarddropItems>>> getOutfits(GetOutfitParams params,BuildContext context) async {
+    return await _outfitService.getOutfits(params,context);
   }
 
-  Future<void> getOutfitById(int id) async {}
-  Future<void> getOutfitDetailById(int id) async {}
-  Future<void> removeOutfitById(int id) async {}
-  Future<void> updateOutfitById(int id) async {}
-  Future<void> addOutfit(Outfit outfit) async {}
+  Future<void> removeOutfitById(DeleteOutfitParams params,BuildContext  context) async {
+    return await _outfitService.removeOutfitById(params,context);
+  }
+  Future<Either<String,UploadWarddropItem> >addOutfit(UploadOutfitParams params,BuildContext context) async {
+    return await _outfitService.addOutfit(params,context);
+  }
 }

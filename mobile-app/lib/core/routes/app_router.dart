@@ -19,7 +19,7 @@ class AppRouter {
   static String? token;
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.login,
+    initialLocation: Routes.bottomBar,
     routes: <GoRoute>[
       buildRoute(Routes.splash, const SplashView()),
       buildRoute(Routes.home, const HomeView()),
