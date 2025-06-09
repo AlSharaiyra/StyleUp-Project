@@ -10,6 +10,9 @@ import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/upload_item/bloc/image_bloc/image_bloc.dart';
 import 'package:style_up/upload_item/bloc/image_bloc/image_event.dart';
 import 'package:style_up/upload_item/bloc/image_bloc/image_state.dart';
+import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_bloc.dart';
+import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_event.dart';
+import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_state.dart';
 
 class UploadItem extends StatelessWidget {
   const UploadItem({super.key});
@@ -18,7 +21,7 @@ class UploadItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final double spacing = MediaQuery.of(context).size.height * 0.05;
     final loc = AppLocalizations.of(context)!;
-
+    final TextEditingController descController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true, // Important to allow content to move
 
@@ -55,7 +58,7 @@ class UploadItem extends StatelessWidget {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(12),
                                   child: Image.file(
-                                    File(state.imagePath),
+                                    File(state.imagePath.path),
                                     height: 150,
                                     fit: BoxFit.cover,
                                   ),
@@ -125,8 +128,55 @@ class UploadItem extends StatelessWidget {
                           keyboardType: TextInputType.text,
                           labelText: loc.description,
                           iconBefore: AppIcons.description,
+                          controller: descController,
                         ),
                       ),
+                      SizedBox(height: spacing * 1.2),
+                      BlocConsumer<UploadImageButtonBloc,
+                          UploadImageButtonState>(listener: (context, state) {
+                        if (state is OnFailed) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.errorMessage)),
+                          );
+                        }
+                      }, builder: (context, state) {
+                        if (state is OnLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStateProperty.all(
+                                ColorsTheme.primryButton),
+                            foregroundColor: const WidgetStatePropertyAll(
+                                ColorsTheme.primryButton),
+                            fixedSize:
+                                WidgetStateProperty.all(const Size(240, 42)),
+                          ),
+                          onPressed: () {
+                            final imageState = context.read<ImageBloc>().state;
+
+                            if (imageState is ImageSelected) {
+                              context.read<UploadImageButtonBloc>().add(
+                                    UploadButtonPressed(
+                                      context: context,
+                                      desc: descController.text,
+                                      file: File(imageState.imagePath.path),
+                                    ),
+                                  );
+                            }
+                          },
+                          child: Text(
+                            loc.apply,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      color: ColorsTheme.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),

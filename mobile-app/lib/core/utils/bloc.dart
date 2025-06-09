@@ -27,6 +27,7 @@ import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_passwor
 import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
 import 'package:style_up/upload_item/bloc/image_bloc/image_bloc.dart';
+import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_bloc.dart';
 
 import '../../modules/bottom_bar/bloc/navigationbar/navigation_bloc.dart';
 
@@ -57,6 +58,9 @@ class BlocUtils extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => PageBloc(),
+        ),
+               BlocProvider(
+          create: (context) => UploadImageButtonBloc(),
         ),
         BlocProvider(
           create: (context) => LoginFormBloc(),

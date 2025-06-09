@@ -27,7 +27,7 @@ class ImageBloc extends Bloc<ImageEvent, ImageState> {
       final pickedFile = await _picker.pickImage(source: event.source);
 
       if (pickedFile != null) {
-        emit(ImageSelected(pickedFile.path)); 
+        emit(ImageSelected(pickedFile)); 
       } else {
         emit(ImageError('No image selected'));
       }
