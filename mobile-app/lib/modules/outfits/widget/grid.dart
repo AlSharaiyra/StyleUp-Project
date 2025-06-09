@@ -81,6 +81,7 @@ class GridCloset extends StatelessWidget {
                     padding: EdgeInsets.zero, 
                     icon: const Icon(
                       Icons.delete_outline,
+                      size: 16,
                     )
                   )
                 )
