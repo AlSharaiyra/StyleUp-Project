@@ -31,7 +31,7 @@ final refreshToken=AuthApiServices().refreshToken;
       UploadOutfitParams params, BuildContext context) async {
     try {
       final response =
-          await api.post(registerUrl, params.toFormData(), params.toHeader());
+          await api.post(updateOutfitUrl, params.toFormData(), params.toHeader());
       log('Register data: ${response.data}');
 
       if (_isSuccessful(response)) {
@@ -71,7 +71,7 @@ final refreshToken=AuthApiServices().refreshToken;
   Future<Either<String, List<GetWarddropItems>>> getOutfits(
       GetOutfitParams params, BuildContext context) async {
     try {
-      final response = await api.get(fetchUserUrl, params.toHeader());
+      final response = await api.get(getOutfitUrl, params.toHeader());
 
       if (_isSuccessful(response)) {
         final List<GetWarddropItems> items = (response.data as List)

@@ -9,9 +9,11 @@ class GridCloset extends StatelessWidget {
   Widget build(BuildContext context) {
     final double spacing = MediaQuery.of(context).size.height * 0.015;
     final double padding = MediaQuery.of(context).size.width * 0.02;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return GridView.builder(
-      shrinkWrap: true,
-      //physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        //physics: const NeverScrollableScrollPhysics(),
         itemCount: 8,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -39,7 +41,7 @@ class GridCloset extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: spacing*0.4,
+                        height: spacing * 0.4,
                       ),
                       Expanded(
                         child: ClipRRect(
@@ -51,7 +53,7 @@ class GridCloset extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: spacing*0.4,
+                        height: spacing * 0.4,
                       ),
                       Container(
                         width: double.infinity,
@@ -65,25 +67,25 @@ class GridCloset extends StatelessWidget {
                         ),
                         child: Text(
                           'Black summer T-shirt',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: ColorsTheme.black,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: ColorsTheme.black,
+                                  ),
                         ),
                       )
                     ],
                   ),
                 ),
                 Positioned(
-                  top: 6,
-                  left: 6,
-                  child: IconButton(
-                    onPressed: (){},
-                    padding: EdgeInsets.zero, 
-                    icon: const Icon(
-                      Icons.delete_outline,
-                    )
-                  )
-                )
+                    top: screenHeight * 0, // 2% from top
+                    left: screenWidth *
+                        -0.02, // -2% from left (for slight offset)
+                    child: IconButton(
+                        onPressed: () {},
+                        padding: EdgeInsets.zero,
+                        icon: const Icon(
+                          Icons.delete_outline,
+                        )))
               ],
             ),
           );

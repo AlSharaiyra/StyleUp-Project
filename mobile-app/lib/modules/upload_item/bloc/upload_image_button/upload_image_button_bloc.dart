@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/core/config/secure_token_storage.dart';
 import 'package:style_up/core/constant/error_codes.dart';
