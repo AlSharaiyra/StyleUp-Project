@@ -24,6 +24,7 @@ import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_bloc.dart';
+import 'package:style_up/modules/outfits/bloc/delete_item_button/delete_item_button_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
 import 'package:style_up/modules/upload_item/bloc/image_bloc/image_bloc.dart';
@@ -59,8 +60,11 @@ class BlocUtils extends StatelessWidget {
         BlocProvider(
           create: (context) => PageBloc(),
         ),
-               BlocProvider(
+        BlocProvider(
           create: (context) => UploadImageButtonBloc(),
+        ),
+        BlocProvider(
+          create: (context) => DeleteItemButtonBloc(),
         ),
         BlocProvider(
           create: (context) => LoginFormBloc(),
@@ -101,22 +105,11 @@ class BlocUtils extends StatelessWidget {
         BlocProvider(
           create: (context) => LanguageBloc(),
         ),
-        BlocProvider(
-          create: (context) => NavigationBloc()
-        ),
-        
-        BlocProvider(
-          create: (context) => EditProfileButtonBloc()
-        ),
-        BlocProvider(
-          create: (context) => EditProfileFormBloc()
-        ),
-        BlocProvider(
-          create: (context) => FilterBloc()
-        ),
-        BlocProvider(
-          create: (context) => ImageBloc()
-        ),
+        BlocProvider(create: (context) => NavigationBloc()),
+        BlocProvider(create: (context) => EditProfileButtonBloc()),
+        BlocProvider(create: (context) => EditProfileFormBloc()),
+        BlocProvider(create: (context) => FilterBloc()),
+        BlocProvider(create: (context) => ImageBloc()),
       ],
       child: const MaterialAppUtils(),
     );
