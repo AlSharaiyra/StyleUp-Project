@@ -18,12 +18,15 @@
 	<string>style_up</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+
+	<!-- ✅ Replaced version info -->
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

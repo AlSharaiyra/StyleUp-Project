@@ -1,4 +1,4 @@
-//
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,12 +7,12 @@ import 'package:style_up/core/constant/icons.dart';
 import 'package:style_up/core/theme/colors.dart';
 import 'package:style_up/core/widget/textfield/textdield.dart';
 import 'package:style_up/l10n/app_localizations.dart';
-import 'package:style_up/upload_item/bloc/image_bloc/image_bloc.dart';
-import 'package:style_up/upload_item/bloc/image_bloc/image_event.dart';
-import 'package:style_up/upload_item/bloc/image_bloc/image_state.dart';
-import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_bloc.dart';
-import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_event.dart';
-import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_state.dart';
+import 'package:style_up/modules/upload_item/bloc/image_bloc/image_bloc.dart';
+import 'package:style_up/modules/upload_item/bloc/image_bloc/image_event.dart';
+import 'package:style_up/modules/upload_item/bloc/image_bloc/image_state.dart';
+import 'package:style_up/modules/upload_item/bloc/upload_image_button/upload_image_button_bloc.dart';
+import 'package:style_up/modules/upload_item/bloc/upload_image_button/upload_image_button_event.dart';
+import 'package:style_up/modules/upload_item/bloc/upload_image_button/upload_image_button_state.dart';
 
 class UploadItem extends StatelessWidget {
   const UploadItem({super.key});

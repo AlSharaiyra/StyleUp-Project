@@ -26,8 +26,8 @@ import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
-import 'package:style_up/upload_item/bloc/image_bloc/image_bloc.dart';
-import 'package:style_up/upload_item/bloc/upload_image_button/upload_image_button_bloc.dart';
+import 'package:style_up/modules/upload_item/bloc/image_bloc/image_bloc.dart';
+import 'package:style_up/modules/upload_item/bloc/upload_image_button/upload_image_button_bloc.dart';
 
 import '../../modules/bottom_bar/bloc/navigationbar/navigation_bloc.dart';
 
