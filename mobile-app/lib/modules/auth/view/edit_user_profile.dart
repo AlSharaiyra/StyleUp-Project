@@ -64,9 +64,7 @@ class EditUserProfile extends StatelessWidget {
                     BlocConsumer<EditProfileButtonBloc, EditProfileButtonState>(
                         listener: (context, state) {
                   if (state is OnSuccess) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('EditProfile successful!')),
-                    );
+                
                   } else if (state is OnFailed) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(state.errorMessage)),

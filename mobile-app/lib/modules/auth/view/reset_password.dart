@@ -61,10 +61,8 @@ final String verificationToken;
                       ResetPasswordButtonState>(listener: (context, state) {
                     if (state is OnSuccess) {
                       // Navigate to the next screen on success
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Login successful!')),
-                      );
-                      context.goNamed(Routes.otp);
+             
+                      context.push(Routes.login);
                     } else if (state is OnFailed) {
                       // Show error message on failure
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -82,6 +80,8 @@ final String verificationToken;
                           context
                               .read<ResetPasswordButtonBloc>()
                               .add(ResetPasswordButtonPressed(
+                                email: email,
+                                verificationToken: verificationToken,
                                 password: passwordController.text,
                                 confirmPassword: confirmPasswordController.text,
                               ));

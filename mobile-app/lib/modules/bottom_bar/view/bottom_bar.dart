@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/theme/colors.dart';
-import '../bloc/navigationbar/navigation_controller.dart';
+import '../bloc/navigationbar/navigation_bloc.dart';
 import '../bloc/navigationbar/navigation_event.dart';
 import '../bloc/navigationbar/navigation_state.dart';
 import '../config/pages.dart';

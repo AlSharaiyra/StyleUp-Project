@@ -81,7 +81,12 @@
   "edit_profile": "تعديل الملف الشخصي",
   "user_profile": "الملف الشخصي",
   "age": "العمر",
-  
+  "uploadYourItem": "حمّل منتجك",
+  "imageSelected": "تم اختيار الصورة!",
+  "noImageSelected": "لم يتم اختيار صورة بعد",
+  "takePhoto": "التقط صورة",
+  "chooseFromGallery": "اختر من المعرض",
+  "description": "الوصف",
   "filter": "فلتر",
   "type": "النوع",
   "season": "الموسم",

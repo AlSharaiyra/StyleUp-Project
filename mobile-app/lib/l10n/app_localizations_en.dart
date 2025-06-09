@@ -231,6 +231,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get footwear => 'Footwear';
 
   @override
+  String get uploadYourItem => 'Upload Your Item';
+
+  @override
+  String get imageSelected => 'Image selected!';
+
+  @override
+  String get noImageSelected => 'No image selected yet';
+
+  @override
+  String get takePhoto => 'Take a Photo';
+
+  @override
+  String get chooseFromGallery => 'Choose from Gallery';
+
+  @override
+  String get description => 'Description';
+
+  @override
   String get winter => 'Winter';
 
   @override

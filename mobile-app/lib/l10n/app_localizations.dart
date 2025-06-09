@@ -539,6 +539,42 @@ abstract class AppLocalizations {
   /// **'Footwear'**
   String get footwear;
 
+  /// No description provided for @uploadYourItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Your Item'**
+  String get uploadYourItem;
+
+  /// No description provided for @imageSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Image selected!'**
+  String get imageSelected;
+
+  /// No description provided for @noImageSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'No image selected yet'**
+  String get noImageSelected;
+
+  /// No description provided for @takePhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a Photo'**
+  String get takePhoto;
+
+  /// No description provided for @chooseFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from Gallery'**
+  String get chooseFromGallery;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
   /// No description provided for @winter.
   ///
   /// In en, this message translates to:

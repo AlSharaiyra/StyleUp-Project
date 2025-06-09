@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/core/theme/colors.dart';
-import 'package:style_up/modules/auth/bloc/otp/pin_code_controller.dart';
+import 'package:style_up/modules/auth/bloc/otp/pin_code_bloc.dart';
 import 'package:style_up/modules/auth/bloc/otp/pin_code_event.dart';
 import 'package:style_up/modules/auth/bloc/otp/pin_code_state.dart';
 import 'dart:developer' as developer;
@@ -23,7 +23,7 @@ class PinCodeTextField extends StatelessWidget {
       textDirection: Localizations.localeOf(context).languageCode == 'en'
           ? TextDirection.ltr
           : TextDirection.ltr,
-      child: BlocBuilder<PinCodeController, PinCodeState>(
+      child: BlocBuilder<PinCodeBloc, PinCodeState>(
         builder: (BuildContext context, PinCodeState pinCodes) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -65,10 +65,11 @@ class PinCodeTextField extends StatelessWidget {
 
                       if (index < 3) {
                         Future.delayed(const Duration(milliseconds: 100), () {
-                          if(context.mounted){
-                          FocusScope.of(context)
-                              .requestFocus(_focusNodes[index + 1]);
-                       } });
+                          if (context.mounted) {
+                            FocusScope.of(context)
+                                .requestFocus(_focusNodes[index + 1]);
+                          }
+                        });
                       }
                     }
                     if (_controllers[0].text != '' &&
@@ -82,9 +83,7 @@ class PinCodeTextField extends StatelessWidget {
                       FocusScope.of(context).unfocus();
                       FocusManager.instance.primaryFocus?.unfocus();
 
-                      context
-                          .read<PinCodeController>()
-                          .add(PinChanged(pin: fullPin));
+                      context.read<PinCodeBloc>().add(PinChanged(pin: fullPin));
                     }
                     // Notify the Bloc of the pin change
                   },

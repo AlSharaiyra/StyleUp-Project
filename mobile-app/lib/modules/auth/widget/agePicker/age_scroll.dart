@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/core/theme/colors.dart';
-import 'package:style_up/modules/auth/bloc/age_picker/age_picker_controller.dart';
+import 'package:style_up/modules/auth/bloc/age_picker/age_picker_bloc.dart';
 import 'package:style_up/modules/auth/bloc/age_picker/age_picker_event.dart';
 
 class AgeScroll extends StatelessWidget {
@@ -21,7 +21,7 @@ class AgeScroll extends StatelessWidget {
 
     const int childNumber = 90;
 
-    return BlocBuilder<AgePickerController, int>(
+    return BlocBuilder<AgePickerBloc, int>(
         builder: (BuildContext context, int selectedAge) {
       return SizedBox(
         height: height,
@@ -47,7 +47,7 @@ class AgeScroll extends StatelessWidget {
                 perspective: 0.002,
                 diameterRatio: 2.5,
                 onSelectedItemChanged: (int index) {
-                  context.read<AgePickerController>().add(AgeChange(index + 1));
+                  context.read<AgePickerBloc>().add(AgeChange(index + 1));
                 },
                 childDelegate: ListWheelChildBuilderDelegate(
                   builder: (BuildContext context, int index) {

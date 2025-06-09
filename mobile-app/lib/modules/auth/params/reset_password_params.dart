@@ -13,9 +13,9 @@ class ResetPasswordParams {
   Map<String, dynamic> toJson() {
     return {
       'email': email,
-      'password': password,
+      'newPassword': password,
       'verificationToken': verificationToken,
-      'confirmPassword': confirmPassword,
+      'confirmNewPassword': confirmPassword,
     };
   }
 }

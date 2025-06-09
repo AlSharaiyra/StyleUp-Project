@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:style_up/modules/auth/bloc/secure_eye_confirm/secure_eye_controller.dart';
-import 'package:style_up/modules/auth/bloc/secure_eye_confirm/secure_eye_event.dart';
-import 'package:style_up/modules/auth/bloc/secure_eye_confirm/secure_eye_state.dart';
+import 'package:style_up/modules/auth/bloc/secure_eye_confirm/secure_eye_confirm_bloc.dart';
+import 'package:style_up/modules/auth/bloc/secure_eye_confirm/secure_eye_confirm_event.dart';
+import 'package:style_up/modules/auth/bloc/secure_eye_confirm/secure_eye_confirm_state.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_state.dart';
@@ -20,7 +20,7 @@ final TextEditingController controller;
   Widget build(BuildContext context) {
     developer.log('send data confirm password to provider',
         name: 'widget confirm password');
-    return BlocBuilder<SecureConfirmEyeController, SecureConfirmEyeState>(
+    return BlocBuilder<SecureEyeConfirmBloc, SecureConfirmEyeState>(
         builder: (BuildContext context, SecureConfirmEyeState eyeState) {
       return  BlocBuilder<RegisterFieldsFormBloc, RegisterFormState>(
         builder: (BuildContext context, RegisterFormState formState) {
@@ -36,11 +36,11 @@ final TextEditingController controller;
                 onPressed: () {
                   if (eyeState.obscurePass == true) {
                     developer.log('${eyeState.obscurePass}in EYE o n enable');
-                    context.read<SecureConfirmEyeController>().add(ConfirmEyeOnEnable());
+                    context.read<SecureEyeConfirmBloc>().add(ConfirmEyeOnEnable());
                   } else {
                     developer.log('${eyeState.obscurePass}in EYE dis enable');
           
-                    context.read<SecureConfirmEyeController>().add(ConfirmEyeOnDisable());
+                    context.read<SecureEyeConfirmBloc>().add(ConfirmEyeOnDisable());
                   }
                 },
                 icon: Icon(eyeState.icon)),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/core/enum/filter.dart';
 import 'package:style_up/core/widget/gestureDetector/gesturedetector.dart';
-import 'package:style_up/modules/outfits/controller/bloc/filter/expaned_filter_bloc.dart';
-import 'package:style_up/modules/outfits/controller/bloc/filter/expaned_filter_event.dart';
-import 'package:style_up/modules/outfits/controller/bloc/filter/expaned_filter_state.dart';
+import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_bloc.dart';
+import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_event.dart';
+import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_state.dart';
 
 import '../../../core/theme/colors.dart';
 

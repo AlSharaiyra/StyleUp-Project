@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:style_up/modules/outfits/controller/bloc/filter/expaned_filter_event.dart';
-import 'package:style_up/modules/outfits/controller/bloc/filter/expaned_filter_state.dart';
+import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_event.dart';
+import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_state.dart';
 
 class FilterBloc extends Bloc<FilterEvent, FilterState> {
   FilterBloc()

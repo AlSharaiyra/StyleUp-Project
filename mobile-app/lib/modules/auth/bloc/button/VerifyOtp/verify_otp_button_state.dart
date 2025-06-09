@@ -8,7 +8,10 @@ sealed class VerifyOtpButtonState extends Equatable {
 }
 class OnInit extends VerifyOtpButtonState {}
 
-class OnSuccess extends VerifyOtpButtonState {}
+class OnSuccess extends VerifyOtpButtonState {
+  final String? verificationToken;
+  const OnSuccess({this.verificationToken});
+}
 
 class OnFailed extends VerifyOtpButtonState {
   final String errorMessage;

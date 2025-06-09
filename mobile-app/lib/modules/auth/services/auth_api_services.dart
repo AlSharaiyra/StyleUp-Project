@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
@@ -132,13 +134,15 @@ class AuthApiServices extends IAuthApi {
   Future<Either<String, RefreshTokenResponse>> refreshToken(
       RefreshTokenParams params) async {
     try {
-      final response = await api.post(refreshTokenUrl, params.toJson(), params.toHeader());
+      final response =
+          await api.post(refreshTokenUrl, params.toJson(), params.toHeader());
 
       if (_isSuccessful(response)) {
         final storage = SecureTokenStorage.instance;
-        await storage.saveAccessToken(response.data.accessToken); // ✅ تحديث الـ AccessToken
-        await storage
-            .saveRefreshToken(response.data.refreshToken); // ✅ تحديث الـ RefreshToken
+        final data = response.data; // this is Map<String, dynamic>
+
+        await storage.saveAccessToken(data['accessToken']); // ✅
+        await storage.saveRefreshToken(data['refreshToken']); // ✅
         return Right(RefreshTokenResponse.fromJson(response.data));
       } else {
         return Left(response.statusMessage ?? 'Token refresh failed');
@@ -216,15 +220,14 @@ class AuthApiServices extends IAuthApi {
   }
 
   @override
-  Future<Either<String, SetAgeAndGenderResponse>> setAgeAndGender(SetAgeAndGenderParams params) async{
-
+  Future<Either<String, SetAgeAndGenderResponse>> setAgeAndGender(
+      SetAgeAndGenderParams params) async {
     try {
-      final response = await api.post(setAgeAndGenderUrl, params.toJson(), {});
+      final response = await api.put(setAgeAndGenderUrl, params.toJson(), params.toHeader());
 
       if (_isSuccessful(response)) {
         return Right(SetAgeAndGenderResponse.fromJson(response.data));
-      }
-      else if (response.statusCode == 401 || response.statusCode == 403) {
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
         log('Unauthorized access. Trying to refresh token...');
         final storage = SecureTokenStorage.instance;
 
@@ -245,8 +248,7 @@ class AuthApiServices extends IAuthApi {
             return await setAgeAndGender(params); // Retry original call
           },
         );
-      } 
-      else {
+      } else {
         return Left(response.statusMessage ?? 'Setting age and gender failed');
       }
     } catch (e) {
@@ -255,9 +257,9 @@ class AuthApiServices extends IAuthApi {
   }
 
   @override
-  Future<Either<String, Map<String, dynamic>>> resetPassword(ResetPasswordParams params)async {
-
-  try {
+  Future<Either<String, Map<String, dynamic>>> resetPassword(
+      ResetPasswordParams params) async {
+    try {
       final response = await api.post(resetPasswordUrl, params.toJson(), {});
 
       if (_isSuccessful(response)) {

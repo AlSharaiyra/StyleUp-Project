@@ -19,11 +19,10 @@ class AppRouter {
   static String? token;
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.bottomBar,
+    initialLocation: Routes.login,
     routes: <GoRoute>[
       buildRoute(Routes.splash, const SplashView()),
       buildRoute(Routes.home, const HomeView()),
-      buildRoute(Routes.resetPassword, ResetPasswordScreen()),
       buildRoute(Routes.login, LoginView()),
       buildRoute(Routes.signup, RegisterView()),
       buildRoute(Routes.editProfile, const EditUserProfile()),
@@ -40,7 +39,23 @@ class AppRouter {
           );
         },
       ),
+   
+      GoRoute(
+        path: Routes.resetPassword,
+        name: Routes.resetPassword,
+        pageBuilder: (context, state) {
+          final email = state.uri.queryParameters['email'] ?? '';
+          final verificationToken =
+              state.uri.queryParameters['verificationToken'] ?? '';
 
+          return _buildTransition(
+              state,
+              ResetPasswordScreen(
+                email: email,
+                verificationToken: verificationToken,
+              ));
+        },
+      ),
       // Dynamic Routes Below (with parameters)
       GoRoute(
         path: Routes.otp,

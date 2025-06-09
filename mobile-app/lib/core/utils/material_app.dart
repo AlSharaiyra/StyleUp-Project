@@ -18,10 +18,6 @@ import 'package:style_up/l10n/l10n.dart';
 import 'package:style_up/l10n/app_localizations.dart';
 
 
-
-
-
-
 /// [MaterialAppUtils]
 /// A stateless widget that wraps the app in a [MaterialApp] with localization support.
 ///

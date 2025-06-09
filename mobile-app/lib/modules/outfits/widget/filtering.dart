@@ -6,9 +6,9 @@ import 'package:style_up/modules/outfits/widget/season_grid.dart';
 import 'package:style_up/modules/outfits/widget/type_grid.dart';
 
 import '../../../core/theme/colors.dart';
-import '../controller/bloc/filter/expaned_filter_bloc.dart';
-import '../controller/bloc/filter/expaned_filter_event.dart';
-import '../controller/bloc/filter/expaned_filter_state.dart';
+import '../bloc/filter/expaned_filter_bloc.dart';
+import '../bloc/filter/expaned_filter_event.dart';
+import '../bloc/filter/expaned_filter_state.dart';
 
 class Filtering extends StatelessWidget {
   const Filtering({super.key});

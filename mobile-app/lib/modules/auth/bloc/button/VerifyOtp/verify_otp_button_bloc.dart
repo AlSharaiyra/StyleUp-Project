@@ -25,7 +25,9 @@ class VerifyOtpButtonBloc
 
         emit(OnFailed(errorMessage: errorMessage));
       }, (VerifyOtpResponse r) {
-        emit(OnSuccess());
+        emit(OnSuccess(
+          verificationToken: r.verificationToken
+        ));
       });
     } catch (e) {
       emit(OnFailed(errorMessage: e.toString()));

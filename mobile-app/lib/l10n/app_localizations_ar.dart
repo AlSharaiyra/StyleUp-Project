@@ -231,6 +231,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get footwear => 'أحذية';
 
   @override
+  String get uploadYourItem => 'حمّل منتجك';
+
+  @override
+  String get imageSelected => 'تم اختيار الصورة!';
+
+  @override
+  String get noImageSelected => 'لم يتم اختيار صورة بعد';
+
+  @override
+  String get takePhoto => 'التقط صورة';
+
+  @override
+  String get chooseFromGallery => 'اختر من المعرض';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
   String get winter => 'الشتاء';
 
   @override

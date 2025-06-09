@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:style_up/core/routes/routes.dart';
-import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_controller.dart';
+import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_bloc.dart';
 import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_event.dart';
 import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/login/login_button_event.dart';
@@ -105,10 +105,8 @@ class LoginView extends StatelessWidget {
                         listener: (context, state) {
                       if (state is OnSuccess) {
                         // Navigate to the next screen on success
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Login successful!')),
-                        );
-                        context.push(Routes.home);
+           
+                        context.push(Routes.ageSelection);
                       } else if (state is OnFailed) {
                         // Show error message on failure
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -138,7 +136,7 @@ class LoginView extends StatelessWidget {
                   ),
                   CraeteAccountButton(
                     onPressed: () {
-                      context.read<SecureEyeController>().add(EyeOnDisable());
+                      context.read<SecureEyeBloc>().add(EyeOnDisable());
                       context.push(Routes.signup);
                     },
                     isRegisterPage: false,

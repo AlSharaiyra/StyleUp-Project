@@ -10,7 +10,7 @@ import 'package:style_up/core/routes/routes.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_event.dart';
 import 'package:style_up/modules/auth/bloc/button/register/register_button_state.dart';
-import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_controller.dart';
+import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_bloc.dart';
 import 'package:style_up/modules/auth/bloc/secure_eye/secure_eye_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/register/form_event.dart';
@@ -42,7 +42,7 @@ class RegisterView extends StatelessWidget {
     final double spacing = MediaQuery.of(context).size.height * .01;
     return PopScope(
       onPopInvokedWithResult: (bool didPop, d) {
-        context.read<SecureEyeController>().add(EyeOnDisable());
+        context.read<SecureEyeBloc>().add(EyeOnDisable());
       },
       child: Scaffold(
         body: SingleChildScrollView(

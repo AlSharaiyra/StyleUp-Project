@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:style_up/core/enum/gender.dart';
-import 'package:style_up/modules/auth/bloc/age_picker/age_picker_controller.dart';
+import 'package:style_up/core/routes/routes.dart';
+import 'package:style_up/modules/auth/bloc/age_picker/age_picker_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/ageAndGender/age_gender_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/ageAndGender/age_gender_button_state.dart';
 import 'package:style_up/modules/auth/bloc/button/ageAndGender/age_gendet_button_event.dart';
@@ -14,9 +16,9 @@ import 'package:style_up/modules/auth/view/gender.dart';
 import 'package:style_up/l10n/app_localizations.dart';
 
 
-import '../bloc/dot_indicator/dot_indicator_bloc.dart';
-import '../bloc/dot_indicator/dot_indicator_event.dart';
-import '../bloc/dot_indicator/dot_indicator_state.dart';
+import '../bloc/page/page_bloc.dart';
+import '../bloc/page/page_event.dart';
+import '../bloc/page/page_state.dart';
 import 'age_picker.dart';
 import '../widget/dotIndicator/dot_indicator.dart';
 class AgeAndGenderSelectionSView extends StatelessWidget {
@@ -68,15 +70,14 @@ class AgeAndGenderSelectionSView extends StatelessWidget {
                     ),
                     BlocBuilder<ChangeGenderBloc, ChangeGenderState>(
                       builder: (BuildContext context, ChangeGenderState genderstate) {
-                        return BlocBuilder<AgePickerController, int>(
+                        return BlocBuilder<AgePickerBloc, int>(
                           builder: (BuildContext context, int age) {
                             return BlocConsumer<AgeGenderButtonBloc, AgeGenderButtonState>(
                               listener: (context, buttonState) {
                                 if (buttonState is OnSuccess) {
                                   // Navigate to the next screen on success
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Login successful!')),
-                                  );
+                          
+                                  context.push(Routes.bottomBar);
                                 } else if (buttonState is OnFailed) {
                                   // Show error message on failure
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -108,8 +109,8 @@ class AgeAndGenderSelectionSView extends StatelessWidget {
                                         AgeGenderButtonPressed(
                                           age: age,
                                           gender: genderstate is MaleState
-                                              ? GenderEnum.male.name
-                                              : GenderEnum.female.name,
+                                              ? GenderEnum.male.name.toUpperCase()
+                                              : GenderEnum.female.name.toUpperCase(),
                                         ),
                                       );
                                     }

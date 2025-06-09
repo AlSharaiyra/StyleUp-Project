@@ -12,7 +12,7 @@ import 'package:style_up/modules/auth/bloc/button/VerifyOtp/verify_otp_button_bl
 import 'package:style_up/modules/auth/bloc/button/VerifyOtp/verify_otp_button_event.dart';
 import 'package:style_up/modules/auth/bloc/button/VerifyOtp/verify_otp_button_state.dart';
 
-import 'package:style_up/modules/auth/bloc/otp/pin_code_controller.dart';
+import 'package:style_up/modules/auth/bloc/otp/pin_code_bloc.dart';
 import 'package:style_up/modules/auth/bloc/otp/pin_code_state.dart';
 import 'package:style_up/modules/auth/params/verify_otp_params.dart';
 import 'package:style_up/modules/auth/widget/app_bar.dart';
@@ -51,7 +51,7 @@ class OtpView extends StatelessWidget {
                   email: email,
                 ),
                 SizedBox(height: spacing * 2),
-                BlocConsumer<PinCodeController, PinCodeState>(
+                BlocConsumer<PinCodeBloc, PinCodeState>(
                   // ✅ Fixed
                   listener: (BuildContext context, PinCodeState state) {
                     if (state is PinCompleted) {
@@ -85,7 +85,7 @@ class OtpView extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: spacing * 2),
-                 DidntReciveOtp(
+                DidntReciveOtp(
                   email: email,
                   otpPurpose: getOtpPurpose(
                     (isFromForgetPassword ?? false)
@@ -94,7 +94,7 @@ class OtpView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.35),
-                BlocListener<PinCodeController, PinCodeState>(
+                BlocListener<PinCodeBloc, PinCodeState>(
                     listener: (context, state) {
                       if (state is PinCompleted) {
                         // Trigger OtpButtonBloc when the form is valid
@@ -105,7 +105,6 @@ class OtpView extends StatelessWidget {
                                 params: VerifyOtpParams(
                                     otp: state.pin,
                                     email: email,
-                                    
                                     otpPurpose: getOtpPurpose(
                                       (isFromForgetPassword ?? false)
                                           ? OtpPurpose.RESET_PASSWORD
@@ -118,16 +117,15 @@ class OtpView extends StatelessWidget {
                             listener: (context, state) {
                       if (state is OnSuccess) {
                         // Navigate to the next screen on success
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Otp successful!')),
-                        );
+                     
                         FocusScope.of(context).unfocus();
                         FocusManager.instance.primaryFocus?.unfocus();
                         if (isFromForgetPassword == true) {
-                          context.push(Routes.resetPassword);
+                          context.push(
+                            '${Routes.resetPassword}?email=$email&verificationToken=${state.verificationToken}',
+                          );
                         } else {
-                          context.push(Routes
-                              .ageSelection); // This will trigger the custom transition
+                          context.push(Routes.login);
                         }
                         // This will trigger the custom transition
                       } else if (state is OnFailed) {
@@ -143,7 +141,7 @@ class OtpView extends StatelessWidget {
                       return VerifyButton(
                         onPressed: () {
                           final pin =
-                              context.read<PinCodeController>().state.pin;
+                              context.read<PinCodeBloc>().state.pin;
 
                           context
                               .read<VerifyOtpButtonBloc>()
