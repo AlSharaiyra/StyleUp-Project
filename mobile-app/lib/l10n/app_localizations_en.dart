@@ -270,6 +270,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gender => 'Gender';
 
   @override
+  String get imageDeleteError => 'Error deleting image';
+
+  @override
+  String get actionNotAllowed => 'Action not allowed';
+
+  @override
+  String get itemNotFound => 'Item not found';
+
+  @override
   String get cancel => 'Cancel';
 
   @override

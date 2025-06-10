@@ -77,7 +77,7 @@ class AgeAndGenderSelectionSView extends StatelessWidget {
                                 if (buttonState is OnSuccess) {
                                   // Navigate to the next screen on success
                           
-                                  context.push(Routes.bottomBar);
+                                  context.pushReplacement(Routes.bottomBar);
                                 } else if (buttonState is OnFailed) {
                                   // Show error message on failure
                                   ScaffoldMessenger.of(context).showSnackBar(

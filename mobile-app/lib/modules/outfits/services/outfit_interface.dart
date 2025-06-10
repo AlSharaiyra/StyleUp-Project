@@ -9,6 +9,6 @@ import 'package:style_up/modules/outfits/params/upload_outfit.dart';
 abstract class IOutfitService {
   Future<Either<String,List<GetWarddropItems>>> getOutfits(GetOutfitParams params,BuildContext context);
 
-  Future<void> removeOutfitById(  DeleteOutfitParams params, BuildContext context);
+  Future<Either<String,String>> removeOutfitById(  DeleteOutfitParams params, BuildContext context);
   Future<Either<String,UploadWarddropItem>> addOutfit(UploadOutfitParams params, BuildContext context);
 }

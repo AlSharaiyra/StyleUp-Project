@@ -34,8 +34,8 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final double paddingHorizontal = MediaQuery.of(context).size.width * .10;
     final double paddingVertical = MediaQuery.of(context).size.height * .05;
-    final double imageWidth = MediaQuery.of(context).size.width * 0.5; 
-    final double imageHeight = MediaQuery.of(context).size.height * 0.15; 
+    final double imageWidth = MediaQuery.of(context).size.width * 0.5;
+    final double imageHeight = MediaQuery.of(context).size.height * 0.15;
     return PopScope(
       canPop: false,
       child: Scaffold(
@@ -88,25 +88,27 @@ class LoginView extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.06,
                   ),
                   BlocListener<LoginFormBloc, LoginFormState>(
-                  listener: (context, state) {
-                    if (state is LoginFormValid) {
-                      // Trigger LoginButtonBloc when the form is valid
-                      context.read<LoginButtonBloc>().add(
-                        LoginButtonPressed(
-                          email: emailController.text,
-                          context: context,
-                          password: passwordController.text,
-                        ),
-                      );
-                    }
-                  },
-                  
+                    listener: (context, state) {
+                      if (state is LoginFormValid) {
+                        // Trigger LoginButtonBloc when the form is valid
+                        context.read<LoginButtonBloc>().add(
+                              LoginButtonPressed(
+                                email: emailController.text,
+                                context: context,
+                                password: passwordController.text,
+                              ),
+                            );
+                      }
+                    },
                     child: BlocConsumer<LoginButtonBloc, LoginButtonState>(
                         listener: (context, state) {
                       if (state is OnSuccess) {
                         // Navigate to the next screen on success
-           
-                        context.push(Routes.ageSelection);
+                        if (state.loginResponse.firstLogin) {
+                          context.pushReplacement(Routes.ageSelection);
+                        } else {
+                          context.pushReplacement(Routes.bottomBar);
+                        }
                       } else if (state is OnFailed) {
                         // Show error message on failure
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -117,14 +119,13 @@ class LoginView extends StatelessWidget {
                       if (state is OnLoading) {
                         return const CircularProgressIndicator(); // Show loading indicator
                       }
-                    
+
                       return LoginButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            context.read<LoginFormBloc>().add(LoginFormSubmitted(
-                                emailController.text, passwordController.text,context));
-                              
-                    
+                            context.read<LoginFormBloc>().add(
+                                LoginFormSubmitted(emailController.text,
+                                    passwordController.text, context));
                           }
                         },
                         isRegisterPage: false,

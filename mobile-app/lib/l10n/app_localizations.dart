@@ -617,6 +617,24 @@ abstract class AppLocalizations {
   /// **'Gender'**
   String get gender;
 
+  /// No description provided for @imageDeleteError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error deleting image'**
+  String get imageDeleteError;
+
+  /// No description provided for @actionNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Action not allowed'**
+  String get actionNotAllowed;
+
+  /// No description provided for @itemNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Item not found'**
+  String get itemNotFound;
+
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:

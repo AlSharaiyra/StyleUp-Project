@@ -18,6 +18,9 @@ class ErrorCodes {
   static const String EMPTY_WARDROBE = 'EMPTY_WARDROBE';
   static const String IMG_UPLOAD_ERROR = 'IMG_UPLOAD_ERROR';
   static const String FEATURE_EXTRACTION_FAILED = 'FEATURE_EXTRACTION_FAILED';
+  static const String ITEM_NOT_FOUND = 'ITEM_NOT_FOUND';
+  static const String ACTION_NOT_ALLOWED = 'ACTION_NOT_ALLOWED';
+  static const String IMG_DELETE_ERROR = 'IMG_DELETE_ERROR';
 }
 
 String getErrorMessage(BuildContext context, String errorCode) {
@@ -36,7 +39,10 @@ String getErrorMessage(BuildContext context, String errorCode) {
     'V_TOKEN_NOT_FOUND': loc.vTokenNotFound,
     'PASSWORD_MISMATCH': loc.passMismatch,
     'REQUEST_TIMEOUT': loc.requestTimeout,
-  
+    'IMG_DELETE_ERROR':loc.imageDeleteError,
+    'ACTION_NOT_ALLOWED':loc.actionNotAllowed,
+    'ITEM_NOT_FOUND': loc.itemNotFound,
+
   };
 
   // Fallback for unknown error codes

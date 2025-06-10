@@ -1,7 +1,7 @@
-
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 class UploadOutfitParams {
   final String accessToken;
@@ -22,7 +22,11 @@ class UploadOutfitParams {
   Future<FormData> toFormData() async {
     return FormData.fromMap({
       if (description != null) 'description': description,
-      'file': image,
+      'file': await MultipartFile.fromFile(
+        image!.path,
+        filename: image!.path.split('/').last,
+      ),
+      'withModel':kDebugMode ? false : true
     });
   }
 }

@@ -22,10 +22,10 @@ class OutfitController {
     return await _outfitService.getOutfits(params,context);
   }
 
-  Future<void> removeOutfitById(DeleteOutfitParams params,BuildContext  context) async {
+  Future<Either<String,String>> removeOutfitById(DeleteOutfitParams params,BuildContext  context) async {
     return await _outfitService.removeOutfitById(params,context);
   }
-  Future<Either<String,UploadWarddropItem> >addOutfit(UploadOutfitParams params,BuildContext context) async {
+  Future<Either<String,UploadWarddropItem> >  addOutfit(UploadOutfitParams params,BuildContext context) async {
     return await _outfitService.addOutfit(params,context);
   }
 }

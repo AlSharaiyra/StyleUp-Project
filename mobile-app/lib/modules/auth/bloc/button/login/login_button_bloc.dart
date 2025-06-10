@@ -33,7 +33,7 @@ class LoginButtonBloc extends Bloc<LoginButtonEvent, LoginButtonState> {
           secureTokenStorage.saveAccessToken(r.accessToken);
           secureTokenStorage.saveRefreshToken(r.refreshToken);
 
-          emit(OnSuccess());
+          emit(OnSuccess(loginResponse: r));
         },
       );
     } catch (e) {

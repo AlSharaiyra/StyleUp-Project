@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,13 +14,13 @@ import 'package:style_up/modules/upload_item/bloc/upload_image_button/upload_ima
 import 'package:style_up/modules/upload_item/bloc/upload_image_button/upload_image_button_state.dart';
 
 class UploadItem extends StatelessWidget {
-  const UploadItem({super.key});
+  UploadItem({super.key});
+  final TextEditingController descController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final double spacing = MediaQuery.of(context).size.height * 0.05;
     final loc = AppLocalizations.of(context)!;
-    final TextEditingController descController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: true, // Important to allow content to move
 
@@ -158,6 +157,8 @@ class UploadItem extends StatelessWidget {
                             final imageState = context.read<ImageBloc>().state;
 
                             if (imageState is ImageSelected) {
+                              print('FormData: ${descController.text}');
+                              print('File path: ${imageState.imagePath.path}');
                               context.read<UploadImageButtonBloc>().add(
                                     UploadButtonPressed(
                                       context: context,
