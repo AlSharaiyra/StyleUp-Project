@@ -15,10 +15,13 @@ public class FastApiClient {
     @Value("${app.fast-api.key}")
     private String fastApiKey;
 
+    @Value("${app.fast-api.url}")
+    private String url;
+
     private final RestTemplate restTemplate = new RestTemplate();
 
     public FeaturesModel sendFileToFastApi(byte[] fileBytes) {
-        String url = "http://localhost:8000/predict/file";
+//        String url = "http://localhost:8000/predict/file";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -36,7 +39,7 @@ public class FastApiClient {
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 
-        ResponseEntity<FeaturesModel> response = restTemplate.postForEntity(url, requestEntity, FeaturesModel.class);
+        ResponseEntity<FeaturesModel> response = restTemplate.postForEntity(url + "/predict/file", requestEntity, FeaturesModel.class);
 
         return response.getBody();
     }
