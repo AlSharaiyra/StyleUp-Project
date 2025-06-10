@@ -53,7 +53,7 @@ public class ModelMapper {
 
         itemModel.setId(item.getId());
         itemModel.setDescription(item.getDescription());
-        itemModel.setUrl(item.getUrl());
+        itemModel.setObjectKey(item.getObjectKey());
         itemModel.setGender(item.getGender());
         itemModel.setMasterCategory(item.getMasterCategory());
         itemModel.setSubCategory(item.getSubCategory());
@@ -71,13 +71,13 @@ public class ModelMapper {
      * @param item the item entity
      * @return ItemModel the item representation
      */
-    public ItemResponse toItemResponse(final Item item) {
+    public ItemResponse toItemResponse(final Item item, final String url) {
 
         ItemResponse itemResponse = new ItemResponse();
 
         itemResponse.setItemId(item.getId());
         itemResponse.setDescription(item.getDescription());
-        itemResponse.setUrl(item.getUrl());
+        itemResponse.setUrl(url);
 
         return itemResponse;
     }

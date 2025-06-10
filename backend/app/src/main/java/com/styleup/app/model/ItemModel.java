@@ -1,9 +1,6 @@
 package com.styleup.app.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.styleup.app.model.enums.*;
-import com.styleup.app.repository.entity.Wardrobe;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.UUID;
@@ -23,7 +20,7 @@ public class ItemModel {
 
     private String description;
 
-    private String url;
+    private String objectKey;
 
     private String gender;
 

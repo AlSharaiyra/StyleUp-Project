@@ -60,7 +60,7 @@ public class User {
     private LocalDateTime lastLogin;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private Wardrobe wardrobe;
+    private Closet closet;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

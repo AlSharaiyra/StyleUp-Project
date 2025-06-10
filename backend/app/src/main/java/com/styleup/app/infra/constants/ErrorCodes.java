@@ -13,12 +13,13 @@ public class ErrorCodes {
     public static final String V_TOKEN_NOT_FOUND = "V_TOKEN_NOT_FOUND";
     public static final String PASSWORD_MISMATCH = "PASSWORD_MISMATCH";
     public static final String REQUEST_TIMEOUT = "REQUEST_TIMEOUT";
-    public static final String EMPTY_WARDROBE = "EMPTY_WARDROBE";
+    public static final String EMPTY_CLOSET = "EMPTY_CLOSET";
     public static final String IMG_UPLOAD_ERROR = "IMG_UPLOAD_ERROR";
     public static final String FEATURE_EXTRACTION_FAILED = "FEATURE_EXTRACTION_FAILED";
     public static final String ITEM_NOT_FOUND = "ITEM_NOT_FOUND";
     public static final String ACTION_NOT_ALLOWED = "ACTION_NOT_ALLOWED";
     public static final String IMG_DELETE_ERROR = "IMG_DELETE_ERROR";
+    public static final String ERROR_CREATING_PRESIGNED_URL = "ERROR_CREATING_PRESIGNED_URL";
 
 
 }

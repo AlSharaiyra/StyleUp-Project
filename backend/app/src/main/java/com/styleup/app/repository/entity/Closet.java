@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * User`s Wardrobe entity.
+ * User`s Closet entity.
  *
  * @author Walid Sharaiyra
  * @since 2025
@@ -20,8 +20,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "WARDROBES")
-public class Wardrobe {
+@Table(name = "CLOSETS")
+public class Closet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -29,7 +29,7 @@ public class Wardrobe {
 
     private Integer noOfItems = 0;
 
-    @OneToMany(mappedBy = "wardrobe", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "closet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> items = new ArrayList<>();
 
     @OneToOne

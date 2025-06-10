@@ -1,4 +1,4 @@
-package com.styleup.app.infra.config;
+package com.styleup.app.infra.security;
 
 import com.styleup.app.infra.security.filters.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;

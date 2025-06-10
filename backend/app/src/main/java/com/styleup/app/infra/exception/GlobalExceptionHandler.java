@@ -24,6 +24,12 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(WasabiErrorException.class)
+    public ResponseEntity<Object> handleWasabiErrorException(WasabiErrorException ex, WebRequest request) {
+        log.error("Wasabi error occurred: {}", ex.getMessage());
+        return buildErrorResponse(ex.getMessage(), HttpStatus.SERVICE_UNAVAILABLE, ex.getErrorCode());
+    }
+
     @ExceptionHandler(GenericException.class)
     public ResponseEntity<Object> handleGenericException(GenericException ex, WebRequest request) {
         log.error("An error happened: {}", ex.getMessage());

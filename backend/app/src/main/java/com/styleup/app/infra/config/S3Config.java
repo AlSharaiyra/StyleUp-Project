@@ -8,6 +8,7 @@ import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 import java.net.URI;
 
@@ -31,9 +32,16 @@ public class S3Config {
         return S3Client.builder()
                 .endpointOverride(URI.create(regionEndpoint)) // e.g., eu-central-1
                 .region(Region.of(region)) // Use any AWS-compatible region, Wasabi will still work
-                .credentialsProvider(
-                        StaticCredentialsProvider.create(AwsBasicCredentials.create(key, secret))
-                )
+                .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(key, secret)))
+                .build();
+    }
+
+    @Bean
+    public S3Presigner s3Presigner() {
+        return S3Presigner.builder()
+                .endpointOverride(URI.create(regionEndpoint)) // if set
+                .region(Region.of(region))
+                .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(key, secret)))
                 .build();
     }
 }

@@ -21,7 +21,6 @@ public class FastApiClient {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public FeaturesModel sendFileToFastApi(byte[] fileBytes) {
-//        String url = "http://localhost:8000/predict/file";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);

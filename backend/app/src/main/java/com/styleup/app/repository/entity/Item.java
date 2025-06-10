@@ -1,15 +1,17 @@
 package com.styleup.app.repository.entity;
 
-import com.styleup.app.model.enums.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
+import java.util.Locale;
 import java.util.UUID;
 
 /**
- * User`s Wardrobe Items entity.
+ * User`s closet Items entity.
  *
  * @author Walid Sharaiyra
  * @version 1.0
@@ -28,7 +30,7 @@ public class Item {
 
     private String description;
 
-    private String url;
+    private String objectKey;
 
     private String gender;
 
@@ -49,6 +51,10 @@ public class Item {
     private String usage;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "WARDROBE_ID")
-    private Wardrobe wardrobe;
+    @JoinColumn(name = "CLOSET_ID")
+    private Closet closet;
+
+    @Column(name = "UPLOADED_AT")
+    @CreationTimestamp
+    private LocalDateTime uploadedAt;
 }
