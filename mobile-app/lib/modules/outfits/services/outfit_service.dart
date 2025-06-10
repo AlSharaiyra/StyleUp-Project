@@ -30,8 +30,10 @@ final refreshToken=AuthApiServices().refreshToken;
   Future<Either<String, UploadWarddropItem>> addOutfit(
       UploadOutfitParams params, BuildContext context) async {
     try {
+      log('Registering outfit with params: ${params.toFormData()}');
+      log('${params.image!.path}image path');
       final response =
-          await api.post(updateOutfitUrl, params.toFormData(), params.toHeader());
+          await api.post(uploaItemUrl, await params.toFormData(), params.toHeader());
       log('Register data: ${response.data}');
 
       if (_isSuccessful(response)) {
@@ -110,9 +112,43 @@ final refreshToken=AuthApiServices().refreshToken;
   }
 
   @override
-  Future<void> removeOutfitById(
+  Future<Either<String,String>> removeOutfitById(
       DeleteOutfitParams params, BuildContext context) async {
-    // TODO: implement removeOutfitById
-    throw UnimplementedError();
+      try {
+     final response =
+          await api.delete('$deleteItemUrl/${params.outfitId}',params.toHeader());
+      log('Register data: ${response.data}');
+
+      if (_isSuccessful(response)) {
+        return Right(response.data.toString());
+      } else if (response.statusCode == 401 || response.statusCode == 403) {
+        log('Unauthorized access. Trying to refresh token...');
+        final storage = SecureTokenStorage.instance;
+        final refreshResult = await refreshToken(RefreshTokenParams(
+          refreshToken: await storage.getRefreshToken() ?? '',
+          accessToken: await storage.getAccessToken() ?? '',
+        ));
+
+        return await refreshResult.fold(
+          (l) {
+            SecureTokenStorage.instance
+                .clearTokens(); // Clear tokens on failure
+            log('Failed to refresh token: $l');
+            // Return the error message from the refresh attempt
+            context.push(Routes.login); // Redirect to login page
+            return Left(l);
+          },
+          (r) async {
+            // Optionally update the stored tokens if needed
+            return await removeOutfitById(params, context); // Retry original call
+          },
+        );
+      } else {
+        return Left(response.statusMessage ?? 'Registration failed');
+      }
+    } catch (e) {
+      log(e.toString());
+      return Left(e.toString());
+    }
   }
 }

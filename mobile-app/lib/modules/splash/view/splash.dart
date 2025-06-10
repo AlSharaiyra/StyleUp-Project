@@ -56,6 +56,8 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
         } else {
           context.pushReplacement(Routes.login);
         }
+      } else {
+        context.pushReplacement(Routes.login);
       }
     });
   }

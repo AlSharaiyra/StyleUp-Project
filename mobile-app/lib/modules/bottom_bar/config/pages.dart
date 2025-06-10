@@ -6,7 +6,7 @@ import 'package:style_up/modules/upload_item/view/upload_item.dart';
 class Pages {
   static final  List screens = [
     const Closet(),
-    const UploadItem(),
+     UploadItem(),
     const HomeView(),
     const SettingsScreen(), 
   ];

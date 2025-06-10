@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:style_up/core/constant/api_url.dart';
 import 'package:style_up/core/services/api_interface.dart';
 
@@ -10,7 +11,7 @@ class DioApiService extends IApi {
   DioApiService()
       : dio = Dio(
           BaseOptions(
-            baseUrl: baseUrl,
+            baseUrl:kDebugMode?debugBaseUrl: releaseBaseUrl,
             connectTimeout: const Duration(seconds: 60),
             receiveTimeout: const Duration(seconds: 60),
             headers: {
@@ -50,7 +51,7 @@ class DioApiService extends IApi {
 
       final response = await dio.post(
         url,
-        data: jsonEncode(data),
+        data:data is FormData?data: jsonEncode(data),
         options: Options(headers: header,validateStatus: (status) => true),
       );
       return response;

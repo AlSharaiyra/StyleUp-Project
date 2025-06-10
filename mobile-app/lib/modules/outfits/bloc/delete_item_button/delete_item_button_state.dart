@@ -8,7 +8,10 @@ sealed class DeleteItemButtonState extends Equatable {
 }
 class OnInit extends DeleteItemButtonState {}
 
-class OnSuccess extends DeleteItemButtonState {}
+class OnSuccess extends DeleteItemButtonState {
+  final String? message;
+  const OnSuccess({this.message});
+}
 
 class OnFailed extends DeleteItemButtonState {
   final String errorMessage;

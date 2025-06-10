@@ -270,6 +270,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get gender => 'الجنس';
 
   @override
+  String get imageDeleteError => 'خطأ في حذف الصورة';
+
+  @override
+  String get actionNotAllowed => 'الإجراء غير مسموح به';
+
+  @override
+  String get itemNotFound => 'المنتج غير موجود';
+
+  @override
   String get cancel => 'إلغاء';
 
   @override

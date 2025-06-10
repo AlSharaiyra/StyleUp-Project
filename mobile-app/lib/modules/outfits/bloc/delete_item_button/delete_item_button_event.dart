@@ -11,11 +11,10 @@ abstract class DeleteItemButtonEvent extends Equatable {
 }
 
 class DeleteItemButtonPressed extends DeleteItemButtonEvent {
-  final File file;
-  final String? desc;
+  final String id;
 final BuildContext context;
-  const DeleteItemButtonPressed({required this.desc,required this.file,required this.context});
+  const DeleteItemButtonPressed({required this.id,required this.context});
 
   @override
-  List<Object?> get props => <Object?>[file, desc];
+  List<Object?> get props => <Object?>[id, context];
 }

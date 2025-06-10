@@ -1,6 +1,6 @@
 class DeleteOutfitParams{
   final String accessToken;
-  final int outfitId;
+  final String outfitId;
   const DeleteOutfitParams({
     required this.accessToken,
     required this.outfitId,
