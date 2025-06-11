@@ -87,7 +87,7 @@ public class ModelMapper {
         Item item = new Item();
 
         // Setting features
-        item.setGender(features.getGender());
+         item.setGender(features.getGender());
         item.setMasterCategory(features.getMasterCategory());
         item.setSubCategory(features.getSubCategory().toLowerCase());
         item.setArticleType(features.getArticleType());
