@@ -16,6 +16,7 @@ class RegisterFieldsFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> 
 
   void _onRegisterFormSubmitted(
       RegisterFormSubmitted event, Emitter<RegisterFormState> emit) {
+        emit(RegisterFormLoading());
     final String emailError = _validateEmail(event.email, event.context);
     final String usernameError = _validateUsername(event.username, event.context);
     final String passwordError = _validatePassword(event.password, event.context);

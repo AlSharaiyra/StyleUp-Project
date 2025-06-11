@@ -1,10 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_event.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_state.dart';
 import 'dart:developer' as developer;
 import 'package:style_up/l10n/app_localizations.dart';
-
 
 class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
   LoginFormBloc() : super(LoginFormInitial()) {
@@ -15,14 +15,22 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
 
   void _onLoginFormSubmitted(
       LoginFormSubmitted event, Emitter<LoginFormState> emit) {
+        emit(LoginFormLoading());
     final String emailError = _validateEmail(event.email, event.context);
-    final String passwordError = _validatePassword(event.password, event.context);
-    developer.log(emailError);
-    developer.log(passwordError);
+    final String passwordError =
+        _validatePassword(event.password, event.context);
+    developer.log(emailError + ' dda' + passwordError);
+    developer.log(emailError.length.toString() +
+        ' length' +
+        passwordError.length.toString());
 
-    if (emailError.isEmpty && passwordError.isEmpty) {
+    if ((emailError.isEmpty && passwordError.isEmpty) ||
+        (emailError.length == 0 && passwordError.length == 0)) {
+      developer.log('LoginFormBloc: Form is valid');
       emit(LoginFormValid());
     } else {
+     developer. log('LoginFormBloc: Form is vinalid');
+
       emit(LoginFormInvalid(
         emailErrorMessage: emailError,
         passwordErrorMessage: passwordError,
@@ -41,7 +49,8 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
   }
 
   void _onPasswordChanged(PasswordChanged event, Emitter<LoginFormState> emit) {
-    final String passwordError = _validatePassword(event.password, event.context);
+    final String passwordError =
+        _validatePassword(event.password, event.context);
     developer.log(passwordError);
 
     emit(LoginFormInvalid(

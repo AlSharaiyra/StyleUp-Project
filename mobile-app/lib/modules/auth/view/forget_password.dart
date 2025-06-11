@@ -10,9 +10,9 @@ import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password
 import 'package:style_up/modules/auth/bloc/button/forgetPassword/forget_password_state.dart';
 import 'package:style_up/modules/auth/bloc/button/resendOtp/resend_otp_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/resendOtp/resend_otp_button_event.dart';
-import 'package:style_up/modules/auth/bloc/textfield/ForgetPassword/form_event.dart';
-import 'package:style_up/modules/auth/bloc/textfield/ForgetPassword/form_state.dart';
 import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_bloc.dart';
+import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_event.dart';
+import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_state.dart';
 
 import 'package:style_up/modules/auth/widget/buttons/forget_password_button.dart';
 import 'package:style_up/modules/auth/widget/forgetPassword/forget_password_desc.dart';
