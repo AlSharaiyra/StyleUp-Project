@@ -66,22 +66,22 @@ List<SettingsSection> getSections(BuildContext context, ThemeState state) {
             context.push(Routes.userProfile);
           },
         ),
-        SettingsItemModel(
-          title: local.editProfile,
-          trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // Navigate to edit profile page
-            context.pushNamed(Routes.editProfile);
-          },
-        ),
-        SettingsItemModel(
-          title: local.changePassword,
-          trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            // Navigate to change password
-            context.pushNamed(Routes.resetPassword);
-          },
-        ),
+        // SettingsItemModel(
+        //   title: local.editProfile,
+        //   trailing: const Icon(Icons.chevron_right),
+        //   onTap: () {
+        //     // Navigate to edit profile page
+        //     context.pushNamed(Routes.editProfile);
+        //   },
+        // ),
+        // SettingsItemModel(
+        //   title: local.changePassword,
+        //   trailing: const Icon(Icons.chevron_right),
+        //   onTap: () {
+        //     // Navigate to change password
+        //     context.pushNamed(Routes.resetPassword);
+        //   },
+        // ),
       ],
     ),
     SettingsSection(
