@@ -11,4 +11,5 @@
                    |  $$$$$$/                        | $$
                     \______/                         |__/
 
-Author : Walid Sharaiyra | Java : ${java.version} | Spring Boot : ${spring.boot.version}
+Authors : Walid Sharaiyra | Asem Zaidan | Ayman Adas | Qutouf Ghawanmeh
+Java : ${java.version} | Spring Boot : ${spring.boot.version}
