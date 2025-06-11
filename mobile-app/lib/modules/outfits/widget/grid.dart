@@ -6,10 +6,10 @@ import 'package:style_up/core/config/secure_token_storage.dart';
 import 'package:style_up/modules/outfits/bloc/delete_item_button/delete_item_button_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/delete_item_button/delete_item_button_event.dart';
 import 'package:style_up/modules/outfits/bloc/delete_item_button/delete_item_button_state.dart';
+import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/outfit/outfit_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/outfit/outfit_event.dart';
 import 'package:style_up/modules/outfits/bloc/outfit/outfit_state.dart';
-import 'package:style_up/modules/outfits/model/filter_model.dart';
 import 'package:style_up/modules/outfits/model/get_warddrop_item.dart';
 import 'package:style_up/modules/outfits/params/get_outfit.dart';
 
@@ -23,10 +23,10 @@ class GridCloset extends StatefulWidget {
 }
 
 class _GridClosetState extends State<GridCloset> {
-    final ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   int _currentPage = 0;
   bool _isFetching = false;
-double? _lastScrollPosition; // Store scroll position before fetching
+  double? _lastScrollPosition; // Store scroll position before fetching
   @override
   void initState() {
     super.initState();
@@ -38,9 +38,13 @@ double? _lastScrollPosition; // Store scroll position before fetching
             _scrollController.position.maxScrollExtent - 200 &&
         !_isFetching) {
       _isFetching = true;
-_lastScrollPosition = _scrollController.position.pixels; // Save current position
+      _lastScrollPosition =
+          _scrollController.position.pixels; // Save current position
       final secureTokenStorage = SecureTokenStorage.instance;
       final token = await secureTokenStorage.getAccessToken() ?? '';
+
+      final appliedFilters =
+          context.read<ExpanedFilterBloc>().state.appliedFilterOptions;
 
       _currentPage++;
 
@@ -48,9 +52,7 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
             LoadOutfitsEvent(
               params: GetOutfitParams(
                 accessToken: token,
-                filterOptions:  FilterOptions(
-                  page: _currentPage
-                ),
+                filterOptions: appliedFilters.copyWith(page: _currentPage),
               ),
               context: context,
             ),
@@ -69,9 +71,10 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
     final double spacing = MediaQuery.of(context).size.height * 0.015;
     final double padding = MediaQuery.of(context).size.width * 0.02;
     final screenWidth = MediaQuery.of(context).size.width;
-    
+
     final screenHeight = MediaQuery.of(context).size.height;
-    return BlocConsumer<OutfitBloc, OutfitState>(listener: (context, state) async{
+    return BlocConsumer<OutfitBloc, OutfitState>(
+        listener: (context, state) async {
       if (state is OutfitError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to load outfits: ${state.message}')),
@@ -79,27 +82,34 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
         _isFetching = false; // Reset fetching flag
       }
       if (state is OutfitLoaded) {
-      _isFetching = false; // Reset fetching flag
-      if (_lastScrollPosition != null) {
-            // Restore scroll position after new items are loaded
-          
-          }
-    }
-      if(state is OutfitInitial){
+        _isFetching = false; // Reset fetching flag
+        if (_currentPage == 0) {
+          _scrollController.animateTo(
+            0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+          );
+        }else if (_lastScrollPosition != null){
+          // Restore scroll position after new items are loaded
+        }
+      }
+      if (state is OutfitInitial) {
         final secureTokenStorage = SecureTokenStorage.instance;
+        final appliedFilters =
+            context.read<ExpanedFilterBloc>().state.appliedFilterOptions;
         context.read<OutfitBloc>().add(
-          LoadOutfitsEvent(
-            params: GetOutfitParams(
-              accessToken:await secureTokenStorage.getAccessToken() ?? '',
-              filterOptions: const FilterOptions(),
-            ),
-            context: context,
-          ),
-        );
+              LoadOutfitsEvent(
+                params: GetOutfitParams(
+                  accessToken: await secureTokenStorage.getAccessToken() ?? '',
+                  filterOptions: appliedFilters.copyWith(page: 0),
+                ),
+                context: context,
+              ),
+            );
       }
     }, builder: (context, state) {
-      if ((state is OutfitLoading  && state.isInitialLoad)|| state is OutfitInitial) {
-        
+      if ((state is OutfitLoading && state.isInitialLoad) ||
+          state is OutfitInitial) {
         return Skeletonizer(
           enabled: true,
           enableSwitchAnimation: true,
@@ -132,19 +142,23 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
             ),
           );
         }
-        if (items.length < 8) { // Assuming 10 items per page
-    _isFetching = true; // Prevent further scroll triggers
-  }
+        if (items.length < 8) {
+          // Assuming 10 items per page
+          _isFetching = true; // Prevent further scroll triggers
+        }
         return RefreshIndicator(
           onRefresh: () async {
             final secureTokenStorage = SecureTokenStorage.instance;
+            final appliedFilters =
+                context.read<ExpanedFilterBloc>().state.appliedFilterOptions;
             _currentPage = 0; // Reset page number on refresh
             _isFetching = false; // Reset fetching flag
             context.read<OutfitBloc>().add(
                   LoadOutfitsEvent(
                     params: GetOutfitParams(
-                      accessToken: await secureTokenStorage.getAccessToken() ?? '',
-                      filterOptions: const FilterOptions(),
+                      accessToken:
+                          await secureTokenStorage.getAccessToken() ?? '',
+                      filterOptions: appliedFilters.copyWith(page: 0),
                     ),
                     context: context,
                   ),
@@ -153,8 +167,8 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
           child: GridView.builder(
             // Display actual content
             shrinkWrap: true,
-              controller: _scrollController,
-          
+            controller: _scrollController,
+
             itemCount: totalItems.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -163,7 +177,7 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
             ),
             itemBuilder: (context, index) {
               final item = totalItems[index];
-          
+
               return Padding(
                 padding: EdgeInsets.all(padding),
                 child: Stack(
@@ -189,7 +203,8 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
                               borderRadius: BorderRadius.circular(12),
                               child: item.url.isNotEmpty
                                   ? CachedNetworkImage(
-                                      imageUrl: item.url, // Use ! as it's checked
+                                      imageUrl:
+                                          item.url, // Use ! as it's checked
                                       fit: BoxFit.cover,
                                       errorWidget: (_, __, ___) =>
                                           Image.asset('assets/shirt.png'),
@@ -236,17 +251,21 @@ _lastScrollPosition = _scrollController.position.pixels; // Save current positio
                             );
                             final secureTokenStorage =
                                 SecureTokenStorage.instance;
-          _currentPage = 0; // Reset page number after deletion
+                            final appliedFilters = context
+                                .read<ExpanedFilterBloc>()
+                                .state
+                                .appliedFilterOptions;
+                            _currentPage =
+                                0; // Reset page number after deletion
                             _isFetching = false; // Reset fetching flag
                             context.read<OutfitBloc>().add(
                                   LoadOutfitsEvent(
-                                    params:  GetOutfitParams(
+                                    params: GetOutfitParams(
                                       accessToken: await secureTokenStorage
                                               .getAccessToken() ??
                                           '',
-                                      filterOptions: const FilterOptions(
-                                        page: 0, // Reset to first page after deletion
-                                      ),
+                                      filterOptions:
+                                          appliedFilters.copyWith(page: 0),
                                     ),
                                     context: context,
                                   ),

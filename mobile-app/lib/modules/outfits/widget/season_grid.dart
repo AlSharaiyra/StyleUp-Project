@@ -35,7 +35,7 @@ class SeasonGrid extends StatelessWidget {
             text: types[index],
             section: FilterSection.season,
             onTap: () {
-              // debugPrint('Type selected: $type');
+              
             },
           );
         });

@@ -11,7 +11,6 @@ class ExpanedFilterBloc extends Bloc<ExpanedFilterEvent, ExpanedFilterState> {
   ExpanedFilterBloc() : super(ExpanedFilterState.initial()) {
     on<ToggleTypeSection>(_onToggleTypeSection);
     on<ToggleSeasonSection>(_onToggleSeasonSection);
-    on<InitializeFilterSelection>(_onInitializeFilterSelection);
     on<SelectType>(_onSelectType);
     on<SelectSeason>(_onSelectSeason);
     on<ApplyFilters>(_onApplyFilters);
@@ -28,14 +27,6 @@ class ExpanedFilterBloc extends Bloc<ExpanedFilterEvent, ExpanedFilterState> {
     emit(state.copyWith(isSeasonSectionOn: !state.isSeasonSectionOn));
   }
 
-  void _onInitializeFilterSelection(InitializeFilterSelection event, Emitter<ExpanedFilterState> emit) {
-    emit(state.copyWith(
-      currentSelectedType: event.initialOptions.type,
-      currentSelectedSeason: event.initialOptions.season,
-      appliedType: event.initialOptions.type,
-      appliedSeason: event.initialOptions.season,
-    ));
-  }
 
   void _onSelectType(SelectType event, Emitter<ExpanedFilterState> emit) {
     final String? newType = (state.currentSelectedType == event.type) ? null : event.type;
