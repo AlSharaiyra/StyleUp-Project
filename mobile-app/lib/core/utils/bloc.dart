@@ -43,7 +43,7 @@ class BlocUtils extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
-      create: (repoContext) => OutfitService(), 
+      create: (repoContext) => OutfitService(),
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -119,19 +119,15 @@ class BlocUtils extends StatelessWidget {
           BlocProvider(create: (context) => ImageBloc()),
           BlocProvider(
             create: (blocContext) {
-              final OutfitService outfitServiceInstance = blocContext.read<OutfitService>(); 
-              final outfitBloc = OutfitBloc(
-                outfitServiceInstance, 
-                context: blocContext,  
-                outfitService: outfitServiceInstance, 
-              );
-              outfitBloc.add(LoadOutfitsEvent(
-                params: const GetOutfitParams(
-                  filterOptions: FilterOptions(), 
-                ),
-                context: blocContext, 
-              ));
-              return outfitBloc;
+              return OutfitBloc(context: context)
+                ..add(
+                  LoadOutfitsEvent(
+                    params: const GetOutfitParams(
+                      filterOptions: FilterOptions(),
+                    ),
+                    context: context,
+                  ),
+                );
             },
           ),
         ],

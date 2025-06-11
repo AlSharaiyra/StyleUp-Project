@@ -31,7 +31,8 @@ class TypeGrid extends StatelessWidget {
           final type = types[index];
           final localizedType = localizedMap[type] ?? type;
           return FilterButton(
-            text: localizedType,
+            text: type,
+            localizedText: localizedType,
             section: FilterSection.type,
             onTap: () {
               // debugPrint('Type selected: $type');

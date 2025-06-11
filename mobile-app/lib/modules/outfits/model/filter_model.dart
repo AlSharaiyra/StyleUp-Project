@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class FilterOptions extends Equatable{
+class FilterOptions extends Equatable {
   static const List<String> typeOptions = [
     'Apparel',
     'Accessories',
@@ -15,16 +15,20 @@ class FilterOptions extends Equatable{
   ];
   final String? type;
   final String? season;
+  final int page;
+  final int limit;
+  const FilterOptions({this.type, this.season, this.page = 0, this.limit=8});
 
-  const FilterOptions({this.type, this.season});
-
-
-  FilterOptions copyWith({String? type, String? season}) {
+  FilterOptions copyWith(
+      {String? type, String? season, int? page, int? limit}) {
     return FilterOptions(
-      type: type ?? this.type, 
-      season: season ?? this.season, 
+      type: type ?? this.type,
+      season: season ?? this.season,
+      page: page ?? this.page,
+      limit: limit ?? this.limit,
     );
   }
+
   bool get isActive => type != null || season != null;
 
   @override

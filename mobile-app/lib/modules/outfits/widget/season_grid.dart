@@ -31,7 +31,8 @@ class SeasonGrid extends StatelessWidget {
           final season = localizedSeasons[index];
 
           return FilterButton(
-            text: season,
+            localizedText: season,
+            text: types[index],
             section: FilterSection.season,
             onTap: () {
               // debugPrint('Type selected: $type');

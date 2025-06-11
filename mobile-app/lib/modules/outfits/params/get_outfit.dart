@@ -1,6 +1,6 @@
 import 'package:style_up/modules/outfits/model/filter_model.dart';
 
-class GetOutfitParams{
+class GetOutfitParams {
   final String? accessToken;
   final FilterOptions filterOptions;
   const GetOutfitParams({
@@ -23,8 +23,12 @@ class GetOutfitParams{
     if (filterOptions.season != null && filterOptions.season!.isNotEmpty) {
       queryParams['season'] = filterOptions.season;
     }
+    queryParams['size'] = filterOptions.limit;
+    queryParams['page'] = filterOptions.page;
+
     return queryParams;
   }
+
   String toQueryString() {
     final queryMap = toQueryParams();
     if (queryMap.isEmpty) {
@@ -42,6 +46,4 @@ class GetOutfitParams{
       filterOptions: filterOptions ?? this.filterOptions,
     );
   }
-
-
 }

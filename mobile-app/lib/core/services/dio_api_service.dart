@@ -29,10 +29,11 @@ class DioApiService extends IApi {
   }
 
   @override
-  Future<Response> get(String url, Map<String, dynamic>? header) async {
+  Future<Response> get(String url, Map<String, dynamic>? header,{Map<String,dynamic> ? queryParmeter}) async {
     try {
       final response = await dio.get(
         url,
+        queryParameters: queryParmeter,
         options: Options(headers: header,validateStatus: (status) => true),
       );
       return response;

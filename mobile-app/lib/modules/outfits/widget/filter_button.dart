@@ -12,11 +12,12 @@ class FilterButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final FilterSection section;
-
+final String localizedText;
   const FilterButton({
     super.key,
     required this.text,
     required this.onTap,
+    this.localizedText = '',
     required this.section
   });
 
@@ -59,7 +60,7 @@ class FilterButton extends StatelessWidget {
             ),
             alignment: Alignment.center,
             child: Text(
-              text,
+              localizedText,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: isSelected ? Colors.white : Colors.black,
               ),

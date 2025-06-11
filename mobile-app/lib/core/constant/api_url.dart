@@ -22,4 +22,5 @@ final String setAgeAndGenderUrl = dotenv.env['setAgeAndGenderUrl'] ?? 'localhost
 final String getWardrobeItemsUrl = dotenv.env['getWardrobeItemsUrl'] ?? 'localhost';
 final String uploaItemUrl = dotenv.env['uploaItemUrl'] ?? 'localhost';
 final String deleteItemUrl = dotenv.env['deleteItemUrl'] ?? 'localhost';
-
+final String getAllEventsUrl = dotenv.env['getAllEventsUrl'] ?? 'localhost';
+final String firstStepUrl = dotenv.env['firstStepUrl'] ?? 'localhost';

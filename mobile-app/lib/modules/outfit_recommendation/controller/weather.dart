@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:style_up/core/enum/semester.dart';
+import 'package:style_up/modules/outfit_recommendation/model/weather_data.dart';
 import 'package:style_up/modules/outfit_recommendation/service/weather/weather_services.dart';
 
 class WeatherController {
   static final WeatherController _weatherController =
       WeatherController._internal();
-  final WeatherServices _recommendationOutfitServices =
-      WeatherServices();
+  final WeatherServices _recommendationOutfitServices = WeatherServices();
   WeatherController._internal();
 
   factory WeatherController() {
@@ -81,18 +81,18 @@ class WeatherController {
     }
   }
 
-  Future<bool> getWeatherData() async {
+  Future<WeatherData> getWeatherData() async {
     try {
       Position position = await _determinePosition();
       log('Position: $position');
       double latitude = position.latitude;
       double longitude = position.longitude;
       // Use the latitude and longitude to fetch weather data
-      await _recommendationOutfitServices.getWeatherData(
+      final response = await _recommendationOutfitServices.getWeatherData(
           longitude: longitude, latitude: latitude);
-      return true;
+      return response;
     } catch (e) {
-      return false;
+      throw Exception('Failed to get weather data: $e');
     }
   }
 

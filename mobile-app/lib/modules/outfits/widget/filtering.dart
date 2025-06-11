@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/core/config/secure_token_storage.dart';
 import 'package:style_up/l10n/app_localizations.dart';
 import 'package:style_up/modules/outfits/bloc/outfit/outfit_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/outfit/outfit_event.dart';
@@ -156,7 +157,8 @@ class Filtering extends StatelessWidget {
                   left: 0,
                   child: Center(
                     child: ApplyButton(
-                      onTap: () {
+                      onTap: ()async {
+                        final SecureTokenStorage secureTokenStorage = SecureTokenStorage.instance;
                         context.read<ExpanedFilterBloc>().add(ApplyFilters());
                         context.read<OutfitBloc>().add(LoadOutfitsEvent(
                             params: GetOutfitParams(
@@ -164,6 +166,7 @@ class Filtering extends StatelessWidget {
                                 type: state.currentSelectedType, 
                                 season: state.currentSelectedSeason, 
                               ),
+                              accessToken: await secureTokenStorage.getAccessToken()??''
                             ), 
                             context: context,
                           ));

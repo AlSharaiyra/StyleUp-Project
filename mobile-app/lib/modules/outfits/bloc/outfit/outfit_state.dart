@@ -13,13 +13,14 @@ class OutfitInitial extends OutfitState {
 }
 
 class OutfitLoading extends OutfitState {
-  const OutfitLoading();
+  final bool isInitialLoad;
+  const OutfitLoading({this.isInitialLoad = false});
 }
 
 class OutfitLoaded extends OutfitState {
   final List<GetWarddropItems> outfits;
-
-  const OutfitLoaded({required this.outfits});
+final List<GetWarddropItems> totalOutfits;
+  const OutfitLoaded({required this.outfits,required this.totalOutfits});
 
   @override
   List<Object> get props => [outfits];
