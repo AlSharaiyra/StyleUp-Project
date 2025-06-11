@@ -20,3 +20,4 @@ class LoginFormInvalid extends LoginFormState {
   @override
   List<Object> get props => <Object>[emailErrorMessage,passwordErrorMessage];
 }
+class LoginFormLoading extends LoginFormState {}

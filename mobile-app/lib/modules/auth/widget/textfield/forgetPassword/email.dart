@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:style_up/modules/auth/bloc/textfield/ForgetPassword/form_state.dart';
 import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_bloc.dart';
+import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_state.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_event.dart';
 import 'dart:developer' as developer;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:style_up/modules/auth/bloc/textfield/ForgetPassword/form_event.dart';
-import 'package:style_up/modules/auth/bloc/textfield/ForgetPassword/form_state.dart';
 import 'dart:developer' as developer;
 import 'package:style_up/l10n/app_localizations.dart';
+import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_event.dart';
+import 'package:style_up/modules/auth/bloc/textfield/forgetPassword/form_state.dart';
 
 
 class ForgetPasswordFormBloc extends Bloc<ForgetPasswordFormEvent, ForgetPasswordFormState> {
@@ -14,6 +14,7 @@ class ForgetPasswordFormBloc extends Bloc<ForgetPasswordFormEvent, ForgetPasswor
 
   void _onForgetPasswordFormSubmitted(
       ForgetPasswordFormSubmitted event, Emitter<ForgetPasswordFormState> emit) {
+    emit(ForgetPasswordFormLoading());
     final String emailError = _validateEmail(event.email, event.context);
     developer.log(emailError);
 

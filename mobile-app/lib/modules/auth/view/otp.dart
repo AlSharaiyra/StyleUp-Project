@@ -54,6 +54,15 @@ class OtpView extends StatelessWidget {
                 BlocConsumer<PinCodeBloc, PinCodeState>(
                   // ✅ Fixed
                   listener: (BuildContext context, PinCodeState state) {
+                    if (state is PinLoading) {
+                      if (kDebugMode) {
+                        log('PIN loading...');
+                      }
+                    } else if (state is PinInitial) {
+                      if (kDebugMode) {
+                        log('PIN initial state');
+                      }
+                    }  else
                     if (state is PinCompleted) {
                       if (kDebugMode) {
                         log('PIN completed: ${state.pin}');
@@ -65,6 +74,9 @@ class OtpView extends StatelessWidget {
                     }
                   },
                   builder: (BuildContext context, PinCodeState state) {
+                    if (state is PinLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
                     return PinCodeTextField(
                         // controller: _pinController,
                         // maxLength: pinCodeLength,
