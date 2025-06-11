@@ -93,7 +93,7 @@ class AuthApiServices extends IAuthApi {
   }
 
   @override
-  Future<Either<String, Map<String, dynamic>>> logout(
+  Future<Either<String,String>> logout(
       LogoutParams params, BuildContext context) async {
     try {
       final response = await api.post(logoutUrl, {}, params.toHeader());
