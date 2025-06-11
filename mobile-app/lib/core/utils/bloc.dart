@@ -87,9 +87,10 @@ class BlocUtils extends StatelessWidget {
           BlocProvider(
             create: (context) => LoginButtonBloc(),
           ),
-           BlocProvider(
+          BlocProvider(
             create: (context) => ThirdStepBloc(),
-          ), BlocProvider(
+          ),
+          BlocProvider(
             create: (context) => SecondStepBloc(),
           ),
           BlocProvider(

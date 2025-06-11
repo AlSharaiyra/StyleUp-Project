@@ -104,7 +104,7 @@ class RecommendationSystemService extends IRecommendationSystem {
           SecondStepParams params, BuildContext context) async {
     try {
       final response = await api.post(
-        firstStepUrl,
+        secondtStepUrl,
         params.toJson(),
         params.toHeader(),
       );
@@ -150,7 +150,7 @@ class RecommendationSystemService extends IRecommendationSystem {
           ThirdStepParams params, BuildContext context) async {
     try {
       final response = await api.post(
-        firstStepUrl,
+        thirdStepUrl,
         params.toJson(),
         params.toHeader(),
       );

@@ -9,7 +9,7 @@ class EventsInitial extends EventsState {}
 class EventsLoading extends EventsState {}
 class EventsSuccess extends EventsState {
   final List<EventsResponse> events;
-  final String? selectedEvent;
+  final EventsResponse? selectedEvent;
   EventsSuccess({required this.events, this.selectedEvent});
 }
 class EventsError extends EventsState {

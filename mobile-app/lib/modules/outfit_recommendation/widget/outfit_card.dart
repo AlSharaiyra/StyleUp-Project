@@ -7,7 +7,7 @@ class OutfitCard extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    final double cardHeight = MediaQuery.of(context).size.height * 0.33;
+    final double cardHeight = MediaQuery.of(context).size.height * 0.4;
     final double spacing = MediaQuery.of(context).size.height * 0.03;
     const double topLeftradius = 65.0;
     const double topRightradius = 20.0;

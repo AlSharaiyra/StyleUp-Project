@@ -22,7 +22,7 @@ class AppRouter {
     initialLocation: Routes.splash,
     routes: <GoRoute>[
       buildRoute(Routes.splash, const SplashView()),
-      buildRoute(Routes.home,  HomeView()),
+      buildRoute(Routes.home, HomeView()),
       buildRoute(Routes.login, LoginView()),
       buildRoute(Routes.signup, RegisterView()),
       buildRoute(Routes.editProfile, const EditUserProfile()),
@@ -39,7 +39,7 @@ class AppRouter {
           );
         },
       ),
-   
+
       GoRoute(
         path: Routes.resetPassword,
         name: Routes.resetPassword,

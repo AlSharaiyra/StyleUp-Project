@@ -32,7 +32,7 @@ class EventBloc extends Bloc<EventsEvent, EventsState> {
       // Emit the loading state before processing the selection
       emit(EventsLoading());
 
-      emit(EventsSuccess(events: state.events, selectedEvent: event.eventName));
+      emit(EventsSuccess(events: state.events, selectedEvent: event.event));
     });
   }
 }

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:style_up/modules/outfit_recommendation/bloc/firstStep/first_step_bloc.dart';
-import 'package:style_up/modules/outfit_recommendation/bloc/firstStep/first_step_event.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/close_button.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/no_button.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/yes_button.dart';
@@ -9,9 +6,16 @@ import 'package:style_up/modules/outfit_recommendation/widget/yes_button.dart';
 import '../../../core/theme/colors.dart';
 
 class PopupCard extends StatelessWidget {
-  const PopupCard({super.key, required this.imageUrl, required this.text});
+  const PopupCard(
+      {super.key,
+      required this.imageUrl,
+      required this.text,
+      required this.onYesPressed,
+      required this.onNoPressed});
   final String imageUrl;
   final String text;
+  final VoidCallback onYesPressed;
+  final VoidCallback onNoPressed;
   @override
   Widget build(BuildContext context) {
     final double spacing = MediaQuery.of(context).size.height * 0.03;
@@ -35,9 +39,7 @@ class PopupCard extends StatelessWidget {
                   child: Text(
                     text,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: ColorsTheme.black,
-                          fontWeight: FontWeight.bold
-                    ),
+                        color: ColorsTheme.black, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
@@ -51,45 +53,42 @@ class PopupCard extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(48),
                   ),
-                  child:LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    return AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 500),
-                      switchInCurve: Curves.easeInOut,
-                      switchOutCurve: Curves.easeInOut,
-                      transitionBuilder: (child, animation) {
-                        final slideAnimation = Tween<Offset>(
-                          begin: const Offset(0.0, 0.2),
-                          end: Offset.zero,
-                        ).animate(animation);
-                        return FadeTransition(
-                          opacity: animation,
-                          child: SlideTransition(
-                            position: slideAnimation,
-                            child: child,
-                          ),
-                        );
-                      },
-                      child: Image.network(
-                        imageUrl,
-                        key: ValueKey(imageUrl),
-                        fit: BoxFit.contain,
-                        width: constraints.maxWidth * 0.9,   
-                        height: constraints.maxHeight * 0.9, 
-                      ),
-                    );
-                  },
-                ) ,
+                  child: LayoutBuilder(
+                    builder:
+                        (BuildContext context, BoxConstraints constraints) {
+                      return AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 500),
+                        switchInCurve: Curves.easeInOut,
+                        switchOutCurve: Curves.easeInOut,
+                        transitionBuilder: (child, animation) {
+                          final slideAnimation = Tween<Offset>(
+                            begin: const Offset(0.0, 0.2),
+                            end: Offset.zero,
+                          ).animate(animation);
+                          return FadeTransition(
+                            opacity: animation,
+                            child: SlideTransition(
+                              position: slideAnimation,
+                              child: child,
+                            ),
+                          );
+                        },
+                        child: Image.network(
+                          imageUrl,
+                          key: ValueKey(imageUrl),
+                          fit: BoxFit.contain,
+                          width: constraints.maxWidth * 0.9,
+                          height: constraints.maxHeight * 0.9,
+                        ),
+                      );
+                    },
+                  ),
                 ),
                 Column(
                   spacing: spacing * 0.6,
                   children: [
-                    YesButton(onTap: () {
-                      
-                    }),
-                    NoButton(onTap: () {
-                      context.read<FirstStepBloc>().add(FirstStepSelectEvent());
-                    }),
+                    YesButton(onTap: onYesPressed),
+                    NoButton(onTap:onNoPressed),
                   ],
                 ),
               ],
@@ -99,7 +98,7 @@ class PopupCard extends StatelessWidget {
             top: 10,
             left: 10,
             child: CloseButtonPopup(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pop();
               },
             ),

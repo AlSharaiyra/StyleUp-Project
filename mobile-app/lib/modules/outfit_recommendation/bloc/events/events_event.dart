@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:style_up/modules/outfit_recommendation/model/eventes.dart';
 
 class EventsEvent extends Equatable {
   @override
@@ -15,9 +16,9 @@ final String accessToken;
   
 }
 class SelectEvent extends EventsEvent {
-  final String eventName;
-  SelectEvent({required this.eventName});
+  final EventsResponse event;
+  SelectEvent({required this.event});
 
   @override
-  List<Object?> get props => [eventName];
+  List<Object?> get props => [event];
 }
