@@ -45,130 +45,128 @@ class HomeView extends StatelessWidget {
     final double spacing = MediaQuery.of(context).size.height * 0.01;
     return Scaffold(
       body: MultiBlocListener(
-        listeners:[BlocListener<SecondStepBloc, SecondStepState>(listener:  (context, state) {
-          if (state is SecondStepLoading) {
-            // Show loading indicator if needed
-          } else if (state is SecondStepError) {
-            // Handle error state, maybe show a snackbar or dialog
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.error)),
-            );
-          } else if (state is SecondStepSuccess) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              showGeneralDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  barrierLabel: 'Popup',
-                  barrierColor: Colors.black54,
-                  transitionDuration: const Duration(milliseconds: 350),
-                  pageBuilder: (context, animation, secondaryAnimation) {
-                    return Center(
-                      child: PopupCard(
-                        imageUrl: state.selectedItem!.url,
-                        text: 'Try those ${state.selectedItem!.description} !',
-                        onNoPressed: () {
-                          context
-                              .read<SecondStepBloc>()
-                              .add(SecondStepSelectEvent());
-                          context.pop();
-                        },
-                        onYesPressed: () async {
-                          final secureTokenStorage =
-                              SecureTokenStorage.instance;
+        listeners: [
+          BlocListener<SecondStepBloc, SecondStepState>(
+              listener: (context, state) {
+            if (state is SecondStepLoading) {
+              // Show loading indicator if needed
+            } else if (state is SecondStepError) {
+              // Handle error state, maybe show a snackbar or dialog
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.error)),
+              );
+            } else if (state is SecondStepSuccess) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                showGeneralDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    barrierLabel: 'Popup',
+                    barrierColor: Colors.black54,
+                    transitionDuration: const Duration(milliseconds: 350),
+                    pageBuilder: (context, animation, secondaryAnimation) {
+                      return Center(
+                        child: PopupCard(
+                          imageUrl: state.selectedItem!.url,
+                          text:
+                              'Try those ${state.selectedItem!.description} !',
+                          onNoPressed: () {
+                            context
+                                .read<SecondStepBloc>()
+                                .add(SecondStepSelectEvent());
+                            context.pop();
+                          },
+                          onYesPressed: () async {
+                            final secureTokenStorage =
+                                SecureTokenStorage.instance;
 
-                          final weatherData = context.read<WeatherBloc>().state
-                              as WeatherSucssess;
-                          final season = await WeatherController()
-                              .getCurrentSemester(
-                                  weatherData.weather.current?.temperature2m ??
-                                      0,
-                                  weatherData.weather.current?.windSpeed10m ??
-                                      0);
-                          final previosItemId = state.selectedItem!.itemId;
-                          final eventState =
-                              context.read<EventBloc>().state as EventsSuccess;
-                          context.read<ThirdStepBloc>().add(
-                              ThirdStepFetchEvents(
-                                  context: context,
-                                  params: ThirdStepParams(
-                                      eventType:
-                                          eventState.selectedEvent?.name ?? "'",
-                                      season: getSemesterName(season),
-                                      previousItemId: previosItemId,
-                                      accessToken: await secureTokenStorage
-                                              .getAccessToken() ??
-                                          '')));
-                          context.pop();
-                          _autoScroll();
-                        },
-                      ),
-                    );
-                  });
-          });
-              }
-        }),
-        BlocListener<ThirdStepBloc, ThirdStepState>(listener:  (context, state) {
-          if (state is ThirdStepLoading) {
-            // Show loading indicator if needed
-          } else if (state is ThirdStepError) {
-            // Handle error state, maybe show a snackbar or dialog
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.error)),
-            );
-          } else if (state is ThirdStepSuccess) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              showGeneralDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  barrierLabel: 'Popup',
-                  barrierColor: Colors.black54,
-                  transitionDuration: const Duration(milliseconds: 350),
-                  pageBuilder: (context, animation, ThirdaryAnimation) {
-                    return Center(
-                      child: PopupCard(
-                        imageUrl: state.selectedItem!.url,
-                        text: 'Try those ${state.selectedItem!.description} !',
-                        onNoPressed: () {
-                          context
-                              .read<ThirdStepBloc>()
-                              .add(ThirdStepSelectEvent());
-                          context.pop();
-                        },
-                        onYesPressed: () async {
-                          final secureTokenStorage =
-                              SecureTokenStorage.instance;
+                            final weatherData = context
+                                .read<WeatherBloc>()
+                                .state as WeatherSucssess;
+                            final season = await WeatherController()
+                                .getCurrentSemester(
+                                    weatherData
+                                            .weather.current?.temperature2m ??
+                                        0,
+                                    weatherData.weather.current?.windSpeed10m ??
+                                        0);
+                            final previosItemId = state.selectedItem!.itemId;
+                            final eventState = context.read<EventBloc>().state
+                                as EventsSuccess;
+                            context.read<ThirdStepBloc>().add(
+                                ThirdStepFetchEvents(
+                                    context: context,
+                                    params: ThirdStepParams(
+                                        eventType:
+                                            eventState.selectedEvent?.name ??
+                                                "'",
+                                        season: getSemesterName(season),
+                                        previousItemId: previosItemId,
+                                        accessToken: await secureTokenStorage
+                                                .getAccessToken() ??
+                                            '')));
+                            context.pop();
+                            _autoScroll();
+                          },
+                        ),
+                      );
+                    });
+              });
+            }
+          }),
+          BlocListener<ThirdStepBloc, ThirdStepState>(
+              listener: (context, state) {
+            if (state is ThirdStepLoading) {
+              // Show loading indicator if needed
+            } else if (state is ThirdStepError) {
+              // Handle error state, maybe show a snackbar or dialog
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.error)),
+              );
+            } else if (state is ThirdStepSuccess) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                showGeneralDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    barrierLabel: 'Popup',
+                    barrierColor: Colors.black54,
+                    transitionDuration: const Duration(milliseconds: 350),
+                    pageBuilder: (context, animation, ThirdaryAnimation) {
+                      return Center(
+                        child: PopupCard(
+                          imageUrl: state.selectedItem!.url,
+                          text:
+                              'Try those ${state.selectedItem!.description} !',
+                          onNoPressed: () {
+                            context
+                                .read<ThirdStepBloc>()
+                                .add(ThirdStepSelectEvent());
+                            context.pop();
+                          },
+                          onYesPressed: () async {
+                            final secureTokenStorage =
+                                SecureTokenStorage.instance;
 
-                          final weatherData = context.read<WeatherBloc>().state
-                              as WeatherSucssess;
-                          final season = await WeatherController()
-                              .getCurrentSemester(
-                                  weatherData.weather.current?.temperature2m ??
-                                      0,
-                                  weatherData.weather.current?.windSpeed10m ??
-                                      0);
-                          final previosItemId = state.selectedItem!.itemId;
-                          final eventState =
-                              context.read<EventBloc>().state as EventsSuccess;
-                          context.read<ThirdStepBloc>().add(
-                              ThirdStepFetchEvents(
-                                  context: context,
-                                  params: ThirdStepParams(
-                                      eventType:
-                                          eventState.selectedEvent?.name ?? "'",
-                                      season: getSemesterName(season),
-                                      previousItemId: previosItemId,
-                                      accessToken: await secureTokenStorage
-                                              .getAccessToken() ??
-                                          '')));
-                          context.pop();
-                          _autoScroll();
-                        },
-                      ),
-                    );
-                  });
-          });
-              }
-        })],
+                            final weatherData = context
+                                .read<WeatherBloc>()
+                                .state as WeatherSucssess;
+                            final season = await WeatherController()
+                                .getCurrentSemester(
+                                    weatherData
+                                            .weather.current?.temperature2m ??
+                                        0,
+                                    weatherData.weather.current?.windSpeed10m ??
+                                        0);
+
+                            context.pop();
+                            _autoScroll();
+                          },
+                        ),
+                      );
+                    });
+              });
+            }
+          })
+        ],
         child: SingleChildScrollView(
           controller: _scrollController,
           child: Padding(
@@ -347,7 +345,7 @@ class HomeView extends StatelessWidget {
                   }
                   return SizedBox();
                 }),
-                 BlocBuilder<ThirdStepBloc, ThirdStepState>(
+                BlocBuilder<ThirdStepBloc, ThirdStepState>(
                     builder: (context, state) {
                   if (state is ThirdStepSuccess) {
                     return OutfitCard(

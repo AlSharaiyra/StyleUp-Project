@@ -63,7 +63,7 @@ class MaterialAppUtils extends StatelessWidget {
               supportedLocales: L10n.all,
               
               theme: themeState is ThemeSucssess ? themeState.theme : theme,
-              locale:languageState is LanguageSucssess?languageState.language: locale,
+              locale:languageState is LanguageSucssess?languageState.language: Locale('en'),
               localizationsDelegates:  [
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,

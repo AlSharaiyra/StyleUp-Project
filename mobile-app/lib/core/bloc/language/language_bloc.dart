@@ -8,6 +8,7 @@ class LanguageBloc extends Bloc<LanguageEvent,LanguageState>{
   }
   void _changeLanguage(ChangeLanguage event,Emitter<LanguageState> emit){
     emit(const LanguageLoading());
+    
     emit(LanguageSucssess(language: event.language));
     
   }

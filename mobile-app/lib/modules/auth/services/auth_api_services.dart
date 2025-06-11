@@ -1,7 +1,5 @@
 // ignore_for_file: avoid_dynamic_calls
-
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
