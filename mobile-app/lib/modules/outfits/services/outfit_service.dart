@@ -83,11 +83,15 @@ final refreshToken=AuthApiServices().refreshToken;
         params.toHeader(), 
       );
       if (_isSuccessful(response)) {
+        if (response.data is List) {
         final List<GetWarddropItems> items = (response.data as List)
             .map((item) => GetWarddropItems.fromJson(item))
             .toList();
-
         return Right(items);
+      } else {
+        log(' Unexpected response data (not a list): ${response.data}');
+        return Right([]); 
+      }
       } else if (response.statusCode == 401 || response.statusCode == 403) {
         log('Unauthorized access. Trying to refresh token...');
         final storage = SecureTokenStorage.instance;

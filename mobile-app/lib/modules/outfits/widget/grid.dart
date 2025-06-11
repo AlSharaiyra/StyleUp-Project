@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:style_up/core/config/secure_token_storage.dart';
 import 'package:style_up/modules/outfits/bloc/delete_item_button/delete_item_button_bloc.dart';
@@ -90,7 +91,7 @@ class _GridClosetState extends State<GridCloset> {
             curve: Curves.easeOut,
           );
         }else if (_lastScrollPosition != null){
-          // Restore scroll position after new items are loaded
+          
         }
       }
       if (state is OutfitInitial) {
@@ -134,12 +135,7 @@ class _GridClosetState extends State<GridCloset> {
         final List<GetWarddropItems> items = state.outfits;
         if (totalItems.isEmpty) {
           return Center(
-            child: Text(
-              'No outfits found.',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: ColorsTheme.black,
-                  ),
-            ),
+            child: Lottie.asset('assets/empty.json'),
           );
         }
         if (items.length < 8) {
