@@ -18,7 +18,7 @@ class OutfitBloc extends Bloc<OutfitEvent, OutfitState> {
   Future<void> _onLoadOutfits(
       LoadOutfitsEvent event, Emitter<OutfitState> emit) async {
         final state=this.state is OutfitLoaded? this.state as OutfitLoaded :null;
-final isInitialLoad = event.params.filterOptions.page == 0;
+        final isInitialLoad = event.params.filterOptions.page == 0;
     if (isInitialLoad) {
       emit(const OutfitLoading(isInitialLoad: true));
     }    OutfitController outfitController = OutfitController();

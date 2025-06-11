@@ -57,7 +57,7 @@ class MaterialAppUtils extends StatelessWidget {
             final theme = snapshot.data?[0] as ThemeData?;
             final locale = snapshot.data?[1] as Locale?;
 
-            return MaterialApp.router(
+            return MaterialApp(
               title: 'Flutter Demo',
               debugShowCheckedModeBanner: false,
               supportedLocales: L10n.all,
@@ -70,8 +70,8 @@ class MaterialAppUtils extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
               ],
-              //  home: BottomBar(),
-              routerConfig: AppRouter.router,
+               home: BottomBar(),
+              //routerConfig: AppRouter.router,
 
 
             );

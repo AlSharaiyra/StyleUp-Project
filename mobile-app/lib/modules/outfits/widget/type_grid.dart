@@ -35,7 +35,7 @@ class TypeGrid extends StatelessWidget {
             localizedText: localizedType,
             section: FilterSection.type,
             onTap: () {
-              // debugPrint('Type selected: $type');
+              
             },
           );
         });

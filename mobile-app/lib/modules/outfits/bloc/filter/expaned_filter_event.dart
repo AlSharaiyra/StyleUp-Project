@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:style_up/modules/outfits/model/filter_model.dart';
+
 
 abstract class ExpanedFilterEvent extends Equatable {
   const ExpanedFilterEvent();
@@ -11,12 +11,7 @@ abstract class ExpanedFilterEvent extends Equatable {
 class ToggleTypeSection extends ExpanedFilterEvent {}
 class ToggleSeasonSection extends ExpanedFilterEvent {}
 
-class InitializeFilterSelection extends ExpanedFilterEvent {
-  final FilterOptions initialOptions;
-  const InitializeFilterSelection(this.initialOptions);
-  @override
-  List<Object?> get props => [initialOptions];
-}
+
 
 class SelectType extends ExpanedFilterEvent {
   final String? type; 
