@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-
 class UploadOutfitParams {
   final String accessToken;
   final String? description;
@@ -26,7 +24,7 @@ class UploadOutfitParams {
         image!.path,
         filename: image!.path.split('/').last,
       ),
-      'withModel':kDebugMode ? false : true
+      'withModel':kDebugMode ? true : true
     });
   }
 }

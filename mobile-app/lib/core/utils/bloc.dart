@@ -24,6 +24,11 @@ import 'package:style_up/modules/auth/bloc/textfield/register/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/button/login/login_button_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/login/form_bloc.dart';
 import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_password_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/events/events_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/firstStep/first_step_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/secondStep/second_step_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/thirdStep/third_step_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/weather/weather_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/delete_item_button/delete_item_button_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
@@ -82,6 +87,11 @@ class BlocUtils extends StatelessWidget {
           BlocProvider(
             create: (context) => LoginButtonBloc(),
           ),
+           BlocProvider(
+            create: (context) => ThirdStepBloc(),
+          ), BlocProvider(
+            create: (context) => SecondStepBloc(),
+          ),
           BlocProvider(
             create: (context) => RegisterButtonBloc(),
           ),
@@ -117,6 +127,9 @@ class BlocUtils extends StatelessWidget {
           BlocProvider(create: (context) => EditProfileFormBloc()),
           BlocProvider(create: (context) => ExpanedFilterBloc()),
           BlocProvider(create: (context) => ImageBloc()),
+          BlocProvider(create: (context) => FirstStepBloc()),
+          BlocProvider(create: (context) => WeatherBloc()),
+          BlocProvider(create: (context) => EventBloc()),
           BlocProvider(
             create: (blocContext) {
               return OutfitBloc(context: context)

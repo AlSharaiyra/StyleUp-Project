@@ -2,6 +2,10 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:style_up/core/config/secure_token_storage.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/events/events_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/events/events_event.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/weather/weather_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/weather/weather_event.dart';
 import 'package:style_up/modules/outfits/bloc/outfit/outfit_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/outfit/outfit_event.dart';
 import 'package:style_up/modules/outfits/model/filter_model.dart';
@@ -45,20 +49,28 @@ class BottomBar extends StatelessWidget {
                   buttonBackgroundColor: ColorsTheme.primryButton,
                   animationDuration: const Duration(milliseconds: 300),
                   animationCurve: Curves.easeInOut,
-                  onTap: (index)async {
+                  onTap: (index) async {
                     context.read<NavigationBloc>().add(NavigateTo(index));
                     if (index == 0) {
                       final SecureTokenStorage secureTokenStorage =
                           SecureTokenStorage.instance;
                       context.read<OutfitBloc>().add(LoadOutfitsEvent(
                             params: GetOutfitParams(
-                              filterOptions: FilterOptions(
-                                
-                              ),
-                              accessToken: await secureTokenStorage.getAccessToken()??''
-                            ),
+                                filterOptions: FilterOptions(),
+                                accessToken:
+                                    await secureTokenStorage.getAccessToken() ??
+                                        ''),
                             context: context,
                           ));
+                      
+                    }
+                    if (index == 2) {
+                     if (context.mounted) {
+                      final SecureTokenStorage secureTokenStorage =
+                          SecureTokenStorage.instance;
+                        context.read<WeatherBloc>().add(WeatherFetchEvent());
+                        context.read<EventBloc>().add(EventsFetchEvents(accessToken:  await secureTokenStorage.getAccessToken() ?? ''));
+                      }
                     }
                   },
                   items: [

@@ -9,7 +9,9 @@ class FirstStepInitial extends FirstStepState {}
 class FirstStepLoading extends FirstStepState {}
 class FirstStepSuccess extends FirstStepState {
   final List<GetWarddropItems> items;
-  FirstStepSuccess({required this.items});
+  final GetWarddropItems? selectedItem;
+  final int? index;
+  FirstStepSuccess({required this.items,this.selectedItem,this.index});
 }
 class FirstStepError extends FirstStepState {
   final String error;

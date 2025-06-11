@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/firstStep/first_step_bloc.dart';
+import 'package:style_up/modules/outfit_recommendation/bloc/firstStep/first_step_event.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/close_button.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/no_button.dart';
 import 'package:style_up/modules/outfit_recommendation/widget/yes_button.dart';
@@ -81,8 +84,12 @@ class PopupCard extends StatelessWidget {
                 Column(
                   spacing: spacing * 0.6,
                   children: [
-                    YesButton(onTap: () {}),
-                    NoButton(onTap: () {}),
+                    YesButton(onTap: () {
+                      
+                    }),
+                    NoButton(onTap: () {
+                      context.read<FirstStepBloc>().add(FirstStepSelectEvent());
+                    }),
                   ],
                 ),
               ],

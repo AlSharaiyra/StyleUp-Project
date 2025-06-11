@@ -7,7 +7,7 @@ class Pages {
   static final  List screens = [
     const Closet(),
      UploadItem(),
-    const HomeView(),
+     HomeView(),
     const SettingsScreen(), 
   ];
 }
