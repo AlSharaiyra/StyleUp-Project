@@ -17,6 +17,7 @@ import 'package:style_up/modules/outfits/params/get_outfit.dart';
 import 'package:style_up/modules/outfits/params/upload_outfit.dart';
 import 'package:style_up/modules/outfits/services/outfit_interface.dart';
 
+
 class OutfitService extends IOutfitService {
   final IApi api = DioApiService();
 
@@ -73,8 +74,14 @@ final refreshToken=AuthApiServices().refreshToken;
   Future<Either<String, List<GetWarddropItems>>> getOutfits(
       GetOutfitParams params, BuildContext context) async {
     try {
-      final response = await api.get(getWardrobeItemsUrl, params.toHeader());
+      final queryString = params.toQueryString(); 
+      final urlWithQuery = '$getWardrobeItemsUrl$queryString'; 
 
+      log('Fetching outfits from URL: $urlWithQuery'); 
+      final response = await api.get(
+        urlWithQuery, 
+        params.toHeader(), 
+      );
       if (_isSuccessful(response)) {
         final List<GetWarddropItems> items = (response.data as List)
             .map((item) => GetWarddropItems.fromJson(item))

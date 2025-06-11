@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-
-
 import '../widget/closet_title.dart';
 import '../widget/filtering.dart';
 import '../widget/grid.dart';
 
 class Closet extends StatelessWidget {
   const Closet({super.key});
+
+   void _openFilterDrawer(BuildContext context) {
+    Scaffold.of(context).openEndDrawer(); 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +24,8 @@ class Closet extends StatelessWidget {
           Builder(
             builder: (context) {
               return IconButton(
-                onPressed: (){
-                  Scaffold.of(context).openEndDrawer();
-                },
-                icon: const Icon(Icons.tune)
+                onPressed: () => _openFilterDrawer(context), 
+                icon: const Icon(Icons.tune),
               );
             }
           )

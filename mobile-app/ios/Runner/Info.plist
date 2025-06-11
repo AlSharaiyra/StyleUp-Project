@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>NSCameraUsageDescription</key>
+	<string>This app needs camera access to take photos for your outfit uploads.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs access to your photo library to pick images for upload.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app saves selected or edited images to your library.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -18,12 +24,15 @@
 	<string>style_up</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+
+	<!-- ✅ Replaced version info -->
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

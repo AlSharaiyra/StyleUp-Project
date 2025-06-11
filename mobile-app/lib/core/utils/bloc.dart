@@ -27,6 +27,11 @@ import 'package:style_up/modules/auth/bloc/textfield/resetPassword/reset_passwor
 import 'package:style_up/modules/outfits/bloc/delete_item_button/delete_item_button_bloc.dart';
 import 'package:style_up/modules/outfits/bloc/filter/expaned_filter_bloc.dart';
 import 'package:style_up/modules/auth/bloc/user_profile/user_profile_bloc.dart';
+import 'package:style_up/modules/outfits/bloc/outfit/outfit_bloc.dart';
+import 'package:style_up/modules/outfits/bloc/outfit/outfit_event.dart';
+import 'package:style_up/modules/outfits/model/filter_model.dart';
+import 'package:style_up/modules/outfits/params/get_outfit.dart';
+import 'package:style_up/modules/outfits/services/outfit_service.dart';
 import 'package:style_up/modules/upload_item/bloc/image_bloc/image_bloc.dart';
 import 'package:style_up/modules/upload_item/bloc/upload_image_button/upload_image_button_bloc.dart';
 
@@ -37,81 +42,101 @@ class BlocUtils extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (BuildContext context) => SecureEyeBloc(),
-        ),
-        BlocProvider(
-          create: (context) => SecureEyeConfirmBloc(),
-        ),
-        BlocProvider(
-          create: (BuildContext context) => AgePickerBloc(),
-        ),
-        BlocProvider(
-          create: (BuildContext context) => UserProfileBloc(),
-        ),
-        BlocProvider(
-          create: (context) => PinCodeBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ChangeGenderBloc(),
-        ),
-        BlocProvider(
-          create: (context) => PageBloc(),
-        ),
-        BlocProvider(
-          create: (context) => UploadImageButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => DeleteItemButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => LoginFormBloc(),
-        ),
-        BlocProvider(
-          create: (context) => RegisterFieldsFormBloc(),
-        ),
-        BlocProvider(
-          create: (context) => LoginButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => RegisterButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ResendOtpButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => VerifyOtpButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => AgeGenderButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ForgetPasswordBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ForgetPasswordFormBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ResetPasswordButtonBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ResetPasswordFieldsFormBloc(),
-        ),
-        BlocProvider(
-          create: (context) => ThemeBloc(),
-        ),
-        BlocProvider(
-          create: (context) => LanguageBloc(),
-        ),
-        BlocProvider(create: (context) => NavigationBloc()),
-        BlocProvider(create: (context) => EditProfileButtonBloc()),
-        BlocProvider(create: (context) => EditProfileFormBloc()),
-        BlocProvider(create: (context) => FilterBloc()),
-        BlocProvider(create: (context) => ImageBloc()),
-      ],
-      child: const MaterialAppUtils(),
+    return RepositoryProvider(
+      create: (repoContext) => OutfitService(), 
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (BuildContext context) => SecureEyeBloc(),
+          ),
+          BlocProvider(
+            create: (context) => SecureEyeConfirmBloc(),
+          ),
+          BlocProvider(
+            create: (BuildContext context) => AgePickerBloc(),
+          ),
+          BlocProvider(
+            create: (BuildContext context) => UserProfileBloc(),
+          ),
+          BlocProvider(
+            create: (context) => PinCodeBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ChangeGenderBloc(),
+          ),
+          BlocProvider(
+            create: (context) => PageBloc(),
+          ),
+          BlocProvider(
+            create: (context) => UploadImageButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => DeleteItemButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => LoginFormBloc(),
+          ),
+          BlocProvider(
+            create: (context) => RegisterFieldsFormBloc(),
+          ),
+          BlocProvider(
+            create: (context) => LoginButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => RegisterButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ResendOtpButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => VerifyOtpButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => AgeGenderButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ForgetPasswordBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ForgetPasswordFormBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ResetPasswordButtonBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ResetPasswordFieldsFormBloc(),
+          ),
+          BlocProvider(
+            create: (context) => ThemeBloc(),
+          ),
+          BlocProvider(
+            create: (context) => LanguageBloc(),
+          ),
+          BlocProvider(create: (context) => NavigationBloc()),
+          BlocProvider(create: (context) => EditProfileButtonBloc()),
+          BlocProvider(create: (context) => EditProfileFormBloc()),
+          BlocProvider(create: (context) => ExpanedFilterBloc()),
+          BlocProvider(create: (context) => ImageBloc()),
+          BlocProvider(
+            create: (blocContext) {
+              final OutfitService outfitServiceInstance = blocContext.read<OutfitService>(); 
+              final outfitBloc = OutfitBloc(
+                outfitServiceInstance, 
+                context: blocContext,  
+                outfitService: outfitServiceInstance, 
+              );
+              outfitBloc.add(LoadOutfitsEvent(
+                params: const GetOutfitParams(
+                  filterOptions: FilterOptions(), 
+                ),
+                context: blocContext, 
+              ));
+              return outfitBloc;
+            },
+          ),
+        ],
+        child: const MaterialAppUtils(),
+      ),
     );
   }
 }

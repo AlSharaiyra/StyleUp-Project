@@ -23,17 +23,17 @@ class FilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double margin = MediaQuery.of(context).size.width *0.01; 
-    return BlocBuilder<FilterBloc, FilterState>(
+    return BlocBuilder<ExpanedFilterBloc, ExpanedFilterState>(
        builder: (context, state) {
-        final bool isSelected = section == FilterSection.type 
-        ? state.selectedType == text
-        : state.selectedSeason == text;
+        final bool isSelected = section == FilterSection.type
+          ? state.currentSelectedType == text
+          : state.currentSelectedSeason == text;
         return WidgetGesturedetector(
           onTap:(){
             if (section == FilterSection.type) {
-              context.read<FilterBloc>().add(SelectType(text));
+              context.read<ExpanedFilterBloc>().add(SelectType(text));
             } else {
-              context.read<FilterBloc>().add(SelectSeason(text));
+              context.read<ExpanedFilterBloc>().add(SelectSeason(text));
             }
             onTap();
           },

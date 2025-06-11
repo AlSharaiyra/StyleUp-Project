@@ -13,7 +13,7 @@ class ApplyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height *0.04; 
-    final double width = MediaQuery.of(context).size.width *0.4; 
+    final double width = MediaQuery.of(context).size.width *0.4;  
     return WidgetGesturedetector(
       onTap: onTap,
       child: Container(
@@ -25,10 +25,13 @@ class ApplyButton extends StatelessWidget {
           color: ColorsTheme.primryButton
         ),
         alignment: Alignment.center,
-        child: Text(
-         AppLocalizations.of(context)!.apply,
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: ColorsTheme.white
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+           AppLocalizations.of(context)!.apply,
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              color: ColorsTheme.white
+            ),
           ),
         ),
       ),
