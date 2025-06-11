@@ -10,5 +10,5 @@ public class GenerateOptionsRequest {
 
     private EventType eventType;
     private String season;
-    // add items identifier
+    private String previousItemId;
 }

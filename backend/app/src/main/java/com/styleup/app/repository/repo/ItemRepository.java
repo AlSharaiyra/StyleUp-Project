@@ -11,11 +11,14 @@ import java.util.UUID;
  * Item repository.
  *
  * @author Walid Sharaiyra
- * @since 2025
  * @version 1.0
+ * @since 2025
  */
 public interface ItemRepository extends JpaRepository<Item, UUID>, JpaSpecificationExecutor<Item> {
 
-        List<Item> findByClosetIdAndSubCategoryAndUsageAndSeason(
+    List<Item> findByClosetIdAndSubCategoryAndUsageAndSeason(
             final UUID closetId, final String subCategory, final String usage, final String season);
+
+    List<Item> findByClosetIdAndSubCategoryAndUsageAndSeasonAndBaseColour(
+            final UUID closetId, final String subCategory, final String usage, final String season, final String baseColour);
 }

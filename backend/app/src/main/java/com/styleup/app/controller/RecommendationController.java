@@ -36,9 +36,32 @@ public class RecommendationController {
             @RequestBody final GenerateOptionsRequest generateOptionsRequest
             ) {
         final String userId = helperService.extractUserIdFromJwt(request);
-        final EventType eventType = generateOptionsRequest.getEventType();
 
         return ResponseEntity.ok().body(recommendationService.generateTopwearOptions(
-                userId, eventType, generateOptionsRequest.getSeason()));
+                userId, generateOptionsRequest));
+    }
+
+    @PostMapping("/step-two")
+    public ResponseEntity<List<ItemResponse>> generateBottomwearOptions(
+            final HttpServletRequest request,
+            @RequestBody final GenerateOptionsRequest generateOptionsRequest
+    ) {
+        final String userId = helperService.extractUserIdFromJwt(request);
+        final String otherType = "bottomwear";
+
+        return ResponseEntity.ok().body(recommendationService.generateOtherOptions(
+                userId, generateOptionsRequest, otherType));
+    }
+
+    @PostMapping("/step-three")
+    public ResponseEntity<List<ItemResponse>> generateFootwearOptions(
+            final HttpServletRequest request,
+            @RequestBody final GenerateOptionsRequest generateOptionsRequest
+    ) {
+        final String userId = helperService.extractUserIdFromJwt(request);
+        final String otherType = "shoes";
+
+        return ResponseEntity.ok().body(recommendationService.generateOtherOptions(
+                userId, generateOptionsRequest, otherType));
     }
 }

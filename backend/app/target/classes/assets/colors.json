@@ -1,0 +1,689 @@
+[
+  {
+    "name": "Navy Blue",
+    "compatible": [
+      "Orange",
+      "Cobalt",
+      "Sky Blue",
+      "Teal",
+      "Indigo",
+      "Red",
+      "Yellow",
+      "Light Navy",
+      "Dark Navy",
+      "Midnight Blue",
+      "Pale Blue",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Blue",
+    "compatible": [
+      "Orange",
+      "Navy Blue",
+      "Sky Blue",
+      "Aqua",
+      "Cobalt",
+      "Yellow",
+      "Red",
+      "Light Blue",
+      "Dark Blue",
+      "Royal Blue",
+      "Baby Blue",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Silver",
+    "compatible": [
+      "Black",
+      "Grey",
+      "Charcoal",
+      "White",
+      "Slate",
+      "Navy Blue",
+      "Burgundy",
+      "Light Silver",
+      "Dark Silver",
+      "Platinum",
+      "Pale Silver",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Black",
+    "compatible": [
+      "White",
+      "Charcoal",
+      "Slate",
+      "Grey",
+      "Silver",
+      "Red",
+      "Gold",
+      "Dark Grey",
+      "Jet Black",
+      "Onyx",
+      "Ebony",
+      "Beige",
+      "Cream",
+      "Off White",
+      "Black"
+    ]
+  },
+  {
+    "name": "Grey",
+    "compatible": [
+      "White",
+      "Silver",
+      "Charcoal",
+      "Slate",
+      "Black",
+      "Pink",
+      "Navy Blue",
+      "Light Grey",
+      "Dark Grey",
+      "Steel",
+      "Ash Grey",
+      "Beige",
+      "Cream",
+      "Off White"
+    ]
+  },
+  {
+    "name": "Green",
+    "compatible": [
+      "Magenta",
+      "Lime",
+      "Olive",
+      "Sea Green",
+      "Emerald",
+      "Red",
+      "Purple",
+      "Forest Green",
+      "Mint",
+      "Sage",
+      "Lime Green",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Purple",
+    "compatible": [
+      "Yellow",
+      "Magenta",
+      "Lavender",
+      "Plum",
+      "Violet",
+      "Green",
+      "Orange",
+      "Deep Purple",
+      "Lilac",
+      "Orchid",
+      "Mauve",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "White",
+    "compatible": [
+      "Black",
+      "Off White",
+      "Cream",
+      "Ivory",
+      "Silver",
+      "Navy Blue",
+      "Red",
+      "Pearl",
+      "Snow",
+      "Alabaster",
+      "Chalk",
+      "Grey",
+      "Beige",
+      "Nude",
+      "White"
+    ]
+  },
+  {
+    "name": "Brown",
+    "compatible": [
+      "Teal",
+      "Copper",
+      "Rust",
+      "Coffee Brown",
+      "Sienna",
+      "Cream",
+      "Mustard",
+      "Dark Brown",
+      "Light Brown",
+      "Tan",
+      "Mushroom Brown",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Teal",
+    "compatible": [
+      "Coral",
+      "Sea Green",
+      "Turquoise Blue",
+      "Aqua",
+      "Mint",
+      "Peach",
+      "Maroon",
+      "Dark Teal",
+      "Light Teal",
+      "Cyan",
+      "Jade",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Copper",
+    "compatible": [
+      "Teal",
+      "Bronze",
+      "Rust",
+      "Sienna",
+      "Terracotta",
+      "Cream",
+      "Navy Blue",
+      "Dark Copper",
+      "Light Copper",
+      "Burnt Orange",
+      "Mustard",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Pink",
+    "compatible": [
+      "Mint",
+      "Rose",
+      "Peach",
+      "Coral",
+      "Blush",
+      "Navy Blue",
+      "Lavender",
+      "Baby Pink",
+      "Hot Pink",
+      "Dusty Pink",
+      "Fuchsia",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Off White",
+    "compatible": [
+      "Black",
+      "White",
+      "Cream",
+      "Ivory",
+      "Silver",
+      "Navy Blue",
+      "Burgundy",
+      "Pearl",
+      "Snow",
+      "Alabaster",
+      "Chalk",
+      "Grey",
+      "Beige",
+      "Nude"
+    ]
+  },
+  {
+    "name": "Beige",
+    "compatible": [
+      "Navy Blue",
+      "Cream",
+      "Off White",
+      "Tan",
+      "Khaki",
+      "Brown",
+      "Teal",
+      "Light Beige",
+      "Dark Beige",
+      "Sand",
+      "Nude",
+      "Black",
+      "White",
+      "Grey",
+      "Cream"
+    ]
+  },
+  {
+    "name": "Red",
+    "compatible": [
+      "Green",
+      "Coral",
+      "Rose",
+      "Scarlet",
+      "Crimson",
+      "Blue",
+      "Yellow",
+      "Dark Red",
+      "Light Red",
+      "Ruby",
+      "Cherry",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Khaki",
+    "compatible": [
+      "Navy Blue",
+      "Beige",
+      "Tan",
+      "Olive",
+      "Sand",
+      "Burgundy",
+      "Cream",
+      "Light Khaki",
+      "Dark Khaki",
+      "Taupe",
+      "Mushroom Brown",
+      "Black",
+      "White",
+      "Grey",
+      "Cream"
+    ]
+  },
+  {
+    "name": "Orange",
+    "compatible": [
+      "Blue",
+      "Coral",
+      "Tangerine",
+      "Peach",
+      "Saffron",
+      "Purple",
+      "Green",
+      "Dark Orange",
+      "Light Orange",
+      "Burnt Orange",
+      "Apricot",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Coffee Brown",
+    "compatible": [
+      "Cream",
+      "Brown",
+      "Tan",
+      "Mushroom Brown",
+      "Sienna",
+      "Mustard",
+      "Olive",
+      "Dark Coffee",
+      "Light Coffee",
+      "Mocha",
+      "Khaki",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Yellow",
+    "compatible": [
+      "Purple",
+      "Mustard",
+      "Saffron",
+      "Lemon",
+      "Canary",
+      "Blue",
+      "Red",
+      "Dark Yellow",
+      "Light Yellow",
+      "Gold",
+      "Daffodil",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Charcoal",
+    "compatible": [
+      "Cream",
+      "Grey",
+      "Silver",
+      "Slate",
+      "Black",
+      "Mustard",
+      "Burgundy",
+      "Dark Charcoal",
+      "Light Charcoal",
+      "Steel",
+      "Gunmetal",
+      "White",
+      "Beige",
+      "Off White",
+      "Nude"
+    ]
+  },
+  {
+    "name": "Gold",
+    "compatible": [
+      "Navy Blue",
+      "Yellow",
+      "Mustard",
+      "Saffron",
+      "Bronze",
+      "Purple",
+      "Emerald",
+      "Dark Gold",
+      "Light Gold",
+      "Metallic",
+      "Champagne",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Tan",
+    "compatible": [
+      "Navy Blue",
+      "Beige",
+      "Khaki",
+      "Sand",
+      "Taupe",
+      "Cream",
+      "Burgundy",
+      "Light Tan",
+      "Dark Tan",
+      "Camel",
+      "Nude",
+      "Black",
+      "White",
+      "Grey",
+      "Cream"
+    ]
+  },
+  {
+    "name": "Magenta",
+    "compatible": [
+      "Lime Green",
+      "Purple",
+      "Fuchsia",
+      "Pink",
+      "Violet",
+      "Yellow",
+      "Teal",
+      "Dark Magenta",
+      "Light Magenta",
+      "Orchid",
+      "Mauve",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Lavender",
+    "compatible": [
+      "Olive",
+      "Purple",
+      "Lilac",
+      "Mauve",
+      "Violet",
+      "Mint",
+      "Pink",
+      "Light Lavender",
+      "Dark Lavender",
+      "Periwinkle",
+      "Orchid",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Sea Green",
+    "compatible": [
+      "Rose",
+      "Green",
+      "Mint",
+      "Teal",
+      "Emerald",
+      "Peach",
+      "Maroon",
+      "Dark Sea Green",
+      "Light Sea Green",
+      "Jade",
+      "Forest Green",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Cream",
+    "compatible": [
+      "Navy Blue",
+      "Beige",
+      "Off White",
+      "Ivory",
+      "Champagne",
+      "Brown",
+      "Burgundy",
+      "Light Cream",
+      "Dark Cream",
+      "Pearl",
+      "Nude",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Peach",
+    "compatible": [
+      "Teal",
+      "Coral",
+      "Pink",
+      "Apricot",
+      "Salmon",
+      "Mint",
+      "Navy Blue",
+      "Light Peach",
+      "Dark Peach",
+      "Blush",
+      "Rose",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Olive",
+    "compatible": [
+      "Purple",
+      "Green",
+      "Sage",
+      "Khaki",
+      "Lime Green",
+      "Cream",
+      "Maroon",
+      "Dark Olive",
+      "Light Olive",
+      "Forest Green",
+      "Moss",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Burgundy",
+    "compatible": [
+      "Mint",
+      "Maroon",
+      "Rose",
+      "Crimson",
+      "Ruby",
+      "Gold",
+      "Navy Blue",
+      "Dark Burgundy",
+      "Light Burgundy",
+      "Wine",
+      "Claret",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Rust",
+    "compatible": [
+      "Teal",
+      "Copper",
+      "Burnt Orange",
+      "Sienna",
+      "Terracotta",
+      "Cream",
+      "Navy Blue",
+      "Dark Rust",
+      "Light Rust",
+      "Bronze",
+      "Mustard",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Maroon",
+    "compatible": [
+      "Teal",
+      "Burgundy",
+      "Rose",
+      "Crimson",
+      "Ruby",
+      "Gold",
+      "Olive",
+      "Dark Maroon",
+      "Light Maroon",
+      "Wine",
+      "Claret",
+      "Black",
+      "White",
+      "Grey",
+      "Beige"
+    ]
+  },
+  {
+    "name": "Grey Melange",
+    "compatible": [
+      "Black",
+      "Grey",
+      "Silver",
+      "Charcoal",
+      "Slate",
+      "Pink",
+      "Navy Blue",
+      "Light Melange",
+      "Dark Melange",
+      "Steel",
+      "Ash Grey",
+      "White",
+      "Beige",
+      "Cream",
+      "Off White"
+    ]
+  },
+  {
+    "name": "Steel",
+    "compatible": [
+      "Coral",
+      "Navy Blue",
+      "Sky Blue",
+      "Slate",
+      "Cobalt"
+    ]
+  },
+  {
+    "name": "Skin",
+    "compatible": [
+      "White",
+      "Brown",
+      "Beige",
+      "Coral",
+      "Peach",
+      "Tan",
+      "Light Pink",
+      "Grey",
+      "Black",
+      "Olive",
+      "Dusty Rose",
+      "Cream",
+      "Khaki",
+      "Off White",
+      "Light Grey"
+    ]
+  },
+  {
+    "name": "Fluorescent Green",
+    "compatible": [
+      "Black",
+      "White",
+      "Dark Green",
+      "Charcoal",
+      "Electric Blue",
+      "Hot Pink",
+      "Purple",
+      "Neon Yellow",
+      "Grey",
+      "Navy",
+      "Magenta",
+      "Teal",
+      "Silver",
+      "Cyan",
+      "Orange"
+    ]
+  }
+]
+

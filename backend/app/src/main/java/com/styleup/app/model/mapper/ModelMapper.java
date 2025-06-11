@@ -91,7 +91,7 @@ public class ModelMapper {
         item.setMasterCategory(features.getMasterCategory());
         item.setSubCategory(features.getSubCategory().toLowerCase());
         item.setArticleType(features.getArticleType());
-        item.setBaseColour(features.getBaseColour());
+        item.setBaseColour(features.getBaseColour().toLowerCase());
         item.setSeason(features.getSeason().toLowerCase());
         item.setUsage(features.getUsage().toLowerCase());
 
