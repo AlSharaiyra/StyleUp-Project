@@ -7,5 +7,6 @@ public class Constants {
     public static final long JWT_ACCESS_EXPIRATION = 1000 * 60 * 60; // 1 Hour
     public static final long JWT_REFRESH_EXPIRATION = 1000 * 60 * 60 * 24 * 15; // 15 Days
     public static final long PRESIGNED_URL_EXPIRY = 15; // 15 Minutes
+    public static final long NO_OF_SUGGESTED_OPTIONS = 3; // 15 Minutes
 
 }

@@ -89,11 +89,11 @@ public class ModelMapper {
         // Setting features
         item.setGender(features.getGender());
         item.setMasterCategory(features.getMasterCategory());
-        item.setSubCategory(features.getSubCategory());
+        item.setSubCategory(features.getSubCategory().toLowerCase());
         item.setArticleType(features.getArticleType());
         item.setBaseColour(features.getBaseColour());
-        item.setSeason(features.getSeason());
-        item.setUsage(features.getUsage());
+        item.setSeason(features.getSeason().toLowerCase());
+        item.setUsage(features.getUsage().toLowerCase());
 
         return item;
     }

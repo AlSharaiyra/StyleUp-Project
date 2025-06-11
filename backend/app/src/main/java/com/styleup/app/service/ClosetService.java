@@ -60,9 +60,9 @@ public class ClosetService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final S3Client s3Client;
-    private final S3Presigner s3Presigner;
     private final FastApiClient fastApiClient;
     private final PresignedUrlCache urlCache;
+    private final HelperService helperService;
 
     @Value("${app.s3.bucket-name}")
     private String bucketName;
@@ -84,17 +84,6 @@ public class ClosetService {
 
         Specification<Item> spec = ItemSpecification.hasClosetId(closetId);
 
-//        if (filterType != null && filterValue != null){
-//            switch (filterType.toLowerCase()) {
-//                case "subcategory" -> {
-//                    spec = spec.and(ItemSpecification.hasSubCategory(filterValue));
-//                }
-//                case "season" -> {
-//                    spec = spec.and(ItemSpecification.hasSeason(filterValue));
-//                }
-//            }
-//        }
-
         if (subCategory != null && !subCategory.isBlank()) {
             spec = spec.and(ItemSpecification.hasSubCategory(subCategory));
         }
@@ -105,21 +94,11 @@ public class ClosetService {
 
         Page<Item> itemPage = itemRepository.findAll(spec, pageable);
 
-//        if (itemPage.isEmpty()) {
-//            throw new ResourceNotFoundException("User`s closet is empty", EMPTY_CLOSET);
-//        }
+        if (itemPage.isEmpty()) {
+            throw new ResourceNotFoundException("User`s closet is empty", EMPTY_CLOSET);
+        }
 
-        return itemPage.stream()
-                .map(item -> {
-                    URL url = urlCache.getOrGenerate(
-                            item.getObjectKey(),
-                            Duration.ofMinutes(PRESIGNED_URL_EXPIRY), // cache TTL
-                            key -> generatePresignedUrl(key, PRESIGNED_URL_EXPIRY)
-                    );
-
-                    return modelMapper.toItemResponse(item, String.valueOf(url));
-                })
-                .toList();
+        return helperService.getItemsResponsesWithPresignedUrls(itemPage.getContent());
     }
 
 
@@ -176,8 +155,7 @@ public class ClosetService {
         }
 
         // As Image URL
-        return generatePresignedUrl(objectKey, PRESIGNED_URL_EXPIRY);
-//        return regionEndpoint + "/" + bucketName + "/" + userId + "/" + file.getOriginalFilename();
+        return helperService.generatePresignedUrl(objectKey, PRESIGNED_URL_EXPIRY);
     }
 
 
@@ -224,25 +202,5 @@ public class ClosetService {
                 .build();
 
         s3Client.deleteObject(deleteRequest);
-    }
-
-    public URL generatePresignedUrl(final String objectKey, final long expiryInMinutes) {
-
-        try {
-            GetObjectRequest getObjectRequest = GetObjectRequest.builder()
-                    .bucket(bucketName)
-                    .key(objectKey)
-                    .build();
-
-            GetObjectPresignRequest presignRequest = GetObjectPresignRequest.builder()
-                    .signatureDuration(Duration.ofMinutes(expiryInMinutes))
-                    .getObjectRequest(getObjectRequest)
-                    .build();
-
-            log.info("Generating new pre-signed URL.");
-            return s3Presigner.presignGetObject(presignRequest).url();
-        } catch (Exception ex) {
-            throw new WasabiErrorException("An error occurred while generating presigned url", ERROR_CREATING_PRESIGNED_URL);
-        }
     }
 }
