@@ -8,6 +8,7 @@ class PinCodeBloc extends Bloc<PinCodeEvent, PinCodeState> {
 
   PinCodeBloc({this.maxLength = 4}) : super(const PinInitial()) {
     on<PinChanged>((PinChanged event, Emitter<PinCodeState> emit) {
+      emit(PinLoading(event.pin));
       if (event.pin.length < maxLength) {
         emit(PinChangedState(event.pin));
       } else if (event.pin.length == maxLength) {

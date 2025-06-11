@@ -16,6 +16,9 @@ class PinInitial extends PinCodeState {
 class PinChangedState extends PinCodeState {
   const PinChangedState(super.pin);
 }
+class PinLoading extends PinCodeState {
+  const PinLoading(super.pin);
+}
 
 class PinCompleted extends PinCodeState {
   const PinCompleted(super.pin);

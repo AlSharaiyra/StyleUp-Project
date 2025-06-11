@@ -85,7 +85,11 @@ class RegisterView extends StatelessWidget {
                     height: 3 * spacing,
                   ),
                   BlocListener<RegisterFieldsFormBloc, RegisterFormState>(
-                    listener: (context, state) {},
+                    listener: (context, state) {
+                      if(state is RegisterFormLoading){
+                        
+                      }
+                    },
                     child:
                         BlocConsumer<RegisterButtonBloc, RegisterButtonState>(
                             listener: (context, state) {

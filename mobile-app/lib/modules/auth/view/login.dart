@@ -1,5 +1,7 @@
 // ignore_for_file: always_specify_types, use_build_context_synchronously
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -89,6 +91,9 @@ class LoginView extends StatelessWidget {
                   ),
                   BlocListener<LoginFormBloc, LoginFormState>(
                     listener: (context, state) {
+                      if(state is LoginFormLoading){
+                        
+                      }
                       if (state is LoginFormValid) {
                         // Trigger LoginButtonBloc when the form is valid
                         context.read<LoginButtonBloc>().add(
@@ -122,11 +127,11 @@ class LoginView extends StatelessWidget {
 
                       return LoginButton(
                         onPressed: () {
-                          if (formKey.currentState!.validate()) {
+                          log('Login button pressed');
                             context.read<LoginFormBloc>().add(
                                 LoginFormSubmitted(emailController.text,
                                     passwordController.text, context));
-                          }
+                          
                         },
                         isRegisterPage: false,
                       );

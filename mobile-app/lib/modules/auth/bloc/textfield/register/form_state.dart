@@ -10,7 +10,7 @@ abstract class RegisterFormState extends Equatable {
 class RegisterFormInitial extends RegisterFormState {}
 
 class RegisterFormValid extends RegisterFormState {}
-
+class RegisterFormLoading extends RegisterFormState {}
 class RegisterFormInvalid extends RegisterFormState {
   final String emailErrorMessage;
   final String passwordErrorMessage;

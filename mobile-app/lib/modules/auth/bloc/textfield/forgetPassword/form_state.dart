@@ -10,7 +10,7 @@ abstract class ForgetPasswordFormState extends Equatable {
 class ForgetPasswordFormInitial extends ForgetPasswordFormState {}
 
 class ForgetPasswordFormValid extends ForgetPasswordFormState {}
-
+class ForgetPasswordFormLoading extends ForgetPasswordFormState {}
 class ForgetPasswordFormInvalid extends ForgetPasswordFormState {
   final String emailErrorMessage;
 
