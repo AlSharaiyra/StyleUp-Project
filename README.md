@@ -1,9 +1,9 @@
 # StyleUp - Smart Outfit Recommendation App 👕👗🧠
-What is StyleUp
+**What is StyleUp**
 
 A smart, effortless app that knows your closet and picks your outfit for you
 
-The Problem we solved
+**The Problem we solved**
 
 People spend a lot of time and effort deciding what to wear every day
 path to project slides for more information :
