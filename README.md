@@ -1,6 +1,13 @@
 # StyleUp - Smart Outfit Recommendation App 👕👗🧠
+What is StyleUp
+A smart, effortless app that knows your closet and picks your outfit for you
 
-This is the full-stack repository for the StyleUp project.
+The Problem we solved
+People spend a lot of time and effort deciding what to wear every day
+path to project slides for more information :
+https://www.canva.com/design/DAGp2plMriQ/UNenNb4KHig6rUZuKOzMsA/edit?utm_content=DAGp2plMriQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+**This is the full-stack repository for the StyleUp project.**
 
 ## 📂 Project Structure
 - `frontend/`: Flutter mobile app
